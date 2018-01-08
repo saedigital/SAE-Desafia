@@ -42,6 +42,6 @@ Confirma abaixo os recursos que devem ser implementados na aplicação:
   
 # Dúvidas
 
-Se surgir alguma dúvida, consulte as [perguntas feitas anteriormente](https://github.com/Personare/back-end-challenge/labels/question).
+Se surgir alguma dúvida, consulte as [perguntas feitas anteriormente](https://github.com/saedigital/SAE-Desafia/issues).
 
-Caso não encontre a sua resposta, sinta-se à vontade para [abrir uma issue](https://github.com/Personare/back-end-challenge/issues/new) =]
+Caso não encontre a sua resposta, sinta-se à vontade para [abrir uma issue](https://github.com/saedigital/SAE-Desafia/issues/new) =]
