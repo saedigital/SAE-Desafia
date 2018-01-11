@@ -9,7 +9,7 @@ após ter clonado o reposotório
 ```console
 virtualenv env -p python3
 source env/bin/activate
-pip install -r requirements-dev.txt
+pip install -r requirements.txt
 cp contrib/env-sample .env
 python manage.py migrate
 python manage.py runserver
