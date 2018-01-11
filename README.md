@@ -21,7 +21,6 @@ Confirma abaixo os recursos que devem ser implementados na aplicação:
 ### Espetáculos
   * Cadastrar espetáculo;
   * Editar espetáculo;
-  * Atualizar espetáculo;
   * Remover espetáculo.
   
 ### Poltronas
