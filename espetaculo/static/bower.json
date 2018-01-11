@@ -1,0 +1,22 @@
+{
+  "name": "auxsaude",
+  "authors": [
+    "Doggao <gui_doggao@hotmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "eonasdan-bootstrap-datetimepicker": "^4.17.47",
+    "jquery-mask-plugin": "jquery-mask#^1.14.11",
+    "select2": "^4.0.3"
+  }
+}

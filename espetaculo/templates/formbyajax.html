@@ -1,0 +1,74 @@
+
+{% load widget_tweaks %}
+{% load check_type_field %}
+
+
+<form class="form-horizontal" action='' method="post">
+        {% csrf_token %}
+    <fieldset>
+        {% if form.errors %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% for field in form %}
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="textinput">{{field.label}}</label>
+                <div class="col-md-8">
+                    {% if field|fieldtype == "SelectMultiple" %}
+                        {{ field|attr:"class:chosen-select form-control" }}
+                    {% elif field|fieldtype == "Select" %}
+                        {{ field|attr:"class:chosen-select form-control" }}
+                    {% elif field|fieldtype == "DateTimeInput" %}
+                        {{ field|attr:"class:date form-control" }}
+                    {% elif field|fieldtype == "CheckboxSelectMultiple" %}
+                        {{ field|attr:"class: " }}
+                    {% else %}
+                        {{ field|attr:"class:form-control" }}
+                    {% endif %}
+                </div>
+            </div>
+            {% if field.errors %} 
+            {% for error in field.errors %}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-danger alert-dismissable">
+                            
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                            ×
+                        </button>
+                        <strong>{{field.label}}</strong> {{ error|escape }}.
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+    
+        {% endfor %}
+    
+     
+    </fieldset>
+    
+                            
+    <div class="modal-footer">              
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+                Fechar
+            </button> 
+            <button type="submit"  class="btn btn-primary">Salvar</button>
+        </div>
+    </form>
+{% block extrajs %}
+<script>
+    //  to validate form by js
+     $('form').parsley();
+
+    $('.date').datetimepicker({
+                format: 'DD/MM/YYYY H:mm',
+                locale: 'pt-br'
+            });
+    
+    
+</script>
+{% endblock %}
