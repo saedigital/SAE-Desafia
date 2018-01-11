@@ -1,0 +1,22 @@
+<table width="100%" class="table table-striped table-bordered table-hover" >
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Data</th>
+                <th>Arrecadado</th>
+                <th>Detalhes</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for espetaculo in espetaculos %}
+            <tr class="odd gradeX">
+                <td class="center">{{espetaculo}}</td>
+                <td class="center">{{espetaculo.data|date:"d/m/Y"}}</td>
+                <td class="center">R$ {{espetaculo.arrecadado}}</td>
+                <td class="center"><a href="{% url 'detalhes' espetaculo.pk %}" class="btn btn-primary btn-circle"  data-toggle="tooltip" title="Detalhes espetáculo"><span class="glyphicon glyphicon-edit"></span></a></td>
+                <td class="center"><a href="{% url 'deletar' espetaculo.pk %}" class="btn btn-danger btn-circle" data-toggle="tooltip" title="Excluir espetáculo"><span class="glyphicon glyphicon-remove"></span></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>

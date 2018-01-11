@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Deletar</h1>
+            </div>
+            <form action="" method="post">{% csrf_token %}
+                    <p>Você tem certeza que deseja deletar "{{ object }}"?</p>
+                    <input class="btn btn-danger" type="submit" value="Confirmar" />
+            </form>
+        </div>
+</div>
+
+{% endblock %}

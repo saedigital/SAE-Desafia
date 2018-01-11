@@ -1,0 +1,278 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+<div id="page-wrapper">
+    
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+               <span class='nome-espetaculo'>{{espetaculo}}</span> <a id="{{espetaculo.pk}}"  class="btn update-espetaculo"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a></h1>
+        </div>
+        <!-- /.col-lg-12 -->
+  
+    </div>
+    <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="{% url 'dashboard' %}">Lista de espetáculos</a> <span class="divider"></span>
+                        </li>
+                        <li class="active nome-espetaculo">
+                                {{espetaculo}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-4 col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-square-o fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div id="livre" class="huge">{{espetaculo.total_livre}}</div>
+                            <div>Poltronas Disponíveis</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="panel panel-green">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-check-square-o fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div id="ocupado" class="huge">{{espetaculo.total_ocupada}}</div>
+                            <div>Poltronas Ocupadas</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="panel panel-yellow">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-money fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div id="arrecadado" class="huge">{{espetaculo.arrecadado}}</div>
+                            <div>Total arrecadação</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            Lista de poltronas para <span class="nome-espetaculo">{{espetaculo}}</span>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table class="table table-hover table-striped  table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">
+                                                    #
+                                                </th>
+                                                <th class="text-center">
+                                                    Opção
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for poltrona in espetaculo.poltrona_set.all%}
+                                            <tr>
+                                                <td class="text-center">
+                                                    {{poltrona.pk}}
+                                                </td>
+                                                <td class="text-center">
+                                                    {% if poltrona.ocupada is True %}
+                                                    <a  id="{{poltrona.pk}}" class="btn btn-update-poltrona btn-danger cancel-poltrona">Cancelar
+                                                        <span class="glyphicon glyphicon-remove-circle"></span>
+                                                    </a>
+                                                    {% else %}
+                                                    <a  id="{{poltrona.pk}}" class="btn btn-update-poltrona btn-success reservar">Reservar
+                                                        <span class="glyphicon glyphicon-check"></span>
+                                                    </a>
+                                                    {% endif %}
+
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                 
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    ×
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    Editar Espetáculo
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+{% endblock content %} {% block extrajs %}
+<script>
+    $(function () {
+        var csrftoken = $.cookie('csrftoken');
+        $('.update-espetaculo').on('click', function(){
+            espetaculo = $(this).attr('id');
+            action = location.protocol + '//' + location.host + '/update-espetaculo/' + espetaculo;
+            $.ajax({
+                type: "GET",
+                url: action,
+                beforeSend: function (xhr, settings) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                },
+                success: function (data) {
+                     $('.modal-body').html(data);
+                     $('form', '.modal-body').attr('action', action);
+                     console.log($('form', '.modal-body'));
+                }
+            });
+            $('.modal').modal('show');
+        })
+        $(document).on('submit',  $('form', '.modal-body'), function(e){
+            e.preventDefault();
+            action =   $('form', '.modal-body').attr('action');
+            $.ajax({
+                type: "POST",
+                data: $('form', '.modal-body').serialize(),
+                url: action, 
+                beforeSend: function (xhr, settings) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                },
+                success: function (data) {
+                    $('.nome-espetaculo').text(data.nome);
+                    $('.modal').modal('hide');
+                },
+                error :function(data){
+                    $('.modal-body').html(data.responseText);
+                    $('form', '.modal-body').attr('action', action);
+                }
+            });
+        })
+        $(document).on('click','.btn-update-poltrona', function(){
+            var poltrona = $(this).attr('id');
+            if($(this).hasClass('cancel-poltrona')){
+                var action = "{% url 'cancelar'%}";
+                var cancelar = true;
+            }else{
+                var action = "{% url 'reserva'%}";
+                var cancelar = false;
+            }
+            var element = $(this);
+            $.ajax({
+                type: "POST",
+                data: { 'poltrona': poltrona },
+                url: action, 
+
+                beforeSend: function (xhr, settings) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                },
+                success: function (data) {
+                    
+                    $('#livre').text(data.livre);
+                    $('#ocupado').text(data.ocupados);
+                    $('#arrecadado').text(data.arrecadado);
+                    
+                    if(cancelar){
+                        cancelToReserva(element);
+                    }else{
+                        reservaToCancel(element);
+                    }
+                }
+            });
+        });
+ 
+        function cancelToReserva(element){
+            var poltrona = $(element).attr('id');
+            var newelement = '';
+            newelement += '<a  id="'+poltrona+'" class="btn btn-update-poltrona btn-success reservar">Reservar <span class="glyphicon glyphicon-check"></span></a>';
+            var fatherelement = $(element).parent();
+            $(fatherelement).html('');
+            $(fatherelement).append(newelement);
+        }
+        function reservaToCancel(element){
+            var poltrona = $(element).attr('id');
+            var newelement = '';
+            newelement += '<a  id="'+poltrona+'" class="btn btn-update-poltrona btn-danger cancel-poltrona">Cancelar <span class="glyphicon glyphicon-remove-circle"></span></a>';
+            var fatherelement = $(element).parent();
+            $(fatherelement).html('');
+            $(fatherelement).append(newelement);
+        }
+       
+        $('table').DataTable({
+            "language": {
+                "sEmptyTable": "Nenhum registro encontrado",
+                "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ poltronas",
+                "sInfoEmpty": "Mostrando 0 até 0 de 0 poltronas",
+                "sInfoFiltered": "(Filtrados de _MAX_ poltronas)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ".",
+                "sLengthMenu": "_MENU_ poltronas por página",
+                "sLoadingRecords": "Carregando...",
+                "sProcessing": "Processando...",
+                "sZeroRecords": "Nenhum poltrona encontrada",
+                "sSearch": "Pesquisar",
+                "oPaginate": {
+                    "sNext": "Próximo",
+                    "sPrevious": "Anterior",
+                    "sFirst": "Primeiro",
+                    "sLast": "Último"
+                },
+                "oAria": {
+                    "sSortAscending": ": Ordenar colunas de forma ascendente",
+                    "sSortDescending": ": Ordenar colunas de forma descendente"
+                }
+            }
+        });
+
+    })
+</script> {% endblock extrajs %}
