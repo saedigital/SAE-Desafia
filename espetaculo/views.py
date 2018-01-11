@@ -86,3 +86,30 @@ class EspetaculoDelete(DeleteView):
     model = Estepaculo
     success_url = reverse_lazy('dashboard')
     template_name = 'confirmdelete.html'
+
+def addEspetaculo(request):
+    if request.is_ajax():
+        if request.method == 'POST':
+            form = EspetaculoForm(request.POST, )
+            if form.is_valid():
+                
+                espetaculo = form.save()
+                context = {
+                    'espetaculos' : Estepaculo.objects.all()
+                }
+                return render(request, 'allespetaculos.html', context) 
+            else:
+                context = {
+                    'form' : form
+                }
+                return render(request, 'formbyajax.html', context, status=500) 
+        else:
+
+            template_name = 'formbyajax.html'
+            form = EspetaculoForm()
+            context = {
+                'form': form
+            }
+            return render(request, template_name, context)
+    else:
+        raise Http404
