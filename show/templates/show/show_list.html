@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Espetáculos</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Author</th>
+            <th>Data</th>
+            <th>Opções</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for show in object_list %}
+            <tr>
+                <td>{{ show.name }}</td>
+                <td>{{ show.author }}</td>
+                <td>{{ show.date }}</td>
+                <td>
+                    <a href="{% url 'show:show_edit' show.id %}">detalhar</a> /
+                    <a href="{% url 'show:show_delete' show.id %}">remover</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

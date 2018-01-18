@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title">Editar dados</h2>
+        <div class="card-text">
+            <form method="post">{% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </form>
+        </div>
+    </div>
+</div>
+<br>
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title">Estatísticas</h2>
+        <div class="card-text">
+            <ul>
+                <li>Total de Poltronas: {{chairs.count}}</li>
+                <li>Poltronas Reservadas: {{reserves.count}}</li>
+                <li>Total arrecadado: R$ {{total.price__sum}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br>
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title">Reservar poltrona</h2>
+        <div class="card-text">
+            <table>
+                <tbody>
+                    {% for chair in chairs %}
+                    <tr>
+                        <td>{{ chair.id }}</td>
+                        <td>
+                            {% if chair.id not in reserves %}
+                                <a href="/reserves/new?chair={{chair.id}}&show={{show.id}}">Reservar</a>
+                            {% else %}
+                                <a href="/reserves/delete?chair={{chair.id}}&show={{show.id}}">Remover reserva</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<br>
+{% endblock %}
