@@ -19,7 +19,7 @@ Exemplo:
 `python manage.py runserver`
 
 # Observações
-Estou subindo o projeto contendo um banco de dados sqlite, o mesmo contém 2 acessos um de superusuário e outro de usuário normal
+```Estou subindo o projeto contendo um banco de dados sqlite, o mesmo contém 2 acessos um de superusuário e outro de usuário normal
 superusuario: 
 login: admin
 senha: admin123456
@@ -27,3 +27,4 @@ senha: admin123456
 usuário normal
 login: usuario
 senha: admin123456
+```
