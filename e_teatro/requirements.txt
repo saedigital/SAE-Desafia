@@ -1,0 +1,13 @@
+Django==2.0.1
+django-admin-view-permission==1.4
+django-jet==1.0.7
+google-api-python-client==1.4.1
+httplib2==0.10.3
+oauth2client==4.1.2
+pyasn1==0.4.2
+pyasn1-modules==0.2.1
+pytz==2017.3
+reverse==0.1.0
+rsa==3.4.2
+six==1.11.0
+uritemplate==3.0.0

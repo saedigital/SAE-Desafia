@@ -1,0 +1,11 @@
+{% extends "admin/base.html" %}
+
+{% block sidebar %}
+    {{block.super}}
+    {% if user.is_authenticated and user.is_superuser %}
+        <div>
+            <h1>Financeiro</h1>
+            <p>Total: {{ total }}</p>
+        </div>
+    {% endif %}
+{% endblock %}
