@@ -1,0 +1,1 @@
+default_app_config = 'e_teatro.core.apps.CoreConfig'
