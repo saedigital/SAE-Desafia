@@ -1,6 +1,7 @@
-Django==1.11.9
+Django==2.0.2
 djangorestframework==3.7.7
 Markdown==2.6.11
 pip==9.0.1
+psycopg2==2.7.3.2
 pytz==2017.3
 setuptools==28.8.0
