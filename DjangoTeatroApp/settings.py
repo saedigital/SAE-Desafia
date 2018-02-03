@@ -26,7 +26,7 @@ SECRET_KEY = '908b328a-3048-4634-a4cc-4b691a3fe438'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['teatroapi.herokuapp.com']
+ALLOWED_HOSTS = ['teatroapi.herokuapp.com','localhost']
 
 CORS_ORIGIN_ALLOW_ALL = True
 
