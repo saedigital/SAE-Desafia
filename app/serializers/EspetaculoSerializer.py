@@ -5,7 +5,7 @@ from app.models.Espetaculo import Espetaculo
 
 class EspetaculoSerializer(serializers.ModelSerializer):
     
-    reservas = ReservaSerializer(many=True)
+    reservas = ReservaSerializer(many=True, required = False) ## PROPRIEDADE NÃO OBRIGATÓRIA EM POST E UPDATE 
 
     class Meta:
         model = Espetaculo
