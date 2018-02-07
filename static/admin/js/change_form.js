@@ -4,7 +4,7 @@
     'use strict';
     $(document).ready(function() {
         var modelName = $('#django-admin-form-add-constants').data('modelName');
-        $('body').on('click', '.add-another', function(e) {
+        $('.add-another').click(function(e) {
             e.preventDefault();
             var event = $.Event('django:add-another-related');
             $(this).trigger(event);

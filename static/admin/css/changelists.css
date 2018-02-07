@@ -166,8 +166,6 @@
 #changelist-filter a {
     display: block;
     color: #999;
-    text-overflow: ellipsis;
-    overflow-x: hidden;
 }
 
 #changelist-filter li.selected {

@@ -1,15 +1,18 @@
 from rest_framework import serializers
+from rest_framework.relations import PrimaryKeyRelatedField
 from app.models.Reserva import Reserva
 from app.serializers.ReservaSerializer import ReservaSerializer
 from app.models.Espetaculo import Espetaculo
 
 class EspetaculoSerializer(serializers.ModelSerializer):
     
-    reservas = ReservaSerializer(many=True, required = False) ## PROPRIEDADE NÃO OBRIGATÓRIA EM POST E UPDATE 
+    reservas_id = PrimaryKeyRelatedField(many=True, read_only = True, source='reservas') ## PROPRIEDADE UTILIZADA EM GET REQUESTS
+    reservas = ReservaSerializer(many=True, required = False,write_only = True)  ## PROPRIEDADE NÃO OBRIGATÓRIA EM POST E UPDATE 
 
     class Meta:
         model = Espetaculo
         fields = '__all__'
+    
 
     def update(self,instance, validated_data):
 
