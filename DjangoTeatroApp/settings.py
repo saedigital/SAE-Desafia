@@ -59,8 +59,8 @@ MIDDLEWARE_CLASSES = [
 ]
 
 REST_FRAMEWORK = {
-    'DATE_FORMAT' : '%d/%m/%Y',  
-    'DATE_INPUT_FORMATS' : ['%d/%m/%Y'],  
+    'DATE_FORMAT' : '%Y-%m-%d',  
+    'DATE_INPUT_FORMATS' : ['%Y-%m-%d'],  
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
