@@ -5,12 +5,15 @@ from app.serializers.PoltronaSerializer import PoltronaSerializer
 
 class ReservaSerializer(serializers.ModelSerializer):
 
-    poltrona = PoltronaSerializer(read_only = True)
-    
+    poltrona = PoltronaSerializer()
+    id = serializers.IntegerField(read_only = False, required = False)
+
     class Meta:
         model = Reserva
-        fields = '__all__'
-        extra_kwargs = {'id': {'read_only': False,'required':False}}
+        fields = '__all__'      
+
+    def create(self,validated_data):
+        poltronaData = validated_data.pop('poltrona')
+        reserva = Reserva.objects.create(poltrona_id = poltronaData['id'],**validated_data)
         
-
-
+        return reserva
