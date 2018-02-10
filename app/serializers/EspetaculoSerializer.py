@@ -25,16 +25,16 @@ class EspetaculoSerializer(serializers.ModelSerializer):
         
         ## RESERVAS A SEREM EXCLUÍDAS
         reservas_id = Reserva.objects.filter(espetaculo_id = instance.id).values_list('id',flat = True) ## RECUPERANDO OS IDS DOS ITENS NO BANCO DE DADOS
-        id_reservas = [] ## VARIÁVEL PARA GUARDAR OS IDS DO ITENS A SEREM EXCLUÍDOS
+        id_reservas = [] ## VARIÁVEL PARA GUARDAR OS IDS DO ITENS DA REQUEST
 
-        for reserva in reservas:
+        for reserva in reservas: ## SALVANDO OS IDS DAS RESERVAS DA REQUEST
              if 'id' in reserva: 
                 print(reserva['id'])
                 id_reservas.append(reserva['id'])
 
-        for id in id_reservas: 
-            if id not in reservas_id: 
-                Reserva.objects.get(id = id).delete() ## DELETANDO RESERVA DO BANCO SE NÃO ESTIVER ENTRE OS ITENS A ATUALIZAR
+        for id in reservas_id: 
+            if id not in id_reservas:  ## DELETANDO RESERVA DO BANCO SE NÃO ESTIVER ENTRE OS ITENS A ATUALIZAR
+                Reserva.objects.get(id = id).delete()
 
 
         # UPDATES AND CREATIONS
