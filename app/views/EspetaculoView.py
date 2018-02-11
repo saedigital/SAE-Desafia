@@ -10,7 +10,7 @@ from app.serializers.ReservaSerializer import ReservaSerializer
 
 class EspetaculoView(viewsets.ModelViewSet):
     
-    queryset = Espetaculo.objects.all()
+    queryset = Espetaculo.objects.all().order_by('id')
     serializer_class = EspetaculoSerializer
     
     @detail_route(methods=['GET'])
