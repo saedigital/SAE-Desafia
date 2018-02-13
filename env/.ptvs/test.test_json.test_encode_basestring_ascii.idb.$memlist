@@ -1,8 +1,0 @@
-CTest
-bigaddrspacetest
-TestPyEncodeBasestringAscii
-TestEncodeBasestringAscii
-PyTest
-CASES
-OrderedDict
-TestCEncodeBasestringAscii

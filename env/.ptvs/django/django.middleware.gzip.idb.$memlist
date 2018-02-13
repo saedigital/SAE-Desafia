@@ -1,7 +1,0 @@
-compress_string
-patch_vary_headers
-GZipMiddleware
-MiddlewareMixin
-compress_sequence
-re
-re_accepts_gzip

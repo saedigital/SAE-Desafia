@@ -1,5 +1,0 @@
-DateTimeAllocationBugTestCase
-unittest
-psycopg2
-test_suite
-time

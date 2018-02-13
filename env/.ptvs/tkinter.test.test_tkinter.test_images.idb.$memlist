@@ -1,9 +1,0 @@
-tkinter
-AbstractTkTest
-PhotoImageTest
-unittest
-requires_tcl
-tests_gui
-support
-BitmapImageTest
-MiscTest

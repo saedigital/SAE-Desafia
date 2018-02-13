@@ -1,9 +1,0 @@
-support
-util
-Source_ExtensionCaseSensitivity
-ExtensionModuleCaseSensitivityTest
-_bootstrap_external
-importlib
-machinery
-Frozen_ExtensionCaseSensitivity
-unittest

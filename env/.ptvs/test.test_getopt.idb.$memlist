@@ -1,7 +1,0 @@
-run_doctest
-GetoptTests
-sentinel
-getopt
-EnvironmentVarGuard
-verbose
-unittest

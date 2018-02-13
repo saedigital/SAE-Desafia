@@ -1,7 +1,0 @@
-skip_if_missing
-os
-assert_python_ok
-Test_pygettext
-toolsdir
-temp_cwd
-unittest

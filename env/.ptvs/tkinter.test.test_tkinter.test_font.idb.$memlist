@@ -1,9 +1,0 @@
-tkinter
-fontname
-AbstractTkTest
-run_unittest
-font
-tests_gui
-FontTest
-requires
-unittest

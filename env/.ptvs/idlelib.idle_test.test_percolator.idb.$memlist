@@ -1,9 +1,0 @@
-Text
-Tk
-MyFilter
-END
-Delegator
-Percolator
-requires
-PercolatorTest
-unittest

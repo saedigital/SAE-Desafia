@@ -1,8 +1,0 @@
-is_jython
-unify_callables
-compile_command
-PyCF_DONT_IMPLY_DEDENT
-CodeopTests
-io
-sys
-unittest

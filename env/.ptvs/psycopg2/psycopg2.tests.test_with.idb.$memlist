@@ -1,8 +1,0 @@
-WithConnectionTestCase
-ext
-psycopg2
-test_suite
-ConnectingTestCase
-WithTestCase
-WithCursorTestCase
-unittest

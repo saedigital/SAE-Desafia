@@ -1,9 +1,0 @@
-url
-views
-login
-django
-urlpatterns
-login_kwargs
-logout
-app_name
-unicode_literals

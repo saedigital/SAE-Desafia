@@ -1,9 +1,0 @@
-pickle
-AbstractPickleModuleTests
-test_main
-pickletools
-OptimizedPickleTests
-support
-MiscTestCase
-AbstractPickleTests
-unittest

@@ -1,8 +1,0 @@
-copy
-_setit
-Button
-StringVar
-run
-OptionMenu
-_dyn_option_menu
-DynOptionMenu

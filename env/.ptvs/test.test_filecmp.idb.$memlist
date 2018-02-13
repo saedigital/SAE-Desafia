@@ -1,9 +1,0 @@
-filecmp
-os
-DirCompareTestCase
-shutil
-support
-test_main
-FileCompareTestCase
-tempfile
-unittest

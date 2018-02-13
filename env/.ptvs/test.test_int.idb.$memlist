@@ -1,8 +1,0 @@
-L
-support
-IntSubclass
-VALID_UNDERSCORE_LITERALS
-INVALID_UNDERSCORE_LITERALS
-IntTestCases
-sys
-unittest

@@ -1,1 +1,0 @@
-C:\Users\miran\Documents\Visual Studio 2017\Projects\DjangoTeatroApp\obj\Debug\DjangoTeatroApp.pyproj.CoreCompileInputs.cache

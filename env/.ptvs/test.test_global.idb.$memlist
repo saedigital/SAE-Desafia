@@ -1,7 +1,0 @@
-check_warnings
-check_syntax_error
-warnings
-run_unittest
-test_main
-GlobalTests
-unittest

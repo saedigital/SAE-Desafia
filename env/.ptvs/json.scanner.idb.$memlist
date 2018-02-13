@@ -1,6 +1,0 @@
-c_make_scanner
-make_scanner
-re
-__all__
-NUMBER_RE
-py_make_scanner

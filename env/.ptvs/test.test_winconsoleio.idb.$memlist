@@ -1,9 +1,0 @@
-write_input
-os
-WindowsConsoleIOTests
-tempfile
-ConIO
-support
-io
-sys
-unittest

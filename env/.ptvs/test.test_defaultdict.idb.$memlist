@@ -1,8 +1,0 @@
-copy
-pickle
-os
-tempfile
-foobar
-TestDefaultDict
-defaultdict
-unittest

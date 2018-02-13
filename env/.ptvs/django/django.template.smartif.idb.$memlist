@@ -1,9 +1,0 @@
-OPERATORS
-EndToken
-infix
-op
-prefix
-TokenBase
-key
-Literal
-IfParser

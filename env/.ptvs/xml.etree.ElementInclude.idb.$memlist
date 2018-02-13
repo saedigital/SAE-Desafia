@@ -1,8 +1,0 @@
-FatalIncludeError
-copy
-XINCLUDE_INCLUDE
-ElementTree
-XINCLUDE
-default_loader
-include
-XINCLUDE_FALLBACK

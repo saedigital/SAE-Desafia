@@ -1,9 +1,0 @@
-Text
-InitCloseTest
-Tk
-WidgetRedirector
-TclError
-Func
-WidgetRedirectorTest
-requires
-unittest

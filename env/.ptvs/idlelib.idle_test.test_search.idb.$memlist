@@ -1,7 +1,0 @@
-requires
-tk
-BooleanVar
-SearchDialogTest
-se
-sd
-unittest

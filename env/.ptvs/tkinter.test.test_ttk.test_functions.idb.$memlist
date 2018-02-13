@@ -1,9 +1,0 @@
-tests_nogui
-TclObjsToPyTest
-MockStateSpec
-unittest
-run_unittest
-ttk
-MockTclObj
-InternalFunctionsTest
-MockTkApp

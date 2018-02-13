@@ -1,6 +1,0 @@
-sysconfig
-unittest
-subprocess
-sys
-OSXEnvironmentVariableTestCase
-EnvironmentVarGuard

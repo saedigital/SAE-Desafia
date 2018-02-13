@@ -1,9 +1,0 @@
-withpythonimplementation
-DECSAMPLE
-subprocess
-ENCSAMPLE
-quopri
-QuopriTestCase
-io
-sys
-unittest

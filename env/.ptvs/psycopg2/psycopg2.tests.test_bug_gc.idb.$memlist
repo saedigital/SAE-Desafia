@@ -1,7 +1,0 @@
-StolenReferenceTestCase
-psycopg2
-skip_if_no_uuid
-test_suite
-ConnectingTestCase
-gc
-unittest

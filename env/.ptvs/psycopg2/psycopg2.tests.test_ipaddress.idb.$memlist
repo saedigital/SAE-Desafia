@@ -1,8 +1,0 @@
-skip_if_no_ipaddress
-NetworkingTestCase
-psycopg2
-test_suite
-testutils
-wraps
-sys
-unittest
