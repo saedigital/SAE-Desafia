@@ -6,6 +6,9 @@
 
 # Instalação
 
+Tecnologias: Biblioteca Vue.js, Django Rest e PostgreSQL.
+Ambientes de desenvolvimento: Visual Studio (Django Rest) e Visual Studio Code (Vue.js).
+
 O sistema é composto por duas aplicações em diferentes repositórios: Uma aplicação web em Vue.js e uma API em Django Rest.
 
 A API é responsável por fazer conexões no banco de dados e levar os dados até a aplicação Vue.js por meio de chamadas AJAX.
