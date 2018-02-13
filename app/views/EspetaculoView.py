@@ -15,7 +15,7 @@ class EspetaculoView(viewsets.ModelViewSet):
     
     @detail_route(methods=['GET'])
     def reservas_espetaculo(self,request,pk=None): ## RETORNAR TOTAL DE RESERVAS POR ESPETÁCULO
-        total = Reserva.objects.filter(espetaculo_id=pk).values().count()  ## Espetaculo.objects.raw('SELECT e.id FROM app_espetaculo AS e LEFT JOIN app_reserva AS r ON r.espetaculo_id = e.id')
+        total = Reserva.objects.filter(espetaculo_id=pk).values().count() 
         
         return Response({"data":total},status = status.HTTP_200_OK)   
 
