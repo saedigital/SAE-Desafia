@@ -1,0 +1,7 @@
+Nl2BrExtension
+SubstituteTagPattern
+absolute_import
+unicode_literals
+BR_RE
+makeExtension
+Extension

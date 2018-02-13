@@ -1,0 +1,7 @@
+psycopg2
+PoolError
+_ext
+PersistentConnectionPool
+ThreadedConnectionPool
+AbstractConnectionPool
+SimpleConnectionPool

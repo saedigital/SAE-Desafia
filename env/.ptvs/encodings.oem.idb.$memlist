@@ -1,0 +1,10 @@
+encode
+oem_decode
+oem_encode
+IncrementalEncoder
+StreamWriter
+codecs
+decode
+IncrementalDecoder
+StreamReader
+getregentry

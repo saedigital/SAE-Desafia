@@ -1,0 +1,9 @@
+AddField
+cached_property
+Operation
+RemoveField
+unicode_literals
+NOT_PROVIDED
+RenameField
+AlterField
+FieldOperation

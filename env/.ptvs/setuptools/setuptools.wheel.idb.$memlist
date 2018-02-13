@@ -1,0 +1,17 @@
+NAMESPACE_PACKAGE_INIT
+PY3
+SetuptoolsDistribution
+re
+os
+itertools
+PathMetadata
+email
+pep425tags
+Distribution
+WHEEL_NAME
+unpack
+Wheel
+parse_version
+zipfile
+get_platform
+write_requirements

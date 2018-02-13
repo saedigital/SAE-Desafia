@@ -1,0 +1,16 @@
+apps
+check_request_enabled
+re
+urlparse
+MiddlewareMixin
+ACCESS_CONTROL_ALLOW_CREDENTIALS
+ACCESS_CONTROL_ALLOW_HEADERS
+patch_vary_headers
+ACCESS_CONTROL_ALLOW_METHODS
+CorsMiddleware
+conf
+http
+ACCESS_CONTROL_EXPOSE_HEADERS
+CorsPostCsrfMiddleware
+ACCESS_CONTROL_MAX_AGE
+ACCESS_CONTROL_ALLOW_ORIGIN

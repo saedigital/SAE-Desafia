@@ -1,0 +1,16 @@
+INFO
+warn
+set_threshold
+FATAL
+DEBUG
+fatal
+debug
+ERROR
+set_verbosity
+sys
+info
+WARN
+Log
+error
+log
+_global_log

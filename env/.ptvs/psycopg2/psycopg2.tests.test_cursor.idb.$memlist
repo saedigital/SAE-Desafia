@@ -1,0 +1,13 @@
+skip_if_no_superuser
+pickle
+psycopg2
+time
+skip_if_windows
+skip_if_no_getrefcount
+skip_before_postgres
+test_suite
+ConnectingTestCase
+skip_if_no_namedtuple
+slow
+CursorTests
+unittest

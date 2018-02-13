@@ -1,0 +1,11 @@
+DEPRECATED_SETTINGS
+deprecate
+absolute_import
+Settings
+_
+setting_changed
+dj_settings
+DEFAULTS
+settings
+is_callable
+STRICTNESS

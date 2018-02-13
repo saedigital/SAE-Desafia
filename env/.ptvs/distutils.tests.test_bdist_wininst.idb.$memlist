@@ -1,0 +1,6 @@
+test_suite
+unittest
+run_unittest
+support
+BuildWinInstTestCase
+bdist_wininst

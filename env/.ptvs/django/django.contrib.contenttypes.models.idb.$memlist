@@ -1,0 +1,8 @@
+python_2_unicode_compatible
+models
+ContentType
+unicode_literals
+_
+apps
+ContentTypeManager
+force_text

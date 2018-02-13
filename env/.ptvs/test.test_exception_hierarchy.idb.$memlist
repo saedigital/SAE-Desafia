@@ -1,0 +1,16 @@
+SubOSErrorWithNew
+SubOSErrorWithStandaloneInit
+ExplicitSubclassingTest
+AttributesTest
+select
+HierarchyTest
+builtins
+errno
+SubOSError
+SubOSErrorCombinedNewFirst
+os
+SubOSErrorCombinedInitFirst
+SubOSErrorWithInit
+socket
+EEXIST
+unittest

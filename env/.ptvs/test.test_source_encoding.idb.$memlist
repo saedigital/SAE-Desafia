@@ -1,0 +1,16 @@
+sys
+TESTFN
+script_helper
+importlib
+tempfile
+os
+unload
+BytesSourceEncodingTest
+unittest
+subprocess
+MiscSourceEncodingTest
+unlink
+FileSourceEncodingTest
+captured_stdout
+AbstractSourceEncodingTest
+rmtree

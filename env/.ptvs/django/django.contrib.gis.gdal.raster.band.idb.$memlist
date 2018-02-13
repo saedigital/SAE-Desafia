@@ -1,0 +1,16 @@
+numpy
+GDALBase
+GDAL_TO_CTYPES
+byref
+capi
+range
+GDALBand
+six
+GDAL_INTEGER_TYPES
+GDALException
+c_void_p
+c_double
+BandList
+force_text
+GDAL_PIXEL_TYPES
+c_int

@@ -1,0 +1,17 @@
+CHILD
+openpty
+_open_terminal
+fork
+select
+STDIN_FILENO
+_read
+_copy
+__all__
+tty
+_writen
+spawn
+os
+slave_open
+STDOUT_FILENO
+master_open
+STDERR_FILENO

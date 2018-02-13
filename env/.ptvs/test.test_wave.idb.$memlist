@@ -1,0 +1,12 @@
+byteswap
+audiotests
+WavePCM16Test
+wave
+WavePCM32Test
+WaveTest
+WavePCM8Test
+support
+MiscTestCase
+WavePCM24Test
+sys
+unittest

@@ -1,0 +1,17 @@
+ConnectingTestCase
+CancelTests
+time
+extras
+LogicalReplicationConnection
+ReplicationTestCase
+skip_before_postgres
+ConnectTestCase
+slow
+skip_repl_if_green
+AsyncTests
+AsyncReplicationTest
+test_suite
+dsn
+StopReplication
+unittest
+psycopg2

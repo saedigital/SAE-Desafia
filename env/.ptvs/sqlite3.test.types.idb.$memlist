@@ -1,0 +1,13 @@
+datetime
+DeclTypesTests
+BinaryConverterTests
+suite
+sqlite
+ColNamesTests
+DateTimeTests
+test
+ObjectAdaptationTests
+CommonTableExpressionTests
+zlib
+SqliteTypeTests
+unittest

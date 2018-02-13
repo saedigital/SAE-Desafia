@@ -1,0 +1,15 @@
+PyStringIOTest
+MemorySeekTestMixin
+pickle
+CStringIOTest
+TextIOTestMixin
+PyStringIOPickleTest
+pyio
+MemoryTestMixin
+PyBytesIOTest
+support
+CStringIOPickleTest
+CBytesIOTest
+io
+sys
+unittest

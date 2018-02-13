@@ -1,0 +1,14 @@
+BasePyPIRCCommandTestCase
+WARN
+Distribution
+test_suite
+PyPIRCCommandTestCase
+run_unittest
+PyPIRCCommand
+PYPIRC
+support
+os
+PYPIRC_OLD
+set_threshold
+WANTED
+unittest

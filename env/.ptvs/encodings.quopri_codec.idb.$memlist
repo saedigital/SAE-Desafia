@@ -1,0 +1,11 @@
+getregentry
+StreamWriter
+quopri_decode
+BytesIO
+Codec
+IncrementalEncoder
+codecs
+IncrementalDecoder
+quopri
+StreamReader
+quopri_encode

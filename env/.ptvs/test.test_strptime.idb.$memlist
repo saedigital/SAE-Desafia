@@ -1,0 +1,16 @@
+getlang_Tests
+time
+CalculationTests
+_strptime
+locale
+re
+os
+LocaleTime_Tests
+unittest
+support
+Strptime12AMPMTests
+datetime_date
+JulianTests
+TimeRETests
+StrptimeTests
+CacheTests

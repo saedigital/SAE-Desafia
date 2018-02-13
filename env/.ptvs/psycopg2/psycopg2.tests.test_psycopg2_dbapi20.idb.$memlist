@@ -1,0 +1,10 @@
+dsn
+psycopg2
+decorate_all_tests
+skip_if_tpc_disabled
+test_suite
+dbapi20_tpc
+Psycopg2TPCTests
+dbapi20
+Psycopg2Tests
+unittest

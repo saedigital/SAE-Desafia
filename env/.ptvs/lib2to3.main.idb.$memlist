@@ -1,0 +1,13 @@
+difflib
+with_statement
+os
+optparse
+logging
+diff_texts
+refactor
+shutil
+print_function
+StdoutRefactoringTool
+main
+warn
+sys

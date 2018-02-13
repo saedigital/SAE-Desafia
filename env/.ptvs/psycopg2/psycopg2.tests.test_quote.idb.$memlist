@@ -1,0 +1,10 @@
+TestQuotedIdentifier
+TestQuotedString
+psycopg2
+QuotingTestCase
+test_suite
+TestStringAdapter
+ConnectingTestCase
+testutils
+sys
+unittest

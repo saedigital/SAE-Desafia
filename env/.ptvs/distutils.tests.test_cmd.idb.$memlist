@@ -1,0 +1,11 @@
+MyCmd
+os
+Distribution
+test_suite
+debug
+Command
+run_unittest
+DistutilsOptionError
+CommandTestCase
+captured_stdout
+unittest

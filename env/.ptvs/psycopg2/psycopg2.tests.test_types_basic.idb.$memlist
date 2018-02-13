@@ -1,0 +1,13 @@
+AdaptSubclassTest
+psycopg2
+TypesBasicTests
+decorate_all_tests
+sys
+test_suite
+skip_if_cant_cast
+ConnectingTestCase
+testutils
+ByteaParserTest
+wraps
+decimal
+unittest

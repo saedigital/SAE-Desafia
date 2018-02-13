@@ -1,0 +1,16 @@
+encodestring
+MAXLINESIZE
+ESCAPE
+unhex
+quote
+a2b_qp
+decodestring
+__all__
+b2a_qp
+decode
+needsquoting
+encode
+HEX
+EMPTYSTRING
+ishex
+main

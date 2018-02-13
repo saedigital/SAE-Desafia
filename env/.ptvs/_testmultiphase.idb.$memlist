@@ -1,0 +1,13 @@
+Example
+Str
+__doc__
+__file__
+__loader__
+__name__
+__package__
+__spec__
+call_state_registration_func
+error
+foo
+int_const
+str_const

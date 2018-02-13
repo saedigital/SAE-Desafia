@@ -1,0 +1,10 @@
+codecs
+IncrementalDecoder
+rot13_map
+sys
+IncrementalEncoder
+getregentry
+StreamWriter
+rot13
+StreamReader
+Codec

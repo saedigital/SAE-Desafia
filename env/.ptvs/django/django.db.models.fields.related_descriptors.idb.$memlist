@@ -1,0 +1,17 @@
+connections
+ReverseOneToOneDescriptor
+ReverseManyToOneDescriptor
+unicode_literals
+router
+create_forward_many_to_many_manager
+cached_property
+ManyToManyDescriptor
+create_reverse_many_to_one_manager
+RemovedInDjango20Warning
+Q
+ForwardManyToOneDescriptor
+signals
+transaction
+warnings
+attrgetter
+QuerySet

@@ -1,0 +1,16 @@
+setuptools
+os
+easy_install
+six
+namespaces
+VersionlessRequirement
+PathMetadata
+normalize_path
+io
+Distribution
+glob
+log
+develop
+convert_path
+DistutilsError
+DistutilsOptionError

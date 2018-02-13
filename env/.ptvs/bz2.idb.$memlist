@@ -1,0 +1,17 @@
+io
+BZ2File
+_MODE_WRITE
+__author__
+os
+compress
+BZ2Compressor
+decompress
+_MODE_CLOSED
+__all__
+_compression
+warnings
+open
+BZ2Decompressor
+RLock
+_MODE_READ
+_builtin_open

@@ -1,0 +1,17 @@
+__all__
+_Error
+read_code
+importlib
+types
+_run_module_as_main
+run_path
+_get_code_from_file
+_run_code
+get_importer
+run_module
+_get_module_details
+_get_main_module_details
+_ModifiedArgv0
+_run_module_code
+_TempModule
+sys

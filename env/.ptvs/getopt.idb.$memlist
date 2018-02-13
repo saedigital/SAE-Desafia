@@ -1,0 +1,12 @@
+gnu_getopt
+os
+__all__
+sys
+_
+GetoptError
+error
+getopt
+long_has_args
+do_shorts
+short_has_arg
+do_longs

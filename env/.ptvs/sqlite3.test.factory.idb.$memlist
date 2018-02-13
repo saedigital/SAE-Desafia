@@ -1,0 +1,14 @@
+TextFactoryTestsWithEmbeddedZeroBytes
+ConnectionFactoryTests
+test
+suite
+sqlite
+dict_factory
+CursorFactoryTests
+RowFactoryTests
+MyCursor
+MyConnection
+Sequence
+TextFactoryTests
+RowFactoryTestsBackwardsCompat
+unittest

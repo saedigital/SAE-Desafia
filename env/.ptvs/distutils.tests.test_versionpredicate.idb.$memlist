@@ -1,0 +1,4 @@
+doctest
+run_unittest
+test_suite
+distutils

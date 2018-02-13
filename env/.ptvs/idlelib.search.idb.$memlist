@@ -1,0 +1,11 @@
+find
+_setup
+searchengine
+unittest
+_search_dialog
+SearchDialogBase
+TclError
+SearchDialog
+run
+find_again
+find_selection

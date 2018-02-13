@@ -1,0 +1,10 @@
+CRASHER_FILES
+infinite_loops
+os
+glob
+CRASHER_DIR
+tearDownModule
+assert_python_failure
+CrasherTest
+unittest
+test

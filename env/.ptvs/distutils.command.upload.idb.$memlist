@@ -1,0 +1,15 @@
+spawn
+urlparse
+urlopen
+os
+Request
+platform
+hashlib
+PyPIRCCommand
+HTTPError
+DistutilsOptionError
+standard_b64encode
+DistutilsError
+io
+upload
+log

@@ -1,0 +1,16 @@
+sys
+OperatorPickleTestCase
+pickle
+py_operator
+PyPyOperatorPickleTestCase
+Seq2
+PyCOperatorPickleTestCase
+unittest
+CPyOperatorPickleTestCase
+COperatorTestCase
+OperatorTestCase
+CCOperatorPickleTestCase
+c_operator
+Seq1
+support
+PyOperatorTestCase

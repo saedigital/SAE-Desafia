@@ -1,0 +1,13 @@
+STATUS_READY
+DeadlockSerializationTests
+STATUS_BEGIN
+psycopg2
+QueryCancellationTests
+threading
+slow
+skip_before_postgres
+test_suite
+ConnectingTestCase
+ISOLATION_LEVEL_SERIALIZABLE
+TransactionTests
+unittest

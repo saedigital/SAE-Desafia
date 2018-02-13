@@ -1,0 +1,8 @@
+Text
+Tk
+HyperParserTest
+unittest
+EditorWindow
+requires
+HyperParser
+DummyEditwin

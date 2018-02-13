@@ -1,0 +1,14 @@
+newer
+write_file
+os
+LibError
+UnknownFileError
+DistutilsExecError
+DistutilsPlatformError
+CCompiler
+log
+gen_preprocess_options
+LinkError
+CompileError
+BCPPCompiler
+gen_lib_options

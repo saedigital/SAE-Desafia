@@ -1,0 +1,12 @@
+skip_unless_symlink
+os
+glob
+GlobTests
+change_cwd
+create_empty_file
+shutil
+can_symlink
+TESTFN
+SymlinkLoopGlobTests
+sys
+unittest

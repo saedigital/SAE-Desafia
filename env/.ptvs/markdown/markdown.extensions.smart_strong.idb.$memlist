@@ -1,0 +1,8 @@
+SmartEmphasisExtension
+makeExtension
+absolute_import
+unicode_literals
+SimpleTagPattern
+SMART_STRONG_RE
+Extension
+STRONG_RE

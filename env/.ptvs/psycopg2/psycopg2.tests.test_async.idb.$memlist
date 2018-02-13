@@ -1,0 +1,11 @@
+ext
+psycopg2
+time
+slow
+skip_before_postgres
+test_suite
+PollableStub
+ConnectingTestCase
+AsyncTests
+io
+unittest

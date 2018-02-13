@@ -1,0 +1,11 @@
+run_doctest
+copy
+cookies
+CookieTests
+warnings
+run_unittest
+check_warnings
+pickle
+test_main
+MorselTests
+unittest

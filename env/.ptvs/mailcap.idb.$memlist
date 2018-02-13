@@ -1,0 +1,16 @@
+parseline
+getcaps
+lookup
+lineno_sort_key
+os
+subst
+parsefield
+listmailcapfiles
+show
+__all__
+test
+readmailcapfile
+warnings
+_readmailcapfile
+findparam
+findmatch

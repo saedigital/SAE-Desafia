@@ -1,0 +1,11 @@
+pathlib
+zipfile
+patch
+zipapp
+sys
+stat
+ZipAppCmdlineTest
+ZipAppTest
+io
+tempfile
+unittest

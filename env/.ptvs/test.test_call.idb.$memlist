@@ -1,0 +1,11 @@
+datetime
+FastCallTests
+_testcapi
+IGNORE_RESULT
+pyfunc
+cpython_only
+pyfunc_noarg
+PYTHON_INSTANCE
+CFunctionCalls
+PythonClass
+unittest

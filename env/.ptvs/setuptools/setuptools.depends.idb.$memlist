@@ -1,0 +1,15 @@
+Require
+imp
+find_module
+__all__
+get_module_constant
+PKG_DIRECTORY
+StrictVersion
+Bytecode
+extract_constant
+PY_FROZEN
+PY_SOURCE
+marshal
+_update_globals
+sys
+PY_COMPILED

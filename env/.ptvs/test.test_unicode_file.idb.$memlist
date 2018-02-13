@@ -1,0 +1,16 @@
+TESTFN_UNICODE
+time
+TESTFN_ENCODING
+TESTFN_UNENCODABLE
+os
+run_unittest
+remove_if_exists
+create_empty_file
+unicodedata
+change_cwd
+test_main
+glob
+TestUnicodeFiles
+shutil
+unittest
+rmtree

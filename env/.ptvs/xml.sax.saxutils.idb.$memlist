@@ -1,0 +1,14 @@
+xmlreader
+os
+_gettextwriter
+urllib
+XMLFilterBase
+unescape
+handler
+codecs
+escape
+prepare_input_source
+quoteattr
+io
+XMLGenerator
+__dict_replace

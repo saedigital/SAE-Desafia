@@ -1,0 +1,17 @@
+sys
+parse_configuration
+unicode_literals
+partial
+os
+string_types
+DistutilsOptionError
+absolute_import
+io
+ConfigOptionsHandler
+read_configuration
+configuration_to_dict
+import_module
+DistutilsFileError
+ConfigHandler
+ConfigMetadataHandler
+defaultdict

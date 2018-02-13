@@ -1,0 +1,13 @@
+read_sound_file
+findfile
+time
+sunau
+OSSAudioDevTests
+audioop
+AFMT_S16_NE
+support
+ossaudiodev
+test_main
+errno
+sys
+unittest

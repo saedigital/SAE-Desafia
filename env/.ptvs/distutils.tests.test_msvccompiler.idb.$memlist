@@ -1,0 +1,9 @@
+msvccompilerTestCase
+os
+test_suite
+DistutilsPlatformError
+run_unittest
+support
+SKIP_MESSAGE
+sys
+unittest

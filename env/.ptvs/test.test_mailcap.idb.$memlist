@@ -1,0 +1,13 @@
+copy
+entry
+os
+FindmatchTest
+MAILCAPFILE
+GetcapsTest
+unittest
+HelperFunctionTest
+entry_list
+MAILCAPDICT
+MAILCAPDICT_DEPRECATED
+mailcap
+test

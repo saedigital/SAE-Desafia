@@ -1,0 +1,17 @@
+_copy_archive
+pathlib
+_write_file_prefix
+os
+create_archive
+main
+MAIN_TEMPLATE
+ZipAppError
+sys
+__all__
+stat
+contextlib
+shebang_encoding
+_maybe_open
+shutil
+get_interpreter
+zipfile

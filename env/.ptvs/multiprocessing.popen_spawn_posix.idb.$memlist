@@ -1,0 +1,10 @@
+set_spawning_popen
+_DupFd
+popen_fork
+reduction
+util
+Popen
+spawn
+os
+__all__
+io

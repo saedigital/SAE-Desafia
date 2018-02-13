@@ -1,0 +1,15 @@
+URLPathVersioning
+api_settings
+NamespaceVersioning
+HostNameVersioning
+unicode_literals
+_
+replace_query_param
+QueryParameterVersioning
+exceptions
+unicode_http_header
+AcceptHeaderVersioning
+BaseVersioning
+_reverse
+re
+_MediaType

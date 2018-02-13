@@ -1,0 +1,7 @@
+global_settings
+unicode_literals
+register
+Warning
+check_duplicate_middleware_settings
+Tags
+settings

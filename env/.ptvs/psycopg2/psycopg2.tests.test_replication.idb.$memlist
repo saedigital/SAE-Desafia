@@ -1,0 +1,14 @@
+StopReplication
+psycopg2
+test_suite
+ReplicationTest
+skip_if_green
+PhysicalReplicationConnection
+ReplicationTestCase
+ConnectingTestCase
+testconfig
+LogicalReplicationConnection
+AsyncReplicationTest
+skip_repl_if_green
+skip_before_postgres
+unittest

@@ -1,0 +1,17 @@
+sys
+_dyld_find
+tempfile
+re
+find_msvcrt
+find_library
+_get_build_version
+subprocess
+_findLib_crle
+test
+_num_version
+_findLib_gcc
+os
+shutil
+_get_soname
+_findLib_ld
+_findSoname_ldconfig

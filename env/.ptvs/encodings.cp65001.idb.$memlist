@@ -1,0 +1,10 @@
+StreamWriter
+encode
+functools
+IncrementalEncoder
+getregentry
+codecs
+decode
+IncrementalDecoder
+_decode
+StreamReader

@@ -1,0 +1,17 @@
+pathlib
+gzip
+data2
+os
+_4G
+bigmemtest
+support
+io
+array
+test_main
+data1
+BaseTest
+TestGzip
+struct
+TestOpen
+UnseekableIO
+unittest

@@ -1,0 +1,4 @@
+resolve
+get_breadcrumbs
+unicode_literals
+get_script_prefix

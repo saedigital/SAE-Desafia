@@ -1,0 +1,15 @@
+protect_ident
+ProfileSimulator
+ident
+capture_events
+pprint
+ProfileSimulatorTestCase
+TestCaseBase
+show_events
+HookWatcher
+ProfileHookTestCase
+protect
+gc
+TestGetProfile
+sys
+unittest

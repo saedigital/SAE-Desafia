@@ -1,0 +1,8 @@
+models
+views
+management
+serializers
+apps
+migrations
+default_app_config
+admin
