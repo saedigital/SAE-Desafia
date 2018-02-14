@@ -20,7 +20,7 @@ PASSOS PARA RODAR A API EM DJANGO (Neste repositório):
 3. Executar o comando "python manage.py runserver" para executar a aplicação;
 4. Mantenha a aplicação rodando em localhost:8000, pois este é o endereço que a aplicação cliente (Vue.js) irá realizar as chamadas AJAX.
 
-PASSOS PARA RODAR A APLICAÇÃO VUE.JS (No outro repositório):
+PASSOS PARA RODAR A APLICAÇÃO VUE.JS (Link repositório: https://github.com/JeffersonMiranda/teatro-application-vuejs):
 
 1. Ir até o diretório raiz e abrir o prompt de comandos;
 2. Executar o comando "npm install" para instalar os pacotes da pasta node_modules para o funcionamento da aplicação;
