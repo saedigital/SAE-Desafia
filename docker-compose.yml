@@ -1,0 +1,31 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+#    ports:
+#      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: sae_andre_cardoso
+      MYSQL_USER: andrecardoso
+      MYSQL_PASSWORD: andrecardoso
+
+  sae-desafia-andre-cardoso:
+    build: .
+    ports:
+     - "8080:80"
+    volumes:
+     - .:/var/www
+    hostname: sae-desafia-andre-cardoso
+    restart: always
+    environment:
+      DB_HOST: db:3306
+      DB_USER: andrecardoso
+      DB_PASSWORD: andrecardoso
+      DB_NAME: sae_andre_cardoso
+
+volumes:
+    db_data:
