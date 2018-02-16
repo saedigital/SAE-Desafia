@@ -37,6 +37,15 @@ $(document).ready(function () {
 
         return false;
     });
+
+    $('.delete-link').click(function () {
+        var id = $(this).attr('rel');
+        if (confirm('Deseja realmente remover?')) {
+            $('#delete-' + id).click();
+        }
+        return false;
+    });
+
 });
 
 function refreshSelectedSeats() {
