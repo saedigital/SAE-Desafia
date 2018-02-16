@@ -25,13 +25,13 @@ return [
                     ],
                 ],
             ],
-            'application' => [
+            'event' => [
                 'type' => Segment::class,
                 'options' => [
-                    'route' => '/application[/:action]',
+                    'route' => '/event[/:id]',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
-                        'action' => 'index',
+                        'action' => 'view',
                     ],
                 ],
             ],

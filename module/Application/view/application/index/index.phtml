@@ -21,7 +21,8 @@
                         Data e hora: <?php echo $event->getShowDate()->format('d/m/Y') ?>
                         às <?php echo $event->getShowDate()->format('H:i'); ?></p>
                     <p>
-                        <a class="btn btn-success pull-right" href="http://framework.zend.com/" target="_blank">
+                        <a class="btn btn-success pull-right"
+                           href="<?php echo $this->url('event', ['id' => $event->getId()]); ?>">
                             Comprar ingresso &raquo;
                         </a>
                     </p>
