@@ -8,6 +8,7 @@
 return [
     // Additional modules to include when in development mode
     'modules' => [
+        'DoctrineDataFixtureModule'
     ],
     // Configuration overrides during development mode
     'module_listener_options' => [
