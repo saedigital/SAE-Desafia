@@ -23,7 +23,18 @@
                 <small><?php echo $event->getDescription(); ?></small>
             </td>
             <td><?php echo $event->getLocation(); ?></td>
-            <td><?php echo $event->getCapacity(); ?></td>
+            <td>
+                <?php echo $event->getCapacity(); ?> expectadores
+                <br/>
+                <?php
+                $reservedSeatsCount = $event->getSeats()->count();
+                $reservedPercentage = number_format((($reservedSeatsCount / $event->getCapacity()) * 100), 2, '.', ',');
+                ?>
+                <strong>Já reservadas</strong>: <?php echo $reservedSeatsCount; ?> (<?php echo $reservedPercentage; ?>%)
+                <br/>
+                <strong>Arrecadação</strong>:
+                R$<?php echo number_format($reservedSeatsCount * $event->getTicketAmount(), 2, ',', '.'); ?>
+            </td>
             <td><?php echo $event->getShowDate()->format('d/m/Y H:i'); ?></td>
             <td>
                 <a href="<?php echo $this->url('admin-event', ['action' => 'edit', 'id' => $event->getId()]); ?>"

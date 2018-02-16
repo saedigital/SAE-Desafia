@@ -3,6 +3,8 @@
 namespace Application\Entity;
 
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -49,6 +51,12 @@ class Event extends AbstractEntity
      * @ORM\Column(type="datetime", nullable=false)
      */
     private $showDate;
+
+    /**
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="Seat", mappedBy="event")
+     */
+    private $seats;
 
     /**
      * @return string
@@ -156,5 +164,29 @@ class Event extends AbstractEntity
     {
         $this->showDate = $showDate;
         return $this;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getSeats(): Collection
+    {
+        return $this->seats;
+    }
+
+    /**
+     * @param Collection $seats
+     * @return Event
+     */
+    public function setSeats(Collection $seats): Event
+    {
+        $this->seats = $seats;
+        return $this;
+    }
+
+    public function __construct(array $data = [])
+    {
+        $this->seats = new ArrayCollection();
+        parent::__construct($data);
     }
 }

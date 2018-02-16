@@ -18,7 +18,7 @@ $(document).ready(function () {
 
         if (email.length > 0) {
             $.ajax({
-                url: '/event/asyncTask',
+                url: '/async-seat-pick',
                 method: 'post',
                 data: {
                     eventId: eventId,

@@ -45,12 +45,24 @@ return [
                     ],
                 ],
             ],
+
+            'async-seat-pick' => [
+                'type' => Literal::class,
+                'options' => [
+                    'route' => '/async-seat-pick',
+                    'defaults' => [
+                        'controller' => Controller\SeatController::class,
+                        'action' => 'asyncPick',
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
             Controller\AdminController::class => InvokableFactory::class,
+            Controller\SeatController::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [
