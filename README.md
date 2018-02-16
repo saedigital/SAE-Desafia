@@ -1,4 +1,4 @@
-![SAEDigital](https://s3-us-west-2.amazonaws.com/arquivos-sae/avasae/logos/logo-sae.png)
+![SAEDigital](https://s3.sa-east-1.amazonaws.com/avasae/avasae/logos/logo-sae.png)
 
 # Desafio
 
