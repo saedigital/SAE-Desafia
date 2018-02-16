@@ -35,11 +35,22 @@ return [
                     ],
                 ],
             ],
+            'admin-event' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route' => '/admin/event[/:action][/:id]',
+                    'defaults' => [
+                        'controller' => Controller\AdminController::class,
+                        'action' => 'index',
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
+            Controller\AdminController::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [

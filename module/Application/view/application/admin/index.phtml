@@ -1,0 +1,27 @@
+<table width="100%" class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Evento</th>
+            <th>Local</th>
+            <th>Capacidade</th>
+            <th>Data</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php /** @var \Application\Entity\Event $event */
+        foreach ($this->collection as $event): ?>
+            <tr>
+                <td>
+                    <?php echo $event->getName(); ?>
+                    <br />
+                    <small><?php echo $event->getDescription(); ?></small>
+                </td>
+                <td><?php echo $event->getLocation(); ?></td>
+                <td><?php echo $event->getCapacity(); ?></td>
+                <td><?php echo $event->getShowDate()->format('d/m/Y H:i'); ?></td>
+                <td>--</td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
