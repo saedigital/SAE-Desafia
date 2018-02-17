@@ -109,7 +109,7 @@ class EventForm extends Form
                 'label' => 'Data do evento'
             ],
             'attributes' => [
-                'class' => 'form-control datepicker',
+                'class' => 'form-control datetimepicker',
                 'id' => 'showDate',
                 'placeholder' => 'dd/mm/aaaa HH:ss',
                 'autocomplete' => 'Off',

@@ -30,8 +30,8 @@ jQuery(document).ready(function ($) {
                 success: function (response) {
                     if (response.statusCode === 201) {
                         $('.success-message').removeClass('hidden');
-                        setTimeout(function(){
-                            window.location.href= response.data.url;
+                        setTimeout(function () {
+                            window.location.href = response.data.url;
                         }, 1000 * 10);
                     } else {
                         $('.error-message-content').html(response.message);
@@ -91,8 +91,34 @@ jQuery(document).ready(function ($) {
         }
 
         return false;
-    });
+    })
+        .delegate('.price', 'focus', function () {
+            $(this).priceFormat({
+                prefix: 'R$ ',
+                centsSeparator: ',',
+                thousandsSeparator: '.'
+            });
+        });
 
+    $.datetimepicker.setLocale('pt');
+    $('.datetimepicker').datetimepicker({
+        i18n:{
+            pt:{
+                months:[
+                    'Janeiro','Fevereiro','Março','Abril',
+                    'Maio','Junho','Julho','Agosto',
+                    'Setembro','Outubro','Novembro','Dezembro'
+                ],
+                dayOfWeek:[
+                    "Dom", "Seg", "Ter", "Qua",
+                    "Qui", "Sex", "Sab"
+                ]
+            }
+        },
+        format:'d/m/Y H:i',
+        minDate: new Date(),
+        step: 15
+    });
 });
 
 function refreshSelectedSeats() {

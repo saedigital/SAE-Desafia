@@ -13,6 +13,7 @@
     <!-- Le styles -->
     <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'])
         ->prependStylesheet($this->basePath('css/style.css'))
+        ->prependStylesheet($this->basePath('css/jquery.datetimepicker.min.css'))
         ->prependStylesheet($this->basePath('css/app.css'))
         ->prependStylesheet($this->basePath('css/admin.css'))
         ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
@@ -21,6 +22,8 @@
 
     <!-- Scripts -->
     <?= $this->headScript()
+        ->prependFile($this->basePath('js/jquery.priceformat.min.js'))
+        ->prependFile($this->basePath('js/jquery.datetimepicker.full.js'))
         ->prependFile($this->basePath('js/app.js'))
         ->prependFile($this->basePath('js/bootstrap.min.js'))
         ->prependFile($this->basePath('js/jquery-3.1.0.min.js'))

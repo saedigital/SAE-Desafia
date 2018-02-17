@@ -70,6 +70,8 @@ class AdminController extends AbstractActionController
      */
     public function addAction()
     {
+        $this->layout('layout/admin');
+
         $errorMessages = [];
         /** @var Request $request */
         $request = $this->getRequest();
@@ -104,6 +106,8 @@ class AdminController extends AbstractActionController
      */
     public function editAction()
     {
+        $this->layout('layout/admin');
+
         $errorMessages = [];
         /** @var Request $request */
         $request = $this->getRequest();
