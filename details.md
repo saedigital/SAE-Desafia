@@ -9,7 +9,7 @@
 Baixe o repositório no branch `andre-cardoso` e rode o comando `composer install`. Caso 
 não de certo com o install, dê um update: `composer update`.
 
-Assim que a instalação das dependências finalizar siga um dos passos abaixo.
+Assim que a instalação das dependências finalizar siga um dos passos abaixo: Pelo Built-in Server ou Docker.
 
 ## Rodando pelo Built-in Server do PHP
 
@@ -88,3 +88,18 @@ Para rodar os testes, utilize o comando `composer test`. Toda a suíte de
 testes será executada e, estando o Xdebug instalado, será gerado o 
 resultado do coverage na pasta `build/coverage-html`. Abra o arquivo 
 `build/coverage-html/index.html` em seu navegador.
+
+```shell
+$ composer test
+> phpunit
+PHPUnit 6.4.4 by Sebastian Bergmann and contributors.
+
+..........................................                        42 / 42 (100%)
+
+Time: 7.61 seconds, Memory: 28.00MB
+
+OK (42 tests, 155 assertions)
+
+Generating code coverage report in HTML format ... done
+
+```
