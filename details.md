@@ -131,3 +131,38 @@ OK (42 tests, 155 assertions)
 Generating code coverage report in HTML format ... done
 
 ```
+
+Não tem o Xdebug instalado? Simples, rode pelo docker!
+
+Primeiro entre no container: `docker-compose exec -u me sae-desafia-andre-cardoso bash`.
+
+Em seguida rode os testes: `composer test`
+
+
+Comando completo:
+
+```shell
+$ docker-compose exec -u me sae-desafia-andre-cardoso bash
+
+me@sae-desafia-andre-cardoso:/var/www$ composer test
+
+## Provavelmente dará erro de permissão, mas pode ignorar
+
+> phpunit
+PHPUnit 6.4.4 by Sebastian Bergmann and contributors.
+
+..........................................                        42 / 42 (100%)
+
+Time: 42.22 seconds, Memory: 28.00MB
+
+OK (42 tests, 155 assertions)
+
+Generating code coverage report in HTML format ... done
+me@sae-desafia-andre-cardoso:/var/www$
+```
+
+Por que rodar com o parâmetro `-u me`? Porque ao rodar os testes, diversos 
+arquivos são criados em `build/coverage-html` e não estando presente o 
+parâmetro `-u me` os mesmos serão criados pelo root. Logo, para os 
+remover ou sobrescrever na próxima vez que os testes rodarem, somente 
+o root terá as permissões.
