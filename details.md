@@ -9,6 +9,9 @@
 Baixe o repositório no branch `andre-cardoso` e rode o comando `composer install`. Caso 
 não de certo com o install, dê um update: `composer update`.
 
+> Caso haja questionamento sobre incluir módulos em arquivo de configuração, basta rejeitar. Tudo que 
+a aplicacão precisa pra rodar já está registrado corretamente.
+
 Assim que a instalação das dependências finalizar siga os passos abaixo.
 
 
@@ -51,7 +54,16 @@ return [
 
 ## Passo 2 - Executando Migrations
 
-Agora que o banco de dados já existe e a configuração para sua correta conexão está ok, 
+Antes de tudo temos de habilitar o modo desenvolvimento para poder 
+realizar as migrações e fixtures. Rode o seguinte comando: `composer development-enable`.
+
+```shell
+$ composer development-enable
+> zf-development-mode enable
+You are now in development mode.
+```
+
+Agora que já estamos em modo desenvolvimento, banco de dados já existe e a configuração para sua correta conexão está ok, 
 é o momento de criar as tabelas. Para tal, utilizei o Doctrine Migrations (você pode saber mais sobre 
 migrations com o Doctrine em um artigo que escrevi em meu blog - [link](https://andrebian.com/doctrine-migrations-com-zend-framework)).
 
