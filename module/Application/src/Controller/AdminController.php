@@ -23,6 +23,29 @@ class AdminController extends CrudController
     }
 
     /**
+     * @param bool $active
+     * @return \Zend\View\Model\ViewModel
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
+     */
+    public function indexAction($active = true)
+    {
+        $this->layout('layout/admin');
+        return parent::indexAction($active);
+    }
+
+    /**
+     * @return \Zend\View\Model\ViewModel
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
+     */
+    public function viewAction()
+    {
+        $this->layout('layout/admin');
+        return parent::viewAction();
+    }
+
+    /**
      * @param $data
      * @return mixed
      */
