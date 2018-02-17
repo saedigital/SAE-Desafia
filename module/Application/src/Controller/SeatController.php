@@ -7,13 +7,16 @@ use Application\Entity\Seat;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
 use Zend\Http\Request;
+use Zend\Mvc\Controller\AbstractActionController;
 
 /**
  * Class SeatController
  * @package Application\Controller
  */
-class SeatController extends BaseController
+class SeatController extends AbstractActionController
 {
+    use ControllerTrait;
+
     /**
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
@@ -45,50 +48,50 @@ class SeatController extends BaseController
             $event = $entityManager->getRepository(Event::class)
                 ->findOneBy(['active' => true, 'id' => $data['eventId']]);
 
-            if ($event) {
-                $allSelectedSeatsAreFree = true;
-                $seatRepository = $entityManager->getRepository(Seat::class);
-                $seatsCollection = new ArrayCollection();
+            if (!$event) {
+                $response['message'] = 'Evento inválido';
+                $this->renderJson($response);
+            }
 
-                foreach ($data['seats'] as $seatNumber) {
-                    $seat = new Seat([
-                        'event' => $event,
-                        'seatNumber' => $seatNumber,
-                        'customerEmail' => $data['email'],
-                        'status' => Seat::PRE_BOOKING
-                    ]);
+            $allSelectedSeatsAreFree = true;
+            $seatRepository = $entityManager->getRepository(Seat::class);
+            $seatsCollection = new ArrayCollection();
 
-                    $seatsCollection->add($seat);
+            foreach ($data['seats'] as $seatNumber) {
+                $seat = new Seat([
+                    'event' => $event,
+                    'seatNumber' => $seatNumber,
+                    'customerEmail' => $data['email'],
+                    'status' => Seat::PRE_BOOKING
+                ]);
 
-                    if ($seatRepository->findOneBy([
-                        'seatNumber' => $seatNumber,
-                        'event' => $event
-                    ])) {
-                        $allSelectedSeatsAreFree = false;
-                    }
+                $seatsCollection->add($seat);
+
+                if ($seatRepository->findOneBy([
+                    'seatNumber' => $seatNumber,
+                    'event' => $event
+                ])) {
+                    $allSelectedSeatsAreFree = false;
                 }
+            }
 
-                if ($allSelectedSeatsAreFree) {
-                    foreach ($seatsCollection as $seat) {
-                        $entityManager->persist($seat);
-                    }
-                    $event->setSeats($seatsCollection);
-                    $entityManager->flush();
-
-                    $response = [
-                        'statusCode' => 201,
-                        'message' => 'Suas poltronas foram reservadas!',
-                        'data' => [
-                            'url' => '/event/' . $event->getId() . '/confirmation?email=' . $data['email']
-                        ]
-                    ];
+            if ($allSelectedSeatsAreFree) {
+                foreach ($seatsCollection as $seat) {
+                    $entityManager->persist($seat);
                 }
+                $event->setSeats($seatsCollection);
+                $entityManager->flush();
+
+                $response = [
+                    'statusCode' => 201,
+                    'message' => 'Suas poltronas foram reservadas!',
+                    'data' => [
+                        'url' => '/event/' . $event->getId() . '/confirmation?email=' . $data['email']
+                    ]
+                ];
             }
         }
 
-        $content = json_encode($response);
-        header('Content-Type: application/json');
-        print $content;
-        exit;
+        $this->renderJson($response);
     }
 }

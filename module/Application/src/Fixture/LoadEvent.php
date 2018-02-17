@@ -61,6 +61,6 @@ class LoadEvent implements FixtureInterface, OrderedFixtureInterface
      */
     public function getOrder()
     {
-        return 2;
+        return 0;
     }
 }

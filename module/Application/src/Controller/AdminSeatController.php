@@ -6,13 +6,16 @@ use Application\Entity\Event;
 use Application\Entity\Seat;
 use Doctrine\ORM\EntityManager;
 use Zend\Http\Request;
+use Zend\Mvc\Controller\AbstractActionController;
 
 /**
  * Class AdminSeatController
  * @package Application\Controller
  */
-class AdminSeatController extends BaseController
+class AdminSeatController extends AbstractActionController
 {
+    use ControllerTrait;
+    
     /**
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException

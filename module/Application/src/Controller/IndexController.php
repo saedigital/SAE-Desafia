@@ -7,14 +7,17 @@ use Application\Entity\Seat;
 use Doctrine\ORM\EntityManager;
 use Exception;
 use Zend\Http\Request;
+use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 /**
  * Class IndexController
  * @package Application\Controller
  */
-class IndexController extends BaseController
+class IndexController extends AbstractActionController
 {
+    use ControllerTrait;
+
     /**
      * @return array|ViewModel
      * @throws \Psr\Container\ContainerExceptionInterface
@@ -35,6 +38,11 @@ class IndexController extends BaseController
         ]);
     }
 
+    /**
+     * @return \Zend\Http\Response|ViewModel
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
+     */
     public function viewAction()
     {
         /** @var EntityManager $entityManager */
