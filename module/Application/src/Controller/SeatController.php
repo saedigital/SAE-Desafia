@@ -54,7 +54,8 @@ class SeatController extends BaseController
                     $seat = new Seat([
                         'event' => $event,
                         'seatNumber' => $seatNumber,
-                        'customerEmail' => $data['email']
+                        'customerEmail' => $data['email'],
+                        'status' => Seat::PRE_BOOKING
                     ]);
 
                     $seatsCollection->add($seat);

@@ -37,8 +37,12 @@
             </td>
             <td><?php echo $event->getShowDate()->format('d/m/Y H:i'); ?></td>
             <td>
+                <a href="<?php echo $this->url('admin-event', ['action' => 'view', 'id' => $event->getId()]); ?>"
+                   class="btn btn-success btn-sm">
+                    Detalhes
+                </a>&nbsp;
                 <a href="<?php echo $this->url('admin-event', ['action' => 'edit', 'id' => $event->getId()]); ?>"
-                   class="btn btn-default btn-sm">
+                   class="btn btn-warning btn-sm">
                     Editar
                 </a>&nbsp;
                 <a href="#" rel="<?php echo $event->getId(); ?>"

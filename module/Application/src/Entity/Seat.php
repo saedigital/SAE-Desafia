@@ -13,6 +13,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Seat extends AbstractEntity
 {
+    const PRE_BOOKING = 0;
+    const CONFIRMED_RESERVATION = 1;
+
     /**
      * @var Event
      * @ORM\ManyToOne(targetEntity="Event", inversedBy="seats")
@@ -31,6 +34,18 @@ class Seat extends AbstractEntity
      * @ORM\Column(type="string", length=255, nullable=false)
      */
     private $customerEmail;
+
+    /**
+     * @var int
+     * @ORM\Column(type="integer", nullable=false, options={"default": 0})
+     */
+    private $status;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", length=255, nullable=false)
+     */
+    private $token;
 
     /**
      * @return Event
@@ -84,5 +99,47 @@ class Seat extends AbstractEntity
     {
         $this->customerEmail = $customerEmail;
         return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getStatus(): int
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param int $status
+     * @return Seat
+     */
+    public function setStatus(int $status): Seat
+    {
+        $this->status = $status;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getToken(): string
+    {
+        return $this->token;
+    }
+
+    /**
+     * @param string $token
+     * @return Seat
+     */
+    public function setToken(string $token): Seat
+    {
+        $this->token = $token;
+        return $this;
+    }
+
+    public function __construct(array $data = [])
+    {
+        $this->token = md5((string)time());
+        parent::__construct($data);
     }
 }

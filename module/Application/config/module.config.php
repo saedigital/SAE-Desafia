@@ -56,6 +56,16 @@ return [
                     ],
                 ],
             ],
+            'admin/async-seat-cancel' => [
+                'type' => Literal::class,
+                'options' => [
+                    'route' => '/admin/async-seat-cancel',
+                    'defaults' => [
+                        'controller' => Controller\AdminSeatController::class,
+                        'action' => 'asyncCancel',
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [
@@ -63,6 +73,7 @@ return [
             Controller\IndexController::class => InvokableFactory::class,
             Controller\AdminController::class => InvokableFactory::class,
             Controller\SeatController::class => InvokableFactory::class,
+            Controller\AdminSeatController::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [

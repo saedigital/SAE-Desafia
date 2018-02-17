@@ -1,0 +1,58 @@
+<div class="col-lg-12">
+    <div class="col-lg-8 seats">
+        <h2>Mapa de poltronas</h2>
+        <?php
+        $seatsCollection = $this->data->getSeats();
+        $selectedSeats = [];
+        $classByStatus = [
+            \Application\Entity\Seat::PRE_BOOKING => 'pre-reserved',
+            \Application\Entity\Seat::CONFIRMED_RESERVATION => 'unavailable'
+        ];
+
+        /** @var \Application\Entity\Seat $seat */
+        foreach ($seatsCollection as $seat) {
+            $selectedSeats[$seat->getSeatNumber()] = [
+                'class' => $classByStatus[$seat->getStatus()],
+                'tooltip' => $seat->getCustomerEmail()
+            ];
+        }
+        ?>
+        <?php for ($i = 1; $i <= $this->data->getCapacity(); $i++) : ?>
+            <?php
+            $complementClass = 'unclickable';
+            $tooltip = '';
+            if (array_key_exists($i, $selectedSeats)) {
+                $complementClass = $selectedSeats[$i]['class'] . ' admin-managing';
+                $tooltip = 'Reserva de: ' . $selectedSeats[$i]['tooltip'];
+            } ?>
+            <div class="seat <?php echo $complementClass; ?>" id="seat-<?php echo $i; ?>" title="<?php echo $tooltip; ?>">
+                &nbsp;<?php echo str_pad($i, 3, '0', STR_PAD_LEFT); ?>&nbsp;
+            </div>
+        <?php endfor; ?>
+        <br clear="all"/>
+        <hr>
+        <h5>Legenda</h5>
+        <span class="pre-reserved">Pré reserva</span>&nbsp;
+        <span class="unavailable">Reserva confirmada</span>
+        <span class="just-selected">Recém selecionada</span>&nbsp;
+        <br clear="all"/>
+        <br/>
+    </div>
+    <div class="col-xs-6 col-md-4 event-details">
+        <h3><?php echo $this->data->getName(); ?></h3>
+        <br/>
+        Local: <?php echo $this->data->getLocation(); ?>
+        <br/>
+        Capacidade: <?php echo $this->data->getCapacity(); ?> expectadores
+        <br/>
+        Reservas: <span class="active-count"><?php echo $this->data->getSeats()->count(); ?></span>
+        <br/>
+        Data: <?php echo $this->data->getShowDate()->format('d/m/Y H:i'); ?>
+        <hr>
+        <h4>Gerenciar poltronas</h4>
+        <input type="hidden" id="eventId" value="<?php echo $this->data->getId(); ?>">
+        <div class="seats-selected"></div>
+        <hr>
+    </div>
+</div>
+<br clear="all"/>

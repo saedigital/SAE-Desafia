@@ -19,7 +19,7 @@ class AdminController extends CrudController
         $this->form = EventForm::class;
         $this->redirectTo = 'admin-event';
         $this->redirectMethod = 'toRoute';
-        $this->repository = Event::class;
+        $this->entity = Event::class;
     }
 
     /**

@@ -16,6 +16,9 @@
     margin-bottom: 5px;
     cursor: pointer;
 }
+.unclickable {
+    cursor: default;
+}
 .seat.selected, .your-choice {
     background-color: brown;
     color: #fff;

@@ -2,9 +2,12 @@
 
 namespace Application\Controller;
 
+use Application\Entity\AbstractEntity;
+use Application\Entity\Seat;
 use Application\Service\ServiceInterface;
 use Doctrine\ORM\EntityManager;
 use Exception;
+use Zend\Form\Form;
 use Zend\Http\Request;
 use Zend\View\Model\ViewModel;
 
@@ -25,9 +28,9 @@ class CrudController extends BaseController
     protected $form;
 
     /**
-     * @var AbstractApplicationRepository
+     * @var AbstractEntity
      */
-    protected $repository;
+    protected $entity;
 
     /**
      * @var string
@@ -121,7 +124,7 @@ class CrudController extends BaseController
         }
 
         $entityManager = $this->getServiceLocator()->get(EntityManager::class);
-        $data = $entityManager->find($this->repository, $id);
+        $data = $entityManager->find($this->entity, $id);
 
         $formData = $data->toArray();
         $formData['active'] = 1;
@@ -204,7 +207,7 @@ class CrudController extends BaseController
     {
         $id = (int)$this->params()->fromRoute('id', 0);
         $entityManager = $this->getServiceLocator()->get(EntityManager::class);
-        $data = $entityManager->find($this->repository, $id);
+        $data = $entityManager->find($this->entity, $id);
 
         return new ViewModel([
             'data' => $data
@@ -221,7 +224,7 @@ class CrudController extends BaseController
     {
         /** @var EntityManager $entityManager */
         $entityManager = $this->getServiceLocator()->get(EntityManager::class);
-        $collection = $entityManager->getRepository($this->repository)->findBy([
+        $collection = $entityManager->getRepository($this->entity)->findBy([
             'active' => $active
         ], $this->orderBy);
 
