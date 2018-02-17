@@ -2,6 +2,7 @@
 
 namespace Application;
 
+use Application\Controller\InitFirebaseConsoleController;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
@@ -73,12 +74,28 @@ return [
             ],
         ],
     ],
+    'console' => [
+        'router' => [
+            'routes' => [
+                'init-firebase' => [
+                    'options' => [
+                        'route'    => 'init-firebase',
+                        'defaults' => [
+                            'controller' => InitFirebaseConsoleController::class,
+                            'action'     => 'index'
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ],
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
             Controller\AdminController::class => InvokableFactory::class,
             Controller\SeatController::class => InvokableFactory::class,
             Controller\AdminSeatController::class => InvokableFactory::class,
+            InitFirebaseConsoleController::class => InvokableFactory::class
         ],
     ],
     'view_manager' => [

@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Seat extends AbstractEntity
 {
+    const AVAILABLE = -1;
     const PRE_BOOKING = 0;
     const CONFIRMED_RESERVATION = 1;
 

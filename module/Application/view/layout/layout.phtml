@@ -55,6 +55,20 @@
         <p>&copy; <?= date('Y') ?> by Andre Cardoso. Todos os direitos reservados</p>
     </footer>
 </div>
+
+<script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyBCgeXwvMGW6NIGDkJC72NRRJklPnlpfB4",
+        authDomain: "click-ingressos.firebaseapp.com",
+        databaseURL: "https://click-ingressos.firebaseio.com",
+        projectId: "click-ingressos",
+        storageBucket: "",
+        messagingSenderId: "138869768319"
+    };
+    firebase.initializeApp(config);
+</script>
 <?= $this->inlineScript() ?>
 </body>
 </html>

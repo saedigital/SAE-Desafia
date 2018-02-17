@@ -83,7 +83,22 @@ Careful, database will be purged. Do you want to continue y/N ?y
   > loading [0] Application\Fixture\LoadEvent
 ```
 
-## Passo 4 - Rode o Built-in Server
+## Passo 4 - Inicializando o Firebase
+
+Para esta aplicação utilizei a seleção de poltronas em tempo real com o 
+Firebase Realtime database (que também falo [aqui]() como funciona). Para isso 
+é necessário que a base seja inicializada, basta um simples comando: `php public/index.php init-firebase`.
+
+```shell
+$ cd <project_root>
+$ php public/index.php init-firebase
+
+Adicionando 5 eventos no firebase.
+
+Feito. Agora a selecao das poltronas sera em TEMPO REAL!!!
+```
+
+## Passo 5 - Rode o Built-in Server
 
 Agora basta rodar o comando `php -S localhost:8080 -t public`. Adicionalmente existe um script registrado no composer.json 
 pra facilitar a disponibilização do web server de testes: `composer serve`

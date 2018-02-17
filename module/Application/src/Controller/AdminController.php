@@ -3,8 +3,10 @@
 namespace Application\Controller;
 
 use Application\Entity\Event;
+use Application\Entity\Seat;
 use Application\Form\EventForm;
 use Application\Service\EventService;
+use Application\Service\FirebaseService;
 use DateTime;
 use Doctrine\ORM\EntityManager;
 use Exception;
@@ -137,7 +139,7 @@ class AdminController extends AbstractActionController
 
             if ($form->isValid()) {
                 $data = $this->bindDataToService($form->getData());
-                return $this->performSave($data, 'Evento Editado.');
+                return $this->performSave($data, 'Evento Editado.', $event->getCapacity());
             } else {
                 $errorMessages = $form->getMessages();
             }
@@ -169,6 +171,7 @@ class AdminController extends AbstractActionController
             $eventService = $this->getServiceManager()->get(EventService::class);
 
             if ($eventService->delete($id)) {
+                $this->deleteFromFirebase($id);
                 $this->flashMessenger()->setNamespace('success')
                     ->addMessage('Evento Removido');
             }
@@ -208,20 +211,23 @@ class AdminController extends AbstractActionController
     /**
      * @param $data
      * @param $flashMessage
+     * @param null $previousStateCapacity
      * @return bool|\Zend\Http\Response
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
-     * @throws \Doctrine\ORM\TransactionRequiredException
-     * @throws \Psr\Container\ContainerExceptionInterface
-     * @throws \Psr\Container\NotFoundExceptionInterface
      */
-    private function performSave($data, $flashMessage)
+    private function performSave($data, $flashMessage, $previousStateCapacity = null)
     {
         /** @var EventService $eventService */
         $eventService = $this->getServiceManager()->get(EventService::class);
         $response = false;
 
         if ($result = $eventService->save($data)) {
+            if ($previousStateCapacity) {
+                $this->updateOnFirebase($data['id'], $previousStateCapacity, $result->getCapacity());
+            } else {
+                /** @var FirebaseService $firebaseService */
+                $firebaseService = $this->getServiceManager()->get(FirebaseService::class);
+                $firebaseService->addEvent($result);
+            }
             $this->flashMessenger()->setNamespace('success')
                 ->addMessage($flashMessage);
 
@@ -229,5 +235,44 @@ class AdminController extends AbstractActionController
         }
 
         return $response;
+    }
+
+    /**
+     * @param $eventId
+     * @param $previousCapacity
+     * @param $currentCapacity
+     */
+    private function updateOnFirebase($eventId, $previousCapacity, $currentCapacity)
+    {
+        /** @var FirebaseService $firebaseService */
+        $firebaseService = $this->getServiceManager()->get(FirebaseService::class);
+
+        $seats = [];
+        if ($currentCapacity > $previousCapacity) {
+            for ($count = ($previousCapacity + 1); $count <= $currentCapacity; $count++) {
+                $seats[$count] = [
+                    'seatNumber' => $count,
+                    'status' => Seat::AVAILABLE,
+                ];
+            }
+        } else if ($currentCapacity < $previousCapacity) {
+            for ($count = ($currentCapacity + 1); $count <= $previousCapacity; $count++) {
+                $seats[$count] = null;
+            }
+        }
+
+        if (!empty($seats)) {
+            $firebaseService->update($eventId, $seats);
+        }
+    }
+
+    /**
+     * @param $eventId
+     */
+    private function deleteFromFirebase($eventId)
+    {
+        /** @var FirebaseService $firebaseService */
+        $firebaseService = $this->getServiceManager()->get(FirebaseService::class);
+        $firebaseService->delete($eventId);
     }
 }

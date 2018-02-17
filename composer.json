@@ -21,7 +21,8 @@
     "zendframework/zend-servicemanager-di": "^1.0",
     "doctrine/doctrine-orm-module": "*",
     "doctrine/migrations": "^1.5",
-    "zendframework/zend-math": "^3.0"
+    "zendframework/zend-math": "^3.0",
+    "ktamas77/firebase-php": "*"
   },
   "autoload": {
     "psr-4": {
