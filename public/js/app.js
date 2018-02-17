@@ -1,4 +1,4 @@
-$(document).ready(function () {
+jQuery(document).ready(function ($) {
     $('.seat').click(function () {
         if (!$(this).hasClass('unclickable')) {
             var id = $(this).attr('id');
@@ -28,7 +28,15 @@ $(document).ready(function () {
                     seats: seats
                 },
                 success: function (response) {
-                    console.log(response);
+                    if (response.statusCode === 201) {
+                        $('.success-message').removeClass('hidden');
+                        setTimeout(function(){
+                            window.location.href= response.data.url;
+                        }, 1000 * 10);
+                    } else {
+                        $('.error-message-content').html(response.message);
+                        $('.error-message').removeClass('hidden');
+                    }
                 },
                 error: function (xhr, errorMessage) {
                     console.log(xhr);

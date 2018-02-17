@@ -77,7 +77,10 @@ class SeatController extends BaseController
 
                     $response = [
                         'statusCode' => 201,
-                        'message' => 'Suas poltronas foram reservadas!'
+                        'message' => 'Suas poltronas foram reservadas!',
+                        'data' => [
+                            'url' => '/event/' . $event->getId() . '/confirmation?email=' . $data['email']
+                        ]
                     ];
                 }
             }

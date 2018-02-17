@@ -1,0 +1,17 @@
+<h2>Confirmação</h2>
+
+Evento: <?php echo $this->event->getName(); ?><br />
+Local: <?php echo $this->event->getLocation(); ?><br />
+Data e hora: <?php echo $this->event->getShowDate()->format('d/m/Y H:i'); ?><br />
+<hr>
+
+Eu confirmo a reserva para a(s) seguinte(s) poltrona(s):
+<br />
+<br />
+<?php foreach ($this->mySeats as $seat) : ?>
+    - Poltrona: <?php echo $seat->getSeatNumber(); ?><br />
+<?php endforeach; ?>
+<br />
+<form action="" method="post">
+    <input type="submit" class="btn btn-success" value="Confirmo">
+</form>

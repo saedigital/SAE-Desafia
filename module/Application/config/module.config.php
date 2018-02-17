@@ -35,6 +35,16 @@ return [
                     ],
                 ],
             ],
+            'event-confirmation' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route' => '/event/:id/confirmation',
+                    'defaults' => [
+                        'controller' => Controller\IndexController::class,
+                        'action' => 'confirmation',
+                    ],
+                ],
+            ],
             'admin-event' => [
                 'type' => Segment::class,
                 'options' => [

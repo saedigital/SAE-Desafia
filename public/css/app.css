@@ -15,6 +15,7 @@
     margin-right: 5px;
     margin-bottom: 5px;
     cursor: pointer;
+    background-color: #e3f4d5;;
 }
 .unclickable {
     cursor: default;
@@ -49,4 +50,10 @@
 }
 #btn-action {
     float: right;
+}
+.response-message {
+    position: fixed;
+    top: 60px;
+    width: 72%;
+    z-index: 9999;
 }
