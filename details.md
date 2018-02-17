@@ -9,13 +9,19 @@
 Baixe o repositório no branch `andre-cardoso` e rode o comando `composer install`. Caso 
 não de certo com o install, dê um update: `composer update`.
 
-Assim que a instalação das dependências finalizar siga um dos passos abaixo: Pelo Built-in Server ou Docker.
+Assim que a instalação das dependências finalizar siga os passos abaixo.
 
-## Rodando pelo Built-in Server do PHP
 
-### Passo 1 - Criando o banco de dados
+## Passo 1 - Criando o banco de dados
 
-Crie um novo banco de dados MySQL. Sugestão de nome: `sae_andre_cardoso`. Em seguida configure o 
+Crie um novo banco de dados MySQL. Sugestão de nome: `sae_andre_cardoso`. 
+
+```shell
+$ mysql -u {user} -p
+mysql> CREATE SCHEMA `sae_andre_cardoso` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
+```
+
+Em seguida configure o 
 arquivo `config/autoload/doctrine-module` com as informações do banco recém criado.
 
 ```php
@@ -43,7 +49,7 @@ return [
 
 ```
 
-### Passo 2 - Executando Migrations
+## Passo 2 - Executando Migrations
 
 Agora que o banco de dados já existe e a configuração para sua correta conexão está ok, 
 é o momento de criar as tabelas. Para tal, utilizei o Doctrine Migrations (você pode saber mais sobre 
@@ -52,7 +58,7 @@ migrations com o Doctrine em um artigo que escrevi em meu blog - [link](https://
 Em resumo, o comando a ser executado é o `./vendor/bin/doctrine-module migrations:migrate --no-interaction`.
 
 
-### Passo 3 - Executando Fixtures
+## Passo 3 - Executando Fixtures
 
 Por padrão já cadastrei 3 eventos/espetáculos, basta rodar as fixtures que a aplicação estará pronta para uso. 
 Rode o comando `./vendor/bin/doctrine-module orm:fixtures:load`.
@@ -65,7 +71,7 @@ Careful, database will be purged. Do you want to continue y/N ?y
   > loading [0] Application\Fixture\LoadEvent
 ```
 
-### Passo 4 - Rode o Built-in Server
+## Passo 4 - Rode o Built-in Server
 
 Agora basta rodar o comando `php -S localhost:8080 -t public`. Adicionalmente existe um script registrado no composer.json 
 pra facilitar a disponibilização do web server de testes: `composer serve`
@@ -78,6 +84,16 @@ Resultado
 
 ![Image 1](doc/images/img-1.png)
 
+
+## Com o Docker
+
+Rode o comando `docker-compose up -d --build`.
+
+
+Em seguida entre no container `docker-compose exec sae-desafia-andre-cardoso bash` e siga os passos **2** e **3**.
+
+
+Feito isto, basta acessar `http://localhost:8080` em seu browser.
 
 # Observações
 [...]
