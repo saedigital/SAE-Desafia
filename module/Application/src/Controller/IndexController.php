@@ -53,7 +53,7 @@ class IndexController extends AbstractActionController
             ->findOneBy(['active' => true, 'id' => $eventId]);
 
         if ($eventId === 0 || !$event) {
-            return $this->redirect()->toRoute('/not-found');
+            return $this->redirect()->toUrl('/not-found');
         }
 
         return new ViewModel([
@@ -82,7 +82,8 @@ class IndexController extends AbstractActionController
             ->findOneBy(['active' => true, 'id' => $eventId]);
 
         if ($eventId === 0 || !$event) {
-            throw new Exception('Evento não localizado');
+            $this->flashMessenger()->setNamespace('error')->addMessage('Evento não localizado');
+            return $this->redirect()->toRoute('home');
         }
 
         $mySeats = [];

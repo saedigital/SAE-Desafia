@@ -42,12 +42,6 @@ class Seat extends AbstractEntity
     private $status;
 
     /**
-     * @var string
-     * @ORM\Column(type="string", length=255, nullable=false)
-     */
-    private $token;
-
-    /**
      * @return Event
      */
     public function getEvent(): Event
@@ -116,24 +110,6 @@ class Seat extends AbstractEntity
     public function setStatus(int $status): Seat
     {
         $this->status = $status;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getToken(): string
-    {
-        return $this->token;
-    }
-
-    /**
-     * @param string $token
-     * @return Seat
-     */
-    public function setToken(string $token): Seat
-    {
-        $this->token = $token;
         return $this;
     }
 

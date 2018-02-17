@@ -11,6 +11,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 /**
  * Class LoadEvent
  * @package Application\Fixture
+ * @codeCoverageIgnore
  */
 class LoadEvent implements FixtureInterface, OrderedFixtureInterface
 {

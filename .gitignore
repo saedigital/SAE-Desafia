@@ -8,3 +8,5 @@ data/DoctrineORMModule/Proxy/*
 phpunit.xml
 .idea
 error_log
+build/*
+!build/.gitkeep

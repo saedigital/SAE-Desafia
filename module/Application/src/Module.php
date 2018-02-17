@@ -5,6 +5,11 @@ namespace Application;
 use Application\Service\EventService;
 use Zend\ServiceManager\ServiceManager;
 
+/**
+ * Class Module
+ * @package Application
+ * @codeCoverageIgnore
+ */
 class Module
 {
     const VERSION = '3.0.3-dev';

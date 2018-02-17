@@ -57,6 +57,8 @@
   },
   "require-dev": {
     "zendframework/zend-test": "^3.0.1",
-    "dkorsak/doctrine-data-fixture-module": "*"
+    "dkorsak/doctrine-data-fixture-module": "*",
+    "phpunit/phpunit": "*",
+    "mockery/mockery": "*"
   }
 }
