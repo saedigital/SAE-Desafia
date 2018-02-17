@@ -17,10 +17,5 @@ return [
                 ]
             ]
         ]
-    ],
-    'dbal' => [
-        'types' => [
-            'datetime' => \Application\Database\Mysql\CustomDateTimeType::class
-        ]
     ]
 ];
