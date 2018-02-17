@@ -6,9 +6,8 @@
     <tr>
         <th>#</th>
         <th>Evento</th>
-        <th>Local</th>
-        <th>Capacidade</th>
-        <th>Data do evento</th>
+        <th>Local e data</th>
+        <th>Informações</th>
         <th>Ações</th>
     </tr>
     </thead>
@@ -18,24 +17,33 @@
         <tr>
             <td><?php echo $event->getId(); ?></td>
             <td>
-                <?php echo $event->getName(); ?>
-                <br/>
+                <h4>
+                    <?php echo $event->getName(); ?> -
+                    R$<?php echo number_format($event->getTicketAmount(), 2, ',', '.'); ?>
+                </h4>
                 <small><?php echo $event->getDescription(); ?></small>
             </td>
-            <td><?php echo $event->getLocation(); ?></td>
             <td>
-                <?php echo $event->getCapacity(); ?> expectadores
+                <strong>Local</strong>: <?php echo $event->getLocation(); ?>
                 <br/>
+                <strong>Data</strong>: <?php echo $event->getShowDate()->format('d/m/Y H:i'); ?>
+            </td>
+            <td>
+                <strong>Capacidade</strong>: <?php echo $event->getCapacity(); ?>
+                expectadores<br />
                 <?php
                 $reservedSeatsCount = $event->getSeats()->count();
+                $seatsRemaining = $event->getCapacity() - $reservedSeatsCount;
                 $reservedPercentage = number_format((($reservedSeatsCount / $event->getCapacity()) * 100), 2, '.', ',');
+                $remainingPercentage = number_format((($seatsRemaining / $event->getCapacity()) * 100), 2, '.', ',');
                 ?>
                 <strong>Já reservadas</strong>: <?php echo $reservedSeatsCount; ?> (<?php echo $reservedPercentage; ?>%)
+                <br/>
+                <strong>Livres</strong>: <?php echo $seatsRemaining; ?> (<?php echo $remainingPercentage; ?>%)
                 <br/>
                 <strong>Arrecadação</strong>:
                 R$<?php echo number_format($reservedSeatsCount * $event->getTicketAmount(), 2, ',', '.'); ?>
             </td>
-            <td><?php echo $event->getShowDate()->format('d/m/Y H:i'); ?></td>
             <td>
                 <a href="<?php echo $this->url('admin-event', ['action' => 'view', 'id' => $event->getId()]); ?>"
                    class="btn btn-success btn-sm">

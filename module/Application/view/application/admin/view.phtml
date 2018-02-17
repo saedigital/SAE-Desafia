@@ -43,16 +43,34 @@
         <br/>
         Local: <?php echo $this->data->getLocation(); ?>
         <br/>
+        Data: <?php echo $this->data->getShowDate()->format('d/m/Y H:i'); ?>
+        <hr>
         Capacidade: <?php echo $this->data->getCapacity(); ?> expectadores
         <br/>
         Reservadas: <span class="active-count"><?php echo $this->data->getSeats()->count(); ?></span>
         <br/>
-        Data: <?php echo $this->data->getShowDate()->format('d/m/Y H:i'); ?>
+        Livres: <span class="active-count"><?php echo $this->data->getCapacity() - $this->data->getSeats()->count(); ?></span>
+        <br/>
+        Arrecadação: <span class="active-count">
+            <?php $total = $this->data->getSeats()->count()*$this->data->getTicketAmount(); ?>
+            R$<?php echo number_format($total, 2, ',', '.'); ?>
+        </span>
+
         <hr>
-        <h4>Gerenciar poltronas</h4>
+        <h4 class="label-admin">Gerenciar poltronas</h4>
+        <div class="label-admin-info">
+            <h5>Dicas</h5>
+            <small>
+                1. Passe o mouse nas poltronas reservadas ou com pré-reserva para ver detalhes;
+            </small>
+            <br />
+            <small>
+                2. Clique sobre as poltronas com reserva confirmada ou pré-reserva para habilitar a
+                possibilidade de cancelamento.
+            </small>
+        </div><br />
         <input type="hidden" id="eventId" value="<?php echo $this->data->getId(); ?>">
         <div class="seats-selected"></div>
-        <hr>
     </div>
 </div>
 <br clear="all"/>
