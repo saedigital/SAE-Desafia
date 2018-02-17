@@ -111,7 +111,10 @@ class AdminController extends AbstractActionController
         $id = (int)$this->params()->fromRoute('id', 0);
 
         if ($id === 0) {
-            throw new Exception('Invalid Register');
+            $this->flashMessenger()->setNamespace('success')
+                ->addMessage('Evento inválido');
+
+            return $this->redirect()->toRoute('admin-event');
         }
 
         $entityManager = $this->getServiceManager()->get(EntityManager::class);
@@ -120,10 +123,6 @@ class AdminController extends AbstractActionController
 
         $formData = $event->toArray();
         $formData['active'] = 1;
-
-        if (!$event->isActive()) {
-            $formData['active'] = 0;
-        }
 
         $form->setData($this->bindDataToForm($formData));
 
@@ -216,14 +215,15 @@ class AdminController extends AbstractActionController
     {
         /** @var EventService $eventService */
         $eventService = $this->getServiceManager()->get(EventService::class);
+        $response = false;
 
         if ($result = $eventService->save($data)) {
             $this->flashMessenger()->setNamespace('success')
                 ->addMessage($flashMessage);
 
-            return $this->redirect()->toRoute('admin-event');
+            $response = $this->redirect()->toRoute('admin-event');
         }
 
-        return false;
+        return $response;
     }
 }

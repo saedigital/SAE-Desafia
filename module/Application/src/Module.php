@@ -8,7 +8,6 @@ use Zend\ServiceManager\ServiceManager;
 /**
  * Class Module
  * @package Application
- * @codeCoverageIgnore
  */
 class Module
 {

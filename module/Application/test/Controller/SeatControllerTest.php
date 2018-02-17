@@ -2,7 +2,7 @@
 
 namespace ApplicationTest\Controller;
 
-use Application\Controller\IndexController;
+use Application\Controller\SeatController;
 use Application\Entity\Event;
 use Application\Entity\Seat;
 use DateTime;
@@ -13,10 +13,10 @@ use Zend\Stdlib\ArrayUtils;
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
 /**
- * Class IndexControllerTest
+ * Class SeatControllerTest
  * @package ApplicationTest\Controller
  */
-class IndexControllerTest extends AbstractHttpControllerTestCase
+class SeatControllerTest extends AbstractHttpControllerTestCase
 {
     public function setUp()
     {
@@ -60,7 +60,7 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
         $entity = new Event($data);
 
         $entityManager->shouldReceive('findBy')->andReturn([$entity]);
-        $entityManager->shouldReceive('findOneBy')->andReturn($entity);
+        $entityManager->shouldReceive('findOneBy')->andReturn($entity, false);
         $entityManager->shouldReceive('persist')->andReturn($entityManager);
         $entityManager->shouldReceive('flush')->andReturn($entityManager);
 
@@ -69,63 +69,70 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
         $serviceManager->setService(EntityManager::class, $entityManager);
     }
 
-    public function testIndexActionCanBeAccessed()
+    /**
+     * @test
+     * @throws \Exception
+     */
+    public function asyncPickAction()
     {
-        $this->dispatch('/', 'GET');
+        $this->dispatch('/async-seat-pick?test=true', 'GET');
         $this->assertResponseStatusCode(200);
         $this->assertModuleName('application');
-        $this->assertControllerName(IndexController::class); // as specified in router's controller name alias
-        $this->assertControllerClass('IndexController');
-        $this->assertMatchedRouteName('home');
+        $this->assertControllerName(SeatController::class); // as specified in router's controller name alias
+        $this->assertControllerClass('SeatController');
+        $this->assertMatchedRouteName('async-seat-pick');
     }
 
-    public function testView()
+    /**
+     * @test
+     * @throws \Exception
+     */
+    public function asyncPickActionPost()
     {
-        $this->dispatch('/event/1', 'GET');
+        $data = [
+            'eventId' => 1,
+            'email' => 'andrecardosodev@gmail.com',
+            'seats' => [
+                12, 13
+            ]
+        ];
+
+        $this->dispatch('/async-seat-pick?test=true', 'POST', $data);
         $this->assertResponseStatusCode(200);
         $this->assertModuleName('application');
-        $this->assertControllerName(IndexController::class);
-        $this->assertControllerClass('IndexController');
-        $this->assertMatchedRouteName('event');
+        $this->assertControllerName(SeatController::class); // as specified in router's controller name alias
+        $this->assertControllerClass('SeatController');
+        $this->assertMatchedRouteName('async-seat-pick');
     }
 
-    public function testViewRedirect()
+    /**
+     * @test
+     * @throws \Exception
+     */
+    public function asyncPickActionPostInvalidEvent()
     {
-        $this->dispatch('/event/0', 'GET');
-        $this->assertResponseStatusCode(302);
-        $this->assertModuleName('application');
-        $this->assertControllerName(IndexController::class);
-        $this->assertControllerClass('IndexController');
-        $this->assertMatchedRouteName('event');
-    }
+        $serviceManager = $this->getApplicationServiceLocator();
+        $serviceManager->setAllowOverride(true);
 
-    public function testConfirmationGet()
-    {
-        $this->dispatch('/event/1/confirmation?email=andrecardosodev@gmail.com', 'GET');
+        $entityManager = Mockery::mock(EntityManager::class);
+        $entityManager->shouldReceive('getRepository')->andReturn($entityManager);
+        $entityManager->shouldReceive('findOneBy')->andReturn(false);
+
+        $serviceManager->setService(EntityManager::class, $entityManager);
+
+        $data = [
+            'eventId' => 1,
+            'email' => 'andrecardosodev@gmail.com',
+            'seats' => [
+                12, 13
+            ]
+        ];
+
+        $this->dispatch('/async-seat-pick?test=true', 'POST', $data);
         $this->assertResponseStatusCode(200);
         $this->assertModuleName('application');
-        $this->assertControllerName(IndexController::class);
-        $this->assertControllerClass('IndexController');
-        $this->assertMatchedRouteName('event-confirmation');
-    }
-
-    public function testConfirmationGetRedirect()
-    {
-        $this->dispatch('/event/0/confirmation?email=andrecardosodev@gmail.com', 'GET');
-        $this->assertResponseStatusCode(302);
-        $this->assertModuleName('application');
-        $this->assertControllerName(IndexController::class);
-        $this->assertControllerClass('IndexController');
-        $this->assertMatchedRouteName('event-confirmation');
-    }
-
-    public function testConfirmationPost()
-    {
-        $this->dispatch('/event/1/confirmation?email=andrecardosodev@gmail.com', 'POST', []);
-        $this->assertResponseStatusCode(302);
-        $this->assertModuleName('application');
-        $this->assertControllerName(IndexController::class);
-        $this->assertControllerClass('IndexController');
-        $this->assertMatchedRouteName('event-confirmation');
+        $this->assertControllerName(SeatController::class); // as specified in router's controller name alias
+        $this->assertControllerClass('SeatController');
+        $this->assertMatchedRouteName('async-seat-pick');
     }
 }

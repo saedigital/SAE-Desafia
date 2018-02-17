@@ -26,6 +26,7 @@ class AdminSeatController extends AbstractActionController
     {
         /** @var Request $request */
         $request = $this->getRequest();
+        $isTest = (bool)$this->params()->fromQuery('test', false);
 
         $response = [
             'statusCode' => 405,
@@ -62,9 +63,6 @@ class AdminSeatController extends AbstractActionController
             }
         }
 
-        $content = json_encode($response);
-        header('Content-Type: application/json');
-        print $content;
-        exit;
+        return $this->renderJson($response, $isTest);
     }
 }

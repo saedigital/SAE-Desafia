@@ -61,7 +61,7 @@ return [
                     ],
                 ],
             ],
-            'admin/async-seat-cancel' => [
+            'admin-async-seat-cancel' => [
                 'type' => Literal::class,
                 'options' => [
                     'route' => '/admin/async-seat-cancel',

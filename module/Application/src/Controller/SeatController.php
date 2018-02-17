@@ -8,6 +8,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
 use Zend\Http\Request;
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\View\Model\JsonModel;
+use Zend\View\Model\ViewModel;
 
 /**
  * Class SeatController
@@ -27,6 +29,7 @@ class SeatController extends AbstractActionController
     {
         /** @var Request $request */
         $request = $this->getRequest();
+        $isTest = (bool)$this->params()->fromQuery('test', false);
 
         $response = [
             'statusCode' => 405,
@@ -50,7 +53,7 @@ class SeatController extends AbstractActionController
 
             if (!$event) {
                 $response['message'] = 'Evento inválido';
-                $this->renderJson($response);
+                return $this->renderJson($response, $isTest);
             }
 
             $allSelectedSeatsAreFree = true;
@@ -92,6 +95,6 @@ class SeatController extends AbstractActionController
             }
         }
 
-        $this->renderJson($response);
+        return $this->renderJson($response, $isTest);
     }
 }
