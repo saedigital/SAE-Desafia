@@ -6,6 +6,7 @@ use Application\Controller\AdminController;
 use Application\Entity\Event;
 use Application\Entity\Seat;
 use Application\Form\EventForm;
+use Application\Service\FirebaseService;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
@@ -53,7 +54,7 @@ class AdminControllerTest extends AbstractHttpControllerTestCase
             'name' => 'Teste',
             'description' => 'Teste',
             'location' => 'Teste',
-            'capacity' => 30,
+            'capacity' => 20,
             'ticketAmount' => 19.9,
             'showDate' => new DateTime(),
             'seats' => $seats
@@ -71,6 +72,13 @@ class AdminControllerTest extends AbstractHttpControllerTestCase
         $serviceManager = $this->getApplicationServiceLocator();
         $serviceManager->setAllowOverride(true);
         $serviceManager->setService(EntityManager::class, $entityManager);
+
+        $firebaseService = $mockery->mock(FirebaseService::class);
+        $firebaseService->shouldReceive('addEvent')->andReturn($firebaseService);
+        $firebaseService->shouldReceive('delete')->andReturn($firebaseService);
+        $firebaseService->shouldReceive('update')->andReturn($firebaseService);
+
+        $serviceManager->setService(FirebaseService::class, $firebaseService);
     }
 
     /**
@@ -164,6 +172,33 @@ class AdminControllerTest extends AbstractHttpControllerTestCase
             'description' => 'teste',
             'location' => 'teste',
             'capacity' => 30,
+            'ticketAmount' => 19.9,
+            'showDate' => date('d/m/Y H:i'),
+            'csrf' => $form->get('csrf')->getValue()
+        ];
+
+        $this->dispatch('/admin/event/edit/1', 'POST', $data);
+        $this->assertResponseStatusCode(302);
+        $this->assertModuleName('application');
+        $this->assertControllerName(AdminController::class); // as specified in router's controller name alias
+        $this->assertControllerClass('AdminController');
+        $this->assertMatchedRouteName('admin-event');
+    }
+
+    /**
+     * @test
+     * @throws \Exception
+     */
+    public function editActionDecreasingCapacity()
+    {
+        $form = new EventForm();
+
+        $data = [
+            'id' => 1,
+            'name' => 'Teste',
+            'description' => 'teste',
+            'location' => 'teste',
+            'capacity' => 10,
             'ticketAmount' => 19.9,
             'showDate' => date('d/m/Y H:i'),
             'csrf' => $form->get('csrf')->getValue()

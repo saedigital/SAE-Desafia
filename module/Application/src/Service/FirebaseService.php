@@ -36,31 +36,38 @@ class FirebaseService
     /**
      * @param $id
      * @param $data
+     * @return bool
      */
     public function set($id, $data)
     {
         $this->firebase->set($this->defaultPath . $id . '/seats', $data);
+        return true;
     }
 
     /**
      * @param $id
      * @param $data
+     * @return bool
      */
     public function update($id, $data)
     {
         $this->firebase->update($this->defaultPath . $id . '/seats', $data);
+        return true;
     }
 
     /**
      * @param $id
+     * @return bool
      */
     public function delete($id)
     {
         $this->firebase->delete($this->defaultPath, $id);
+        return true;
     }
 
     /**
      * @param Event $event
+     * @return bool
      */
     public function addEvent(Event $event)
     {
@@ -75,5 +82,6 @@ class FirebaseService
         }
 
         $this->set($event->getId(), $seats);
+        return true;
     }
 }

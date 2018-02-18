@@ -93,7 +93,7 @@ Firebase Realtime database (que também falo [aqui]() como funciona). Para isso
 $ cd <project_root>
 $ php public/index.php init-firebase
 
-Adicionando 5 eventos no firebase.
+Adicionando 3 eventos no firebase.
 
 Feito. Agora a selecao das poltronas sera em TEMPO REAL!!!
 ```
@@ -117,7 +117,7 @@ Resultado
 Rode o comando `docker-compose up -d --build`.
 
 
-Em seguida entre no container `docker-compose exec sae-desafia-andre-cardoso bash` e siga os passos **2** e **3**.
+Em seguida entre no container `docker-compose exec sae-desafia-andre-cardoso bash` e siga os passos **2**, **3** e **4**.
 
 
 Feito isto, basta acessar `http://localhost:8080` em seu browser.
