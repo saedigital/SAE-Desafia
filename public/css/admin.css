@@ -11,3 +11,7 @@
     border: #ccc solid 1px;
     padding: 10px;
 }
+.selected {
+    background-color: brown !important;
+    color: #fff !important;
+}

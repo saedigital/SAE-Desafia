@@ -4,6 +4,7 @@ namespace Application\Controller;
 
 use Application\Entity\Event;
 use Application\Entity\Seat;
+use Application\Service\FirebaseService;
 use Doctrine\ORM\EntityManager;
 use Exception;
 use Zend\Http\Request;
@@ -104,6 +105,7 @@ class IndexController extends AbstractActionController
                 $seat->setStatus(Seat::CONFIRMED_RESERVATION);
                 $entityManager->persist($seat);
             }
+            $this->updateSeatsStatusOnFirebase($event, $mySeats);
             $entityManager->flush();
 
             $this->flashMessenger()->setNamespace('success')->addMessage('Reserva confirmada');
@@ -114,5 +116,28 @@ class IndexController extends AbstractActionController
             'event' => $event,
             'mySeats' => $mySeats
         ]);
+    }
+
+    /**
+     * @param Event $event
+     * @param array $seats
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
+     */
+    private function updateSeatsStatusOnFirebase(Event $event, array $seats)
+    {
+        /** @var FirebaseService $firebaseService */
+        $firebaseService = $this->getServiceManager()->get(FirebaseService::class);
+
+        $data = [];
+        /** @var Seat $seat */
+        foreach ($seats as $seat) {
+            $data[$seat->getSeatNumber()] = [
+                'seatNumber' => $seat->getSeatNumber(),
+                'status' => Seat::CONFIRMED_RESERVATION
+            ];
+        }
+
+        $firebaseService->update($event->getId(), $data);
     }
 }

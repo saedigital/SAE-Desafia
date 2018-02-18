@@ -47,82 +47,12 @@ jQuery(document).ready(function ($) {
 
         return false;
     });
-
-    $('.delete-link').click(function () {
-        var id = $(this).attr('rel');
-        if (confirm('Deseja realmente remover?')) {
-            $('#delete-' + id).click();
-        }
-        return false;
-    });
-
-    $(document).delegate('.btn-cancel-reservation', 'click', function () {
-        if (confirm('Deseja realmente cancelar esta reserva?')) {
-            var seatNumber = $(this).attr('rel');
-            var eventId = $('#eventId').val();
-
-            $.ajax({
-                url: '/admin/async-seat-cancel',
-                method: 'post',
-                data: {
-                    eventId: eventId,
-                    seatNumber: seatNumber
-                },
-                success: function (response) {
-                    if (response.statusCode === 200) {
-                        var seat = $('#seat-' + seatNumber);
-                        $(seat).removeClass('pre-reserved');
-                        $(seat).removeClass('unavailable');
-                        $(seat).removeClass('selected');
-                        $(seat).addClass('unclickable');
-
-                        var activeCount = parseInt($('.active-count').text());
-                        activeCount--;
-                        $('.active-count').text(activeCount);
-
-                        refreshSelectedSeats();
-                    }
-                },
-                error: function (xhr, errorMessage) {
-                    console.log(xhr);
-                    console.log(errorMessage);
-                }
-            });
-        }
-
-        return false;
-    })
-        .delegate('.price', 'focus', function () {
-            $(this).priceFormat({
-                prefix: 'R$ ',
-                centsSeparator: ',',
-                thousandsSeparator: '.'
-            });
-        });
-
-    $.datetimepicker.setLocale('pt');
-    $('.datetimepicker').datetimepicker({
-        i18n:{
-            pt:{
-                months:[
-                    'Janeiro','Fevereiro','Março','Abril',
-                    'Maio','Junho','Julho','Agosto',
-                    'Setembro','Outubro','Novembro','Dezembro'
-                ],
-                dayOfWeek:[
-                    "Dom", "Seg", "Ter", "Qua",
-                    "Qui", "Sex", "Sab"
-                ]
-            }
-        },
-        format:'d/m/Y H:i',
-        minDate: new Date(),
-        step: 15
-    });
 });
 
 function refreshSelectedSeats() {
     $('.seats-selected').html('');
+    var ticketAmount = parseFloat($('#ticketAmount').val());
+    var selectedCount = 0;
     $.each($('.selected'), function (i, item) {
         var id = $(item).attr('id').replace('seat-', '');
         var content = 'Poltrona ' + id;
@@ -133,5 +63,13 @@ function refreshSelectedSeats() {
             content += '">Cancelar reserva</a>';
         }
         $('.seats-selected').append(content + '<br/>');
+        selectedCount++;
     });
+
+    if (selectedCount > 0) {
+        var total = parseFloat(ticketAmount * selectedCount).toFixed(2).toString();
+        $('#orderAmount').text(total.replace('.', ','));
+    } else {
+        $('#orderAmount').text('0,00');
+    }
 }

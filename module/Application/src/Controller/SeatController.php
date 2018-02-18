@@ -4,6 +4,7 @@ namespace Application\Controller;
 
 use Application\Entity\Event;
 use Application\Entity\Seat;
+use Application\Service\FirebaseService;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
 use Zend\Http\Request;
@@ -82,6 +83,7 @@ class SeatController extends AbstractActionController
                 foreach ($seatsCollection as $seat) {
                     $entityManager->persist($seat);
                 }
+                $this->updateSeatsStatusOnFirebase($event, $data['seats']);
                 $event->setSeats($seatsCollection);
                 $entityManager->flush();
 
@@ -96,5 +98,27 @@ class SeatController extends AbstractActionController
         }
 
         return $this->renderJson($response, $isTest);
+    }
+
+    /**
+     * @param Event $event
+     * @param array $seats
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
+     */
+    private function updateSeatsStatusOnFirebase(Event $event, array $seats)
+    {
+        /** @var FirebaseService $firebaseService */
+        $firebaseService = $this->getServiceManager()->get(FirebaseService::class);
+
+        $data = [];
+        foreach ($seats as $seat) {
+            $data[$seat] = [
+                'seatNumber' => $seat,
+                'status' => Seat::PRE_BOOKING
+            ];
+        }
+
+        $firebaseService->update($event->getId(), $data);
     }
 }

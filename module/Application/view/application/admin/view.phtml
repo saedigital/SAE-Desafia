@@ -34,7 +34,6 @@
         <h5>Legenda</h5>
         <span class="pre-reserved">Pré reserva</span>&nbsp;
         <span class="unavailable">Reserva confirmada</span>
-        <span class="just-selected">Recém selecionada</span>&nbsp;
         <br clear="all"/>
         <br/>
     </div>
@@ -74,3 +73,35 @@
     </div>
 </div>
 <br clear="all"/>
+<?php
+$this->inlineScript()->captureStart();
+echo <<<JS
+jQuery(document).ready(function ($) {
+    var ref = firebase.database().ref('demo/events/{$this->data->getId()}/seats');
+    
+    ref.on('child_changed', function (snapshot) {
+        var data = snapshot.val();
+        var seat = $('#seat-' + data.seatNumber);
+        
+        $(seat).removeClass('pre-reserved');
+        $(seat).removeClass('unavailable');
+        $(seat).removeClass('unclickable');
+
+        var itemClass = '';
+        switch (data.status) {
+            case 0:
+                itemClass = 'pre-reserved';
+                break;
+            case 1:
+                itemClass = 'unavailable';
+                break;
+            default:
+                itemClass = 'unclickable';
+                break;
+        }
+
+        $(seat).addClass(itemClass);
+    });
+});
+JS;
+$this->inlineScript()->captureEnd();

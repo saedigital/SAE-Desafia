@@ -15,7 +15,7 @@
     margin-right: 5px;
     margin-bottom: 5px;
     cursor: pointer;
-    background-color: #e3f4d5;;
+    background-color: #e3f4d5;
 }
 .unclickable {
     cursor: default;
@@ -26,6 +26,7 @@
 }
 .your-choice {
     padding: 10px;
+    border: #444 solid 1px;
 }
 .seat.pre-reserved, .pre-reserved {
     background-color: #444444;
@@ -33,13 +34,15 @@
 }
 .pre-reserved {
     padding: 10px;
-}
-.seat.just-selected, .just-selected {
-    background-color: dodgerblue;
-    color: #000;
+    border: #444 solid 1px;
 }
 .just-selected {
     padding: 10px;
+}
+.seat-color {
+    padding: 10px;
+    background-color: #e3f4d5;
+    border: #444 solid 1px;
 }
 .seat.unavailable, .unavailable {
     background-color: #eee;
@@ -47,6 +50,7 @@
 }
 .unavailable {
     padding: 10px;
+    border: #444 solid 1px;
 }
 #btn-action {
     float: right;
