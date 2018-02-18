@@ -123,7 +123,21 @@ Em seguida entre no container `docker-compose exec sae-desafia-andre-cardoso bas
 Feito isto, basta acessar `http://localhost:8080` em seu browser.
 
 # Observações
-[...]
+
+A aplicação foi criada com o [Firebase Realtime Database](https://firebase.google.com/docs/database/), isso proporciona 
+uma experiência muito agradável.
+
+Quando um visitante seleciona as poltronas e clica em reservar, as mesmas entram 
+em estado de pré-reserva. Todos os visitantes que estejam visualizando o mesmo evento, terão 
+as poltronas alteradas, impossibilitando as mesmas de serem selecionandas.
+
+Ao confirmar a reserva das poltronas, todos os visitantes tem o status das mesmas 
+alterados em tempo real.
+
+O mesmo ocorre para o admin, que vê em tempo real as pré-reservas e confirmações, 
+bem como pode cancelar uma reserva ou pré-reserva. Quando o admin cancela uma 
+reserva ou pré-reserva, os visitantes que estão na tela do evento tem 
+as poltronas liberadas para seleção.
 
 # Testes
 
