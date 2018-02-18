@@ -61,3 +61,6 @@
     width: 72%;
     z-index: 9999;
 }
+.panel-default {
+    height: 250px;
+}
