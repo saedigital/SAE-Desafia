@@ -8,6 +8,7 @@ jQuery(document).ready(function ($) {
     });
 
     $(document).delegate('.btn-cancel-reservation', 'click', function () {
+        $(this).attr('disabled', 'disabled');
         if (confirm('Deseja realmente cancelar esta reserva?')) {
             var seatNumber = $(this).attr('rel');
             var eventId = $('#eventId').val();
@@ -20,7 +21,6 @@ jQuery(document).ready(function ($) {
                     seatNumber: seatNumber
                 },
                 success: function (response) {
-                    console.log(response);
                     if (response.statusCode === 200) {
                         var seat = $('#seat-' + seatNumber);
                         $(seat).removeClass('pre-reserved');
@@ -33,13 +33,17 @@ jQuery(document).ready(function ($) {
                         $('.active-count').text(activeCount);
 
                         refreshSelectedSeats();
+                        $(this).removeAttr('disabled');
                     }
                 },
                 error: function (xhr, errorMessage) {
                     console.log(xhr);
                     console.log(errorMessage);
+                    $(this).removeAttr('disabled');
                 }
             });
+        } else {
+            $(this).removeAttr('disabled');
         }
 
         return false;

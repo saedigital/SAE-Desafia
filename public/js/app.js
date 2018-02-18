@@ -12,6 +12,7 @@ jQuery(document).ready(function ($) {
         var email = $('#email').val();
         var eventId = $('#eventId').val();
         var seats = [];
+        $('#btn-action').attr('disabled', 'disabled');
 
         $.each($('.selected'), function (i, item) {
             var id = $(item).attr('id').replace('seat-', '');
@@ -36,13 +37,17 @@ jQuery(document).ready(function ($) {
                     } else {
                         $('.error-message-content').html(response.message);
                         $('.error-message').removeClass('hidden');
+                        $('#btn-action').removeAttr('disabled');
                     }
                 },
                 error: function (xhr, errorMessage) {
                     console.log(xhr);
                     console.log(errorMessage);
+                    $('#btn-action').removeAttr('disabled');
                 }
             });
+        } else{
+            $('#btn-action').removeAttr('disabled');
         }
 
         return false;
