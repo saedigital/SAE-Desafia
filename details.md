@@ -4,6 +4,27 @@
 
 **Email**: andrecardosodev@gmail.com
 
+# Detalhes
+
+Preferi criar a aplicação com o Zend Framework 3 para ganhar tempo e demonstrar outros skills 
+como reaproveitamento de código, Docker, testes unitários (com cobertura de 100%) e interações em tempo real.
+
+![Image 2](doc/images/img-2.png)
+
+Segue um resumo do que utilizado no projeto:
+
+- Docker
+- Zend Framework 3
+- Doctrine ORM
+- Firebase (PHP e JavaScript)
+- Migrations
+- Data Fixtures
+- Testes Unitários (PHPUnit)
+- CSS Bootstrap padrão do ZF3
+- jQuery
+- jQuery Price Formatter
+- jQuery Datetime picker
+
 # Instalação
 
 Baixe o repositório no branch `andre-cardoso` e rode o comando `composer install`. Caso 
