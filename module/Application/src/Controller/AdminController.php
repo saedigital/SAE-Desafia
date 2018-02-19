@@ -268,6 +268,8 @@ class AdminController extends AbstractActionController
 
     /**
      * @param $eventId
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
      */
     private function deleteFromFirebase($eventId)
     {

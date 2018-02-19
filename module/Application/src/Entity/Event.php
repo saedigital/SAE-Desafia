@@ -54,7 +54,7 @@ class Event extends AbstractEntity
 
     /**
      * @var Collection
-     * @ORM\OneToMany(targetEntity="Seat", mappedBy="event")
+     * @ORM\OneToMany(targetEntity="Seat", mappedBy="event", cascade={"remove"})
      */
     private $seats;
 

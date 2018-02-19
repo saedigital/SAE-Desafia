@@ -61,7 +61,7 @@ class FirebaseService
      */
     public function delete($id)
     {
-        $this->firebase->delete($this->defaultPath, $id);
+        $this->firebase->delete($this->defaultPath, [$id]);
         return true;
     }
 
