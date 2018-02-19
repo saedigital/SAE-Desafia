@@ -1,0 +1,73 @@
+<a href="<?php echo $this->url('admin-event', ['action' => 'add']); ?>" class="btn btn-success">Novo evento</a>
+<br/>
+<br/>
+<table width="100%" class="table table-striped table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Evento</th>
+        <th>Local e data</th>
+        <th>Informações</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php /** @var \Application\Entity\Event $event */
+    foreach ($this->collection as $event): ?>
+        <tr>
+            <td><?php echo $event->getId(); ?></td>
+            <td>
+                <h4>
+                    <?php echo $event->getName(); ?> -
+                    R$<?php echo number_format($event->getTicketAmount(), 2, ',', '.'); ?>
+                </h4>
+                <small><?php echo $event->getDescription(); ?></small>
+            </td>
+            <td>
+                <strong>Local</strong>: <?php echo $event->getLocation(); ?>
+                <br/>
+                <strong>Data</strong>: <?php echo $event->getShowDate()->format('d/m/Y H:i'); ?>
+            </td>
+            <td>
+                <strong>Capacidade</strong>: <?php echo $event->getCapacity(); ?>
+                expectadores<br />
+                <?php
+                $reservedSeatsCount = $event->getSeats()->count();
+                $seatsRemaining = $event->getCapacity() - $reservedSeatsCount;
+                $reservedPercentage = number_format((($reservedSeatsCount / $event->getCapacity()) * 100), 2, '.', ',');
+                $remainingPercentage = number_format((($seatsRemaining / $event->getCapacity()) * 100), 2, '.', ',');
+                ?>
+                <strong>Já reservadas</strong>: <?php echo $reservedSeatsCount; ?> (<?php echo $reservedPercentage; ?>%)
+                <br/>
+                <strong>Livres</strong>: <?php echo $seatsRemaining; ?> (<?php echo $remainingPercentage; ?>%)
+                <br/>
+                <strong>Arrecadação</strong>:
+                R$<?php echo number_format($reservedSeatsCount * $event->getTicketAmount(), 2, ',', '.'); ?>
+            </td>
+            <td>
+                <a href="<?php echo $this->url('admin-event', ['action' => 'view', 'id' => $event->getId()]); ?>"
+                   class="btn btn-success btn-sm">
+                    Detalhes
+                </a>&nbsp;
+                <a href="<?php echo $this->url('admin-event', ['action' => 'edit', 'id' => $event->getId()]); ?>"
+                   class="btn btn-warning btn-sm">
+                    Editar
+                </a>&nbsp;
+                <a href="#" rel="<?php echo $event->getId(); ?>"
+                   class="btn btn-danger btn-sm btn-icon icon-left delete-link">
+                    Remover
+                </a>
+
+                <div style="display: none;">
+                    <form
+                            action="<?php echo $this->url('admin-event', ['action' => 'delete', 'id' => $event->getId()], true) ?>"
+                            method="post">
+                        <input type="submit" id="delete-<?php echo $event->getId(); ?>"
+                               class="btn btn-danger btn-sm btn-icon icon-left" value="Delete">
+                    </form>
+                </div>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>

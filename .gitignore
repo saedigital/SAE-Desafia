@@ -1,0 +1,12 @@
+.vagrant/
+vendor/
+config/development.config.php
+data/cache/*
+!data/cache/.gitkeep
+data/DoctrineORMModule/Proxy/*
+!data/DoctrineORMModule/.gitkeep
+phpunit.xml
+.idea
+error_log
+build/*
+!build/.gitkeep

@@ -1,0 +1,17 @@
+.navbar-inverse {
+    background-image: linear-gradient(to bottom,#761c19,#540a07 100%);
+}
+.capacity-label {
+    color: green;
+}
+.label-admin {
+    color: orangered;
+}
+.label-admin-info {
+    border: #ccc solid 1px;
+    padding: 10px;
+}
+.selected {
+    background-color: brown !important;
+    color: #fff !important;
+}

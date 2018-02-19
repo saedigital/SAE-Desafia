@@ -1,0 +1,66 @@
+.seats, .event-details {
+    border: #ccc dotted 2px;
+    padding: 10px;
+}
+.event-details {
+    border-left: none;
+    border-top: #ccc dotted 2px;
+    border-bottom: #ccc dotted 2px;
+    border-right: #ccc dotted 2px;
+}
+.seat {
+    float: left;
+    padding: 10px;
+    border: #444 solid 1px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    background-color: #e3f4d5;
+}
+.unclickable {
+    cursor: default;
+}
+.seat.selected, .your-choice {
+    background-color: brown;
+    color: #fff;
+}
+.your-choice {
+    padding: 10px;
+    border: #444 solid 1px;
+}
+.seat.pre-reserved, .pre-reserved {
+    background-color: #444444;
+    color: #fff;
+}
+.pre-reserved {
+    padding: 10px;
+    border: #444 solid 1px;
+}
+.just-selected {
+    padding: 10px;
+}
+.seat-color {
+    padding: 10px;
+    background-color: #e3f4d5;
+    border: #444 solid 1px;
+}
+.seat.unavailable, .unavailable {
+    background-color: #eee;
+    color: #888888;
+}
+.unavailable {
+    padding: 10px;
+    border: #444 solid 1px;
+}
+#btn-action {
+    float: right;
+}
+.response-message {
+    position: fixed;
+    top: 60px;
+    width: 72%;
+    z-index: 9999;
+}
+.panel-default {
+    height: 250px;
+}

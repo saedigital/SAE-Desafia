@@ -1,0 +1,79 @@
+<?= $this->doctype() ?>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <?= $this->headTitle('Admin: Clique Ingressos - Projeto de Andre Cardoso')->setSeparator(' - ')->setAutoEscape(false) ?>
+
+    <?= $this->headMeta()
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+    ?>
+
+    <!-- Le styles -->
+    <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/logo.png'])
+        ->prependStylesheet($this->basePath('css/style.css'))
+        ->prependStylesheet($this->basePath('css/jquery.datetimepicker.min.css'))
+        ->prependStylesheet($this->basePath('css/app.css'))
+        ->prependStylesheet($this->basePath('css/admin.css'))
+        ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
+        ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
+    ?>
+
+    <!-- Scripts -->
+    <?= $this->headScript()
+        ->prependFile($this->basePath('js/jquery.priceformat.min.js'))
+        ->prependFile($this->basePath('js/jquery.datetimepicker.full.js'))
+        ->prependFile($this->basePath('js/admin.js'))
+        ->prependFile($this->basePath('js/app.js'))
+        ->prependFile($this->basePath('js/bootstrap.min.js'))
+        ->prependFile($this->basePath('js/jquery-3.1.0.min.js'))
+    ?>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="<?= $this->url('home') ?>">
+                <img src="<?= $this->basePath('img/logo.png') ?>" height="28"
+                     alt="Zend Framework <?= \Application\Module::VERSION ?>"/>&nbsp;Clique Ingressos
+            </a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="<?= $this->url('home') ?>">Home</a></li>
+                <li><a href="<?= $this->url('admin-event') ?>">Admin</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <?php echo $this->render('partials/flash-messages'); ?>
+    <?= $this->content ?>
+    <hr>
+    <footer>
+        <p>&copy; <?= date('Y') ?> by Andre Cardoso. Todos os direitos reservados</p>
+    </footer>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyBCgeXwvMGW6NIGDkJC72NRRJklPnlpfB4",
+        authDomain: "click-ingressos.firebaseapp.com",
+        databaseURL: "https://click-ingressos.firebaseio.com",
+        projectId: "click-ingressos",
+        storageBucket: "",
+        messagingSenderId: "138869768319"
+    };
+    firebase.initializeApp(config);
+</script>
+<?= $this->inlineScript() ?>
+</body>
+</html>

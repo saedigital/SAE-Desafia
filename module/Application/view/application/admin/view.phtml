@@ -1,0 +1,107 @@
+<div class="col-lg-12">
+    <div class="col-lg-8 seats">
+        <h2>Mapa de poltronas</h2>
+        <?php
+        $seatsCollection = $this->data->getSeats();
+        $selectedSeats = [];
+        $classByStatus = [
+            \Application\Entity\Seat::PRE_BOOKING => 'pre-reserved',
+            \Application\Entity\Seat::CONFIRMED_RESERVATION => 'unavailable'
+        ];
+
+        /** @var \Application\Entity\Seat $seat */
+        foreach ($seatsCollection as $seat) {
+            $selectedSeats[$seat->getSeatNumber()] = [
+                'class' => $classByStatus[$seat->getStatus()],
+                'tooltip' => $seat->getCustomerEmail()
+            ];
+        }
+        ?>
+        <?php for ($i = 1; $i <= $this->data->getCapacity(); $i++) : ?>
+            <?php
+            $complementClass = 'unclickable';
+            $tooltip = '';
+            if (array_key_exists($i, $selectedSeats)) {
+                $complementClass = $selectedSeats[$i]['class'] . ' admin-managing';
+                $tooltip = 'Reserva de: ' . $selectedSeats[$i]['tooltip'];
+            } ?>
+            <div class="seat <?php echo $complementClass; ?>" id="seat-<?php echo $i; ?>" title="<?php echo $tooltip; ?>">
+                &nbsp;<?php echo str_pad($i, 3, '0', STR_PAD_LEFT); ?>&nbsp;
+            </div>
+        <?php endfor; ?>
+        <br clear="all"/>
+        <hr>
+        <h5>Legenda</h5>
+        <span class="pre-reserved">Pré reserva</span>&nbsp;
+        <span class="unavailable">Reserva confirmada</span>
+        <br clear="all"/>
+        <br/>
+    </div>
+    <div class="col-xs-6 col-md-4 event-details">
+        <h3><?php echo $this->data->getName(); ?></h3>
+        <br/>
+        Local: <?php echo $this->data->getLocation(); ?>
+        <br/>
+        Data: <?php echo $this->data->getShowDate()->format('d/m/Y H:i'); ?>
+        <hr>
+        Capacidade: <?php echo $this->data->getCapacity(); ?> expectadores
+        <br/>
+        Reservadas: <span class="active-count"><?php echo $this->data->getSeats()->count(); ?></span>
+        <br/>
+        Livres: <span class="active-count"><?php echo $this->data->getCapacity() - $this->data->getSeats()->count(); ?></span>
+        <br/>
+        Arrecadação: <span class="active-count">
+            <?php $total = $this->data->getSeats()->count()*$this->data->getTicketAmount(); ?>
+            R$<?php echo number_format($total, 2, ',', '.'); ?>
+        </span>
+
+        <hr>
+        <h4 class="label-admin">Gerenciar poltronas</h4>
+        <div class="label-admin-info">
+            <h5>Dicas</h5>
+            <small>
+                1. Passe o mouse nas poltronas reservadas ou com pré-reserva para ver detalhes;
+            </small>
+            <br />
+            <small>
+                2. Clique sobre as poltronas com reserva confirmada ou pré-reserva para habilitar a
+                possibilidade de cancelamento.
+            </small>
+        </div><br />
+        <input type="hidden" id="eventId" value="<?php echo $this->data->getId(); ?>">
+        <div class="seats-selected"></div>
+    </div>
+</div>
+<br clear="all"/>
+<?php
+$this->inlineScript()->captureStart();
+echo <<<JS
+jQuery(document).ready(function ($) {
+    var ref = firebase.database().ref('demo/events/{$this->data->getId()}/seats');
+    
+    ref.on('child_changed', function (snapshot) {
+        var data = snapshot.val();
+        var seat = $('#seat-' + data.seatNumber);
+        
+        $(seat).removeClass('pre-reserved');
+        $(seat).removeClass('unavailable');
+        $(seat).removeClass('unclickable');
+
+        var itemClass = '';
+        switch (data.status) {
+            case 0:
+                itemClass = 'pre-reserved';
+                break;
+            case 1:
+                itemClass = 'unavailable';
+                break;
+            default:
+                itemClass = 'unclickable';
+                break;
+        }
+
+        $(seat).addClass(itemClass);
+    });
+});
+JS;
+$this->inlineScript()->captureEnd();

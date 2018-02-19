@@ -1,0 +1,86 @@
+<?php
+/** @var \Application\Form\EventForm $form */
+$form = $this->form;
+$form->prepare();
+echo $this->form()->openTag($form);
+?>
+
+<?php echo $this->formElement($form->get('id')); ?>
+<?php echo $this->formElement($form->get('csrf')); ?>
+
+<div class="form-group">
+    <?php echo $this->formLabel($form->get('name')); ?>
+    <?php echo $this->formElement($form->get('name')); ?>
+    <?php if (isset($this->errorMessages['name'])) : ?>
+        <div class="error">
+            <?php foreach ($this->errorMessages['name'] as $errorMessage) : ?>
+                <?php echo $errorMessage; ?>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+</div>
+
+<div class="form-group">
+    <?php echo $this->formLabel($form->get('description')); ?>
+    <?php echo $this->formElement($form->get('description')); ?>
+    <?php if (isset($this->errorMessages['description'])) : ?>
+        <div class="error">
+            <?php foreach ($this->errorMessages['description'] as $errorMessage) : ?>
+                <?php echo $errorMessage; ?>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+</div>
+
+<div class="form-group">
+    <?php echo $this->formLabel($form->get('location')); ?>
+    <?php echo $this->formElement($form->get('location')); ?>
+    <?php if (isset($this->errorMessages['location'])) : ?>
+        <div class="error">
+            <?php foreach ($this->errorMessages['location'] as $errorMessage) : ?>
+                <?php echo $errorMessage; ?>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+</div>
+
+<div class="form-group">
+    <?php echo $this->formLabel($form->get('capacity')); ?>
+    <?php echo $this->formElement($form->get('capacity')); ?>
+    <?php if (isset($this->errorMessages['capacity'])) : ?>
+        <div class="error">
+            <?php foreach ($this->errorMessages['capacity'] as $errorMessage) : ?>
+                <?php echo $errorMessage; ?>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+</div>
+
+<div class="form-group">
+    <?php echo $this->formLabel($form->get('ticketAmount')); ?>
+    <?php echo $this->formElement($form->get('ticketAmount')); ?>
+    <?php if (isset($this->errorMessages['ticketAmount'])) : ?>
+        <div class="error">
+            <?php foreach ($this->errorMessages['ticketAmount'] as $errorMessage) : ?>
+                <?php echo $errorMessage; ?>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+</div>
+
+<div class="form-group">
+    <?php echo $this->formLabel($form->get('showDate')); ?>
+    <?php echo $this->formElement($form->get('showDate')); ?>
+    <?php if (isset($this->errorMessages['showDate'])) : ?>
+        <div class="error">
+            <?php foreach ($this->errorMessages['showDate'] as $errorMessage) : ?>
+                <?php echo $errorMessage; ?>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+</div>
+
+<div class="form-group">
+    <?php echo $this->formElement($form->get('submit')); ?>
+</div>
+<?php echo $this->form()->closeTag(); ?>

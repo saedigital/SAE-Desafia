@@ -1,0 +1,33 @@
+<div class="jumbotron">
+    <h1>Bem vindo(a) ao <span class="zf-green">Clique Ingressos</span></h1>
+    <p>
+        Projeto de Andre Cardoso
+    </p>
+</div>
+
+<div class="row">
+    <?php /** @var \Application\Entity\Event $event */
+    foreach ($this->data as $event): ?>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><?php echo $event->getName(); ?></h3>
+                </div>
+                <div class="panel-body">
+                    <p><?php echo $event->getDescription(); ?></p>
+                    <p>Capacidade: <?php echo $event->getCapacity(); ?> expectadores</p>
+                    <p>Local: <?php echo $event->getLocation(); ?></p>
+                    <p>
+                        Data e hora: <?php echo $event->getShowDate()->format('d/m/Y') ?>
+                        às <?php echo $event->getShowDate()->format('H:i'); ?></p>
+                    <p>
+                        <a class="btn btn-success pull-right"
+                           href="<?php echo $this->url('event', ['id' => $event->getId()]); ?>">
+                            Comprar ingresso &raquo;
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
