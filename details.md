@@ -11,6 +11,16 @@ como reaproveitamento de código, Docker, testes unitários (com cobertura de 10
 
 ![Image 2](doc/images/img-2.png)
 
+Escolhi o ZF3, não pelo fato de já trabalhar com ele e ter bastante coisa já definida de forma reutilizável.
+O Escolhi porque ele, juntamente do Symfony (em minha opinião) é um 
+exemplo de boas práticas de código. A orientação à objetos é levada 
+à sério, a testabilidade é intrínseca do framework, o MVC é muito 
+maduro e toda a utilização do mesmo implica em o dev saber muito bem o que 
+está fazendo, uma vez que o ZF é um framework que exige muito conhecimento: 
+você que tem que dizer tudo à ele. Se algo não funciona, a culpa é 
+exclusivamente sua!
+
+
 Segue um resumo do que utilizado no projeto:
 
 - Docker
