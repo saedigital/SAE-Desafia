@@ -1,0 +1,12 @@
+.page{
+  margin-top: 70px;
+}
+
+.shows #description{
+  height: 150px;
+  resize: none;
+}
+
+.shows.update .seat_value{
+  margin-bottom: 0 !important;
+}

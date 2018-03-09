@@ -1,0 +1,84 @@
+.page{
+  margin-top: 70px;
+}
+
+/* help */
+
+.help .row{
+  margin-bottom: 20px;
+}
+
+/* shows */
+
+.shows-wrapper .card{
+  margin: 15px 0;
+}
+
+.shows-wrapper .card-body ul,
+.about ul{
+  list-style: none;
+  padding: 0;
+}
+.shows-wrapper .card-body ul .oi,
+.about ul .oi{
+  width: 20px;
+  text-align: center;
+}
+
+
+/* seats */
+
+.seat-wrapper .seat{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  margin: 15px;
+}
+
+.seat-wrapper .seat .label{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+.seat-wrapper .seat label{
+  cursor: pointer;
+}
+.seat-wrapper .seat a{
+  color: white;
+}
+.seat-wrapper .seat a:hover{
+  text-decoration: none;
+}
+
+.seat-wrapper .seat input[type="checkbox"]{
+  display: none;
+}
+
+/* legend */
+
+.legend{
+  margin: 15px;
+}
+
+.legend ul{
+  list-style: none;
+  padding: 0;
+}
+
+.legend ul li{
+  display: inline-flex;
+  align-items: center;
+  margin-right: 15px;
+  font-size: 80%;
+}
+
+.legend ul li span{
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+}
