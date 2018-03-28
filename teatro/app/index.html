@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <title>Gerenciador de Espetáculos</title>
+</head>
+<body class="ge">
+    <header class="ge-header">
+        <h1 class="ge-header__title">Gerenciador de Espetáculos</h1>
+        <nav>
+            <ul class="ge-header__list">
+                <li><a href="cadastrar-espetaculo" class="js-cadastrar">Cadastrar novo espetáculo</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="ge-modal modal--cadastro">
+        <div class="ge-modal__container">
+            <div class="ge-modal__content">
+                <h4 class="ge-modal__title">Cadastrar Novo Espetáculo</h4>
+                <span class="alerta"></span>
+                <input type="text" name="nome" placeholder="Nome do Espetáculo">
+                <input type="number" name="poltronas" placeholder="Número de Poltronas">
+                <button class="ge-modal__cadastrar">Cadastrar</button>
+                <button class="ge-modal__fechar">fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="ge-modal modal--editar">
+        <div class="ge-modal__container">
+            <div class="ge-modal__content">
+                <h4 class="ge-modal__title">Editar Espetáculo</h4>
+                <span class="alerta"></span>
+                <input type="text" name="nome" placeholder="Nome do Espetáculo">
+                <input type="number" name="poltronas" placeholder="Número de Poltronas">
+                <button class="ge-modal__editar">Salvar</button>
+                <button class="ge-modal__fechar">fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="ge-modal modal--reserva">
+        <div class="ge-modal__container">
+            <div class="ge-modal__content">
+                <h4 class="ge-modal__title">Reservar Poltrona</h4>
+                <span class="alerta"></span>
+                <input type="text" name="nome" placeholder="Nome do Cliente">
+                <button class="ge-modal__reservar">Reservar</button>
+                <button class="ge-modal__fechar">fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="ge-modal modal--espetaculo">
+        <div class="ge-modal__container">
+            <div class="ge-modal__content">
+                <div class="ge-main__espetaculo"></div>
+                <button class="ge-modal__fechar">fechar</button>
+            </div>
+        </div>
+    </div>
+    
+    <main class="ge-main">
+        <div class="ge-main__container-espetaculos">
+            <ul class="ge-main__container-espetaculos__list">
+                
+            </ul>
+        </div>
+    </main>
+
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/actions.js"></script> 
+</body>
+</html>
