@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% include "topo.html" %}
+
+{% block title %}Sistema para Reserva de Assentos em Teatro{% endblock %}
+
+{% block body %}
+
+<div class="geral">
+
+{% include "menu.html" %}
+
+	<div class="content">
+
+  <div class="tb_lista_espetaculos">
+    <h3>Cadastrar novo Espetáculo:</h3><br>
+      <form  method="POST" action="{{ url_for('cadastrar') }}" name="cad_espetaculo" enctype="application/JSON">
+        Nome:<br>
+        <input type="text" name="nome_espetaculo" required="">
+        <br><br>
+        Informações:<br>
+        <textarea name="informacoes" rows="10" cols="71" required=""></textarea>
+        <br><br>
+        <input class="botao" type="submit" value="CADASTRAR">
+      </form>
+  </div><br>
+	<hr><br>
+  <div>
+    <table class="tb_espetaculo">
+      <h2 class="tb_espetaculo">ESPETÁCULOS CADASTRADOS</h2><br>
+    <tr>
+      <th>Espetáculo</th>
+      <th>Informações</th>
+      <th>Editar</th>
+      <th>Excluir</th>
+    </tr>
+    {% for ls_espetaculos in ls_espetaculo %}
+      <td>{{ls_espetaculos.nome_espetaculo}}</td>
+      <td>{{ls_espetaculos.informacoes}}</td>
+      <td><a href="editar_espetaculo?_id={{ls_espetaculos._id}}">Editar</a></td>
+			<td><a href="excluir_esp?nome_espetaculo={{ls_espetaculos.nome_espetaculo}}">Excluir</a></td>
+    </tr>
+    {% endfor %}
+    </table>
+  </div>
+
+	</div>
+
+</div>
+
+
+{% endblock %}

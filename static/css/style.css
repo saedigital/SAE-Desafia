@@ -1,0 +1,164 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: helvetica, sans-serif;
+}
+
+.geral {
+  position: relative;
+  min-height: 100%;
+}
+
+.image-topo {
+  max-width: 100%;
+  height: auto;
+}
+
+.home{
+  width: 70%;
+  margin: auto;
+  border: 0.3px solid #CCCCCC;
+  padding: 10px;
+}
+
+.footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-size: 14px;
+  text-align: center;
+}
+
+.content{
+  overflow: hidden;
+  padding: 20px;
+}
+
+.icone {
+  float: left;
+  margin: 10px;
+  max-width:300px;
+  max-height:250px;
+  width: auto;
+  height: auto;
+}
+
+
+.clearfix {
+  overflow: auto;
+}
+
+.menu{
+  margin: 25px 0;
+  text-align: center;
+}
+
+.tb_lista_espetaculos {
+  width: 100%;
+  margin:auto;
+  text-align: center;
+}
+
+.botao {
+  width: 170px;
+  height: 35px;
+  border: none;
+  background-color: #dcdcdc;
+  text-align: center;
+}
+
+.botao:hover {
+  background-color: #4682b4;
+}
+
+.bt_espetaculos {
+  width: 230px;
+  height: 60px;
+  border: none;
+  background-color: #A9A9A9;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.bt_espetaculos:hover {
+  background-color: #D3D3D3;
+}
+
+.bt_reserva {
+  width: 130px;
+  height: 25px;
+  border: none;
+  background-color: #dcdcdc;
+  text-align: center;
+}
+
+.bt_reserva:hover {
+  background-color: #4682b4;
+}
+
+.bloco_espetaculos {
+  width: 70%;
+  height: auto;
+  margin: auto;
+  margin-bottom: 50px;
+  text-align: justify;
+}
+
+.tb_espetaculo {
+  width: 70%;
+  margin: auto;
+  border-collapse: collapse;
+  text-align: center;
+}
+tr:nth-child(even) {
+  padding: 12px;
+  background-color: #f2f2f2;
+}
+
+th {
+  color: white;
+  background-color: #4682b4;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+}
+
+label {
+  display: inline-block;
+  padding: 12px 12px 12px 0;
+}
+
+hr {
+  height: 0.5px;
+  color: #CCCCCC;
+  background-color: #CCCCCC;
+  width: 35%;
+  margin: auto;
+}
+
+textarea{
+  border: 0.3px solid #CCCCCC;
+}
+
+input[type=text],
+select {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 40%;
+  margin: 8px 0;
+  padding: 12px 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.legendas {
+  text-align: center;
+}

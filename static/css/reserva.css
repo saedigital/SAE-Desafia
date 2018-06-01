@@ -1,0 +1,92 @@
+#Username {
+  border: none;
+  border-bottom: 3px solid;
+}
+
+.screen {
+  width: 100%;
+  height: 50px;
+  font-size: 15px;
+  line-height: 20px;
+  color: #fff;
+  background: #4388cc;
+  text-align:center;
+}
+
+.smallBox::before {
+  float: left;
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+  content: '.';
+}
+
+.greenBox::before {
+  background: green;
+  content: '';
+  text-align: center;
+}
+
+.redBox::before {
+  background: red;
+  content: '';
+  text-align: center;
+}
+
+.emptyBox::before {
+  background-color: #ccc;
+  box-shadow: inset 0 2px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 0 0 rgba(255, 255, 255, 0.8);
+  content: '';
+  text-align: center;
+}
+
+.seats {
+  border: 1px solid red;
+  background: yellow;
+}
+.seatGap {
+  width: 40px;
+}
+
+.seatVGap {
+  height: 40px;
+}
+
+table {
+  text-align: center;
+}
+
+.Displaytable {
+  text-align: center;
+}
+
+.Displaytable td,
+.Displaytable th {
+  border: 1px solid;
+  text-align: left;
+}
+
+input[type=checkbox] {
+  width: 0;
+  margin-right: 18px;
+}
+
+input[type=checkbox]:before {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-color: #ccc;
+  box-shadow: inset 0 2px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 0 0 rgba(255, 255, 255, 0.8);
+  content: '';
+  text-align: center;
+  vertical-align: middle;
+}
+
+input[type=checkbox]:checked:before {
+  font-size: 15px;
+  background-color: green;
+}
+
+form[name='cad_reserva'] > textarea {
+  resize: none;
+}
