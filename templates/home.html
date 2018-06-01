@@ -1,0 +1,23 @@
+
+{% for ls_espetaculos in ls_espetaculo %}
+<div class="content">
+  <div class="clearfix home">
+
+    <h2>{{ls_espetaculos.nome_espetaculo}}</h2></br>
+        <div>
+            <a href="reservas"><button class="bt_reserva"><b>Reservas</b></button></a>
+        </div>
+
+        <img class="icone" src="{{ url_for('static', filename='images/masc_teatro.png') }}" alt="icone teatro" />
+
+        <div>
+
+            {{ls_espetaculos.informacoes}}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endfor %}

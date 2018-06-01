@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% include "topo.html" %}
+
+{% block title %}Sistema para Reserva de Assentos em Teatro{% endblock %}
+
+{% block body %}
+
+
+<div class="geral">
+{% include "menu.html" %}
+<center>
+	<div>
+		<h2>Escolha o Espetáculo:<h2><br><br>
+		{% for ls_espetaculos in ls_espetaculo %}
+			<a href="info_reserva?nome_espetaculo={{ls_espetaculos.nome_espetaculo}}"><button class="bt_espetaculos">{{ls_espetaculos.nome_espetaculo}}</button></a>
+		{% endfor %}
+	</div>
+</center>
+
+
+</div>
+
+{% endblock %}

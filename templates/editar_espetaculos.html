@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% include "topo.html" %}
+
+{% block title %}Sistema para Reserva de Assentos em Teatro{% endblock %}
+
+{% block body %}
+
+<div class="geral">
+
+{% include "menu.html" %}
+
+	<div class="content">
+
+  <div class="tb_lista_espetaculos">
+    <h3>Editar Informações do Espetáculo</h3><br>
+
+      <form  method="POST" action="atualiza_esp" name="atualiza_esp" enctype="application/JSON">
+
+				{% for editar in edita %}
+
+				<div hidden="true"><input type="text" name="_id" value="{{editar._id}}"></div>
+        Nome:
+				        {{editar.nome_espetaculo}}<br><br>
+
+        Informações:<br>
+        		<textarea name="informacoes2" rows="10" cols="71" value="{{editar.informacoes}}" required="">{{editar.informacoes}}</textarea>
+        <br><br>
+				<input class="botao" type="submit" value="SALVAR">
+				{% endfor %}
+      </form>
+
+  </div>
+  </div>
+
+</div>
+
+
+{% endblock %}

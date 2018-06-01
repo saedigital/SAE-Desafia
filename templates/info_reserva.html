@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% include "topo.html" %}
+
+{% block title %}Sistema para Reserva de Assentos em Teatro{% endblock %}
+
+{% block body %}
+
+<div class="geral">
+{% include "menu.html" %}
+
+<center>
+	<div class="content">
+		<div>
+	    <table>
+	      <h1>Detalhe das Reservas</h1>
+	    <tr>
+	      <th>Espetáculo</th>
+	      <th>Nome</th>
+	      <th>Qnt. Assentos</th>
+				<th>Posição Assentos</th>
+	      <th>Cancelar</th>
+	    </tr>
+	    {% for info_reservas in info_reserva %}
+
+	      <td>{{info_reservas.res_espetaculo}}</td>
+	      <td>{{info_reservas.res_nome_comprador}}</td>
+				<td class="soma-assentos" value="{{info_reservas.res_qtd_assentos}}">{{info_reservas.res_qtd_assentos}}</td>
+	      <td>{{info_reservas.res_pos_assentos}}</td>
+	      <td><a href="excluir_res?_id={{info_reservas._id}}">Cancelar</a></td>
+	    </tr>
+	    {% endfor %}
+
+		 </div>
+
+	</div>
+</table><br>
+
+<table><br><br>
+	<h3>Outros Detalhes</h3>
+<tr>
+	<th>Total de de Reservas</th>
+	<th>Total Arrecadado</th>
+	<th>Assentos Disponíveis</th>
+</tr>
+<tr>
+	<td id="qtdtotal"></td>
+	<td id="v_total"></td>
+	<td id="aslivres"></td>
+</tr>
+</table><br>
+	<a href="financeiro"><button class="bt_reserva"><b>Volta</b></button></a><br>
+</center>
+	</div>
+</div>
+
+{% endblock %}
