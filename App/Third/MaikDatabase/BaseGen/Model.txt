@@ -1,0 +1,17 @@
+<?php
+namespace Models;
+
+use Models\Base\Base_%NAMECLASS%;
+
+class Model_%NAMECLASS% extends Base_%NAMECLASS% {
+
+    protected static $_instance;
+
+    public static function init_instance(){
+        if (is_null(self::$_instance)){
+            self::$_instance = new static();
+        }
+        return self::$_instance;
+    }
+
+}
