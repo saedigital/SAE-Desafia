@@ -1,0 +1,31 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 31/07/2018, 13:48:57
+    Author     : ander
+*/
+.listaEspetaculos{
+    margin-bottom: 20px;
+}
+.espetaculo{
+    padding: 15px;
+    border: 1px solid #ccc;
+}
+.espetaculo h2{
+    color:#9c27b0 !important;
+    font-weight: bold;
+    text-align: center;
+}
+.espetaculo .btn{
+    text-align: center;
+}
+.formulario{
+    padding: 15px;
+}
+.main-raised{
+    padding-bottom: 20px !important;
+}
+
