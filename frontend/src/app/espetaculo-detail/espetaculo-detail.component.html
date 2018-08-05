@@ -1,0 +1,77 @@
+<nav class="navbar navbar-default">
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Editar o espetaculo</h4>
+          </div>
+          <div class="modal-body">
+            <form action="/action_page.php">
+              <div class="form-group">
+                <label for="email">Titulo:</label>
+                <input type="text" class="form-control" id="email" [value]="espetaculo.titulo" (input)="espetaculo.titulo">
+              </div>
+              <div class="form-group">
+                <label for="pwd">Descrição:</label>
+                <input type="text" class="form-control" id="pwd" value="{{this.espetaculo.descricao}}">
+              </div>
+              <div class="form-group">
+                <label for="pwd">Total de Poltronas:</label>
+                <input type="number" class="form-control" id="pwd" value="{{this.espetaculo.total_de_poltronas}}">
+              </div>
+              <button type="submit" (click)=editar() class="btn btn-primary">Salvar</button>
+            </form> 
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Teatro Desafio</a>
+      </div>
+      <div class="pull-right">
+        <!-- <a class="navbar-brand" href="/login/" >Entrar</a> -->
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        
+      </div>
+    </div>
+  </nav>
+  <div class="row">
+      <div class="col-lg-3">
+        
+      </div>
+      <div class="col-lg-6" style="text-align:center;">
+        <h1> {{espetaculo.titulo}} </h1>
+        <h3> {{espetaculo.descricao}} </h3>
+        <h4> Numero total de poltronas: {{espetaculo.total_de_poltronas}} </h4>
+        
+        <br>
+        <button class="btn btn-primary pull-right" value="Editar" data-toggle="modal" data-target="#myModal">Editar</button>
+        <button (click)="cancelar()" class="btn btn-danger pull-left" value="Cancelar">Cancelar</button>
+      </div>
+    
+  </div>
+  
+  <div class="row">
+      <div class="col-md-12">
+        
+      </div>
+  </div>
