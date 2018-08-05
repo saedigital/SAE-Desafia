@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class Poltrona(models.Model):
     
     numeracao = models.PositiveIntegerField(default=0)
-    espetaculo = models.ForeignKey(Espetaculo, on_delete=models.PROTECT)
+    espetaculo = models.ForeignKey(Espetaculo, on_delete=models.CASCADE)
 
 
 class Reserva(models.Model):

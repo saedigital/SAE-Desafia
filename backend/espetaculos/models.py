@@ -10,3 +10,6 @@ class Espetaculo(models.Model):
 
     def __str__(self):
         return self.titulo
+
+    def save(self, *args, **kwargs):
+        super(Espetaculo, self).save(*args, **kwargs)

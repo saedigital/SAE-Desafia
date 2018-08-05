@@ -10,4 +10,5 @@ class EspetaculoSerializer(serializers.ModelSerializer):
             'id',
             'titulo',
             'descricao',
+            'total_de_poltronas',
         )
