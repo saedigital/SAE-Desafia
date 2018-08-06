@@ -17,10 +17,14 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import include
 from .routers import router
+from login.views import CustomAuthToken
+from login.views import CustomSignup
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls'))
+    path('api-auth/', include('rest_framework.urls')),
+    path('api-token-auth/', CustomAuthToken.as_view()),
+    path('api-token-auth/signup/', CustomSignup.as_view())
 ]

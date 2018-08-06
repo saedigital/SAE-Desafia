@@ -11,5 +11,6 @@ class Poltrona(models.Model):
 
 class Reserva(models.Model):
 
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    # usuario = models.ForeignKey(User, null=True, blank=True, 
+    #     on_delete=models.CASCADE)
     poltrona = models.ForeignKey(Poltrona, on_delete=models.CASCADE)
