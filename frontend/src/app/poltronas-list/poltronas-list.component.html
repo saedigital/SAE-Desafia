@@ -26,15 +26,37 @@
       </div>
       <br>
       <div *ngFor="let poltrona of poltronas">
-        <div class="col-sm-1 col-md-1">
-            <div class="thumbnail">
-              <div class="caption">
+        <div *ngIf="!poltrona.reserva;else other_content" class="col-sm-2 col-md-2" style="text-align: center">
+            <div class="thumbnail" (click)=reservar(poltrona.numeracao)>
+              <div>
                 <h3>Nº</h3>
                 <h3>{{ poltrona.numeracao }}</h3>
                 <!-- <button value='Reservar'>Reservar</button> -->
+                <button class="btn btn-success"
+                    [swal]="{ title: 'Deseja reservar?', input: 'button' }"
+                    (confirm)="reservar(poltrona.id)"
+                    (cancel)="handleRefusalToSetEmail($event)">
+                    Reservar
+                </button>
               </div>
             </div>
           </div>
+          <ng-template #other_content>
+            <div class="col-sm-2 col-md-2" style="text-align: center">
+              <div class="thumbnail" (click)=reservar(poltrona.numeracao)>
+                <div>
+                  <h3>Nº</h3>
+                  <h3>{{ poltrona.numeracao }}</h3>
+                  <button class="btn btn-danger"
+                      [swal]="{ title: 'Deseja cancelar a reserva?', input: 'button' }"
+                      (confirm)="cancelar(poltrona.reserva)"
+                      (cancel)="handleRefusalToSetEmail($event)">
+                      Cancelar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </ng-template>
       </div>
   </div>
 </div>

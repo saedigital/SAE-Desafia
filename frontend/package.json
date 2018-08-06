@@ -7,7 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"    
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -20,8 +20,10 @@
     "@angular/platform-browser": "^6.1.0",
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
+    "@toverux/ngx-sweetalert2": "^4.0.0",
     "core-js": "^2.5.4",
     "rxjs": "^6.0.0",
+    "sweetalert2": "^7.26.10",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

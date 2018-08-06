@@ -10,6 +10,9 @@ import { EspetaculosService } from '../services/espetaculos.service';
 export class EspetaculosListComponent implements OnInit {
 
   public espetaculos: any;
+  public titulo: string;
+  public descricao: string;
+  public total_de_poltronas: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -18,10 +21,35 @@ export class EspetaculosListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // TODO adicionar authguard posteriormente e proteger todas as rotas
+    let token = window.localStorage.getItem('token')
+    if (token){
+      this.getAll()  
+    }
+    else{
+      this.router.navigate(['login']); 
+    }
     
+  }
+  
+  getAll(){
     this.espetaculosService.getAll().then((response)=>{
       this.espetaculos = response['results'];
     })
+  }
+  
+  criarEspetaculo(){
+    let data = {
+      titulo: this.titulo,
+      descricao: this.descricao,
+      total_de_poltronas: this.total_de_poltronas ? this.total_de_poltronas : 10
+    }
+    this.espetaculosService.create(data).then((response)=>{
+      this.getAll()
+    })
+  }
+
+  isLogged(){
 
   }
 

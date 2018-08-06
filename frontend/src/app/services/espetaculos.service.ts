@@ -53,10 +53,10 @@ export class EspetaculosService {
     });
   }
 
-  update(obj) {
+  update(id, obj) {
     console.log('>>>', obj)
     return new Promise(resolve => {
-      this.http.put(this.apiUrl + 'espetaculos/' + obj['id'] + '/', obj, this.httpOptions).subscribe(data => {
+      this.http.put(this.apiUrl + 'espetaculos/' + id + '/', obj, this.httpOptions).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
