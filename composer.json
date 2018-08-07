@@ -1,0 +1,24 @@
+{
+    "name": "biracarvalho/reserve",
+    "description": "Sistema de reserva de poltronas para Espetaculos",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ubiratã Carvalho",
+            "email": "birah.carvalho@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Application\\": "Application",
+            "Config\\": "Config"
+        }
+    },
+    "require": {
+        "psr/http-message": "^1.0",
+        "nikic/fast-route": "^1.3",
+        "league/plates": "^3.3",
+        "doctrine/dbal": "^2.8"
+    }
+}
