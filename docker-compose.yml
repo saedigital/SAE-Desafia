@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  django:
+    build: backend
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/backend
+    ports:
+      - "8000:8000"
+  angular:
+    build: frontend
+    ports:
+      - "4200:4200"
+    depends_on:
+      - django
