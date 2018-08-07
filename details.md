@@ -8,11 +8,11 @@
 
 PHP7 - Utilizei o servidor built-in no desenvolvimento.
 
-MySQL - Um dump do banco de dados está na raiz do projeto.
+MySQL - Um dump do banco de dados está na raiz do projeto. Configuraçoes de conexão estão no arquivo conexao.php na raiz do projeto.
 
 Composer - composer.json na raiz do projeto.
 
-NPM  - package.json está na pasta Public. No front-end foram utilizados o Bootstrap 4, JQuery e popper.js.
+NPM  - package.json está na pasta /Public. Foram utilizados no front-end Bootstrap 4, JQuery e popper.js.
 
 
 **O index.php do projeto está na pasta /Public, após a instalação das dependencias rodar o servidor do php a partir desta pasta.**
