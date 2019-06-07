@@ -47,3 +47,4 @@ Confirma abaixo os recursos que devem ser implementados na aplicação:
 Se surgir alguma dúvida, consulte as [perguntas feitas anteriormente](https://github.com/saedigital/SAE-Desafia/issues).
 
 Caso não encontre a sua resposta, sinta-se à vontade para [abrir uma issue](https://github.com/saedigital/SAE-Desafia/issues/new) =]
+
