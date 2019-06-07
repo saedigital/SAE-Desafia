@@ -1,0 +1,16 @@
+[
+  {
+    "model": "poltronas.poltronas",
+    "pk": 1,
+    "fields": {
+      "numero": "C01"
+    }
+  },
+  {
+    "model": "poltronas.poltronas",
+    "pk": 2,
+    "fields": {
+      "numero": "C02"
+    }
+  }
+]
