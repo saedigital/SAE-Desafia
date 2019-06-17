@@ -30,24 +30,98 @@
     <section class="header">
       SAE Desafia
     </section>
+
     <section>
-      <h2 class="text-center">Eventos</h2>
+      <h2 class="text-center">Espetaculo</h2>
       <div class="center-contents-horizontal">
-        <button class="button primary small-margin-x" onclick="onNovoEventoClicked()">
-          Novo evento
+        <button
+          class="button primary small-margin-x"
+          onclick="onNovoEventoClicked()"
+        >
+          Novo espetáculo
         </button>
-        <select class="select">
+        <select class="select" id="espetaculos">
           <option> </option>
         </select>
 
-        <button class="button danger small-margin-x" onclick="onDeletarEventoClicked()">
-          Deletar evento
+        <button
+          class="button warning small-margin-x"
+          onclick="onEditarEventoClicked()"
+        >
+          Editar espetaculo
+        </button>
+
+        <button
+          class="button danger small-margin-x"
+          onclick="onDeletarEventoClicked()"
+        >
+          Deletar espetaculo
         </button>
       </div>
+
+      <div id="container-assentos" class="container-assentos"></div>
     </section>
+
+    <div class="modal-overlay" id="modal-espetaculo">
+      <div class="modal-body">
+        <h2>Espetáculo</h2>
+        <input type="hidden" id="espetaculo-id" />
+        <input placeholder="Nome" id="espetaculo-nome" />
+        <input
+          placeholder="Numero de assentos"
+          type="number"
+          id="espetaculo-assentos"
+        />
+        <div class="danger" id="espetaculo-error" style="display: none;">
+          Erro
+        </div>
+        <div>
+          <button class="button primary" onclick="onSalvarEspetaculoClicked()">
+            Salvar
+          </button>
+          <button class="button danger" onclick="onCancelarEspetaculoClicked()">
+            cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-reserva">
+      <div class="modal-body">
+        <h2>Reserva</h2>
+        <input type="hidden" id="reserva-espetaculo-id" />
+        <input type="hidden" id="reserva-cadeira" />
+        <input placeholder="Nome" id="reserva-nome" />
+        <input type="email" placeholder="Email" id="reserva-email" />
+
+        <div class="danger" id="reserva-error" style="display: none;">
+          Erro
+        </div>
+        <div>
+          <button class="button primary" onclick="onSalvarReservaClicked()">
+            Salvar
+          </button>
+          <button class="button danger" onclick="onCancelarReservaClicked()">
+            cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!--
+      <div class="modal-overlay" id="modal-assento"></div>
+    -->
   </body>
 
-  <template> </template>
+  <template id="template-assento">
+    <div class="assento">
+      <div class="circle">
+        <div class="center-content"></div>
+      </div>
+
+      <div class="text inline-block"></div>
+    </div>
+  </template>
 
   <script src="/index.js"></script>
 </html>

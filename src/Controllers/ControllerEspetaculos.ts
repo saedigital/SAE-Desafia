@@ -26,11 +26,9 @@ export class ControllerEspetaculos {
       this.postEspetaculo
     );
 
-    router.delete(
-      "/espetaculo/:id",
-      Validate,
-      this.deleteEspetaculo
-    );
+    router.get("/espetaculo/:id", Validate, this.getEspetaculo);
+
+    router.delete("/espetaculo/:id", Validate, this.deleteEspetaculo);
 
     router.post(
       "/espetaculo/:id/reservar",
@@ -60,8 +58,24 @@ export class ControllerEspetaculos {
     );
   }
 
+  public async getEspetaculo(request: Request, response: Response) {
+    const espetaculo = await Espetaculo.findById(request.params.id)
+      .select("-reservas.nomePessoa -reservas.email")
+      .exec();
+
+    if (espetaculo) {
+      response.status(OK).send(espetaculo);
+    } else {
+      response.status(UNPROCESSABLE_ENTITY).send();
+    }
+  }
+
   public async getEspetaculos(request: Request, response: Response) {
-    const espetaculos = await Espetaculo.find().exec();
+    const espetaculos = await Espetaculo.find()
+      .select({
+        nome: 1
+      })
+      .exec();
     response.status(OK).send(espetaculos);
   }
 
@@ -72,6 +86,11 @@ export class ControllerEspetaculos {
       espetaculo = await Espetaculo.findById(request.body._id);
 
       if (!espetaculo) {
+        response.status(UNPROCESSABLE_ENTITY).send();
+        return;
+      }
+
+      if (espetaculo.reservas.length > 0 && espetaculo.numeroAssentos != request.body.numeroAssentos){
         response.status(UNPROCESSABLE_ENTITY).send();
         return;
       }
@@ -105,10 +124,8 @@ export class ControllerEspetaculos {
   }
 
   public async postReservar(request: Request, response: Response) {
-    const espetaculo = await Espetaculo.findById(
-      request.params.id
-    ).exec();
-    
+    const espetaculo = await Espetaculo.findById(request.params.id).exec();
+
     if (!espetaculo) {
       response.status(UNPROCESSABLE_ENTITY).send();
       return;
@@ -123,7 +140,9 @@ export class ControllerEspetaculos {
       return;
     }
 
-    const reservaComMesmaCadeira = espetaculo.reservas.find(reserva => reserva.numeroCadeira === numeroCadeira);
+    const reservaComMesmaCadeira = espetaculo.reservas.find(
+      reserva => reserva.numeroCadeira === numeroCadeira
+    );
     if (reservaComMesmaCadeira) {
       response.status(UNPROCESSABLE_ENTITY).send();
       return;
@@ -151,7 +170,7 @@ export class ControllerEspetaculos {
     }
 
     const reserva = espetaculo.reservas.id(request.params.idReserva);
-    if (!reserva){
+    if (!reserva) {
       response.status(UNPROCESSABLE_ENTITY).send();
       return;
     }

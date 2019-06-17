@@ -19,6 +19,15 @@ html, body {
   color: white;
 }
 
+input{
+  box-sizing: border-box;
+  width: 100%;
+  display: block;
+  padding: 0.5rem;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+}
+
 .modal-overlay{
   z-index: 100;
 
@@ -31,7 +40,7 @@ html, body {
 
   background-color: rgba(0, 0, 0, 0.3);
   
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
 }
@@ -46,11 +55,23 @@ html, body {
   border-color: rgb(121, 202, 0);
 }
 
+.warning{
+  background-color: rgb(235, 235, 0);
+  border-color: rgb(199, 199, 0);
+}
+
 .danger{
   background-color: rgb(221, 0, 0);
   border-color: rgb(153, 0, 0);
 
   color: white;
+}
+
+.center-content{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .center-contents-horizontal{
@@ -74,7 +95,41 @@ html, body {
   text-align: center;
 }
 
+.container-assentos{
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+}
+
+.assento{
+  box-sizing: border-box;
+  padding: 0.5rem;
+}
+
+.assento:hover{
+  border: 1px solid black;
+  cursor: pointer;
+}
+
 .select{
   padding: 0.5rem;
   border-radius: 5px;
+}
+
+.circle{
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+}
+
+.red{
+  background-color: #FF0000;
+}
+
+.gray{
+  background-color: #CDCDCD;
+}
+
+.inline-block{
+  display: inline-block;
 }
