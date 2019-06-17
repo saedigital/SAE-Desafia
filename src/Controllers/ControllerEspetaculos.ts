@@ -4,6 +4,7 @@ import { check } from "express-validator/check";
 import { Validate } from "../Validate";
 import { UNPROCESSABLE_ENTITY, OK } from "http-status-codes";
 import { Reserva } from "Entities/Reserva";
+import { ErrorMessage } from "CustomErrorMessage";
 
 export class ControllerEspetaculos {
   public registrarEndpoints(router: Router) {
@@ -86,12 +87,12 @@ export class ControllerEspetaculos {
       espetaculo = await Espetaculo.findById(request.body._id);
 
       if (!espetaculo) {
-        response.status(UNPROCESSABLE_ENTITY).send();
+        response.status(UNPROCESSABLE_ENTITY).send(new ErrorMessage("Espetáculo não existente"));
         return;
       }
 
       if (espetaculo.reservas.length > 0 && espetaculo.numeroAssentos != request.body.numeroAssentos){
-        response.status(UNPROCESSABLE_ENTITY).send();
+        response.status(UNPROCESSABLE_ENTITY).send(new ErrorMessage("Não é possível mudar a quantidade de assentos depois que houverem reservas"));
         return;
       }
     } else {
@@ -111,7 +112,7 @@ export class ControllerEspetaculos {
     const espetaculo = await Espetaculo.findById(request.params.id).exec();
 
     if (!espetaculo) {
-      response.status(UNPROCESSABLE_ENTITY);
+      response.status(UNPROCESSABLE_ENTITY).send(new ErrorMessage("Espetáculo não existente"));
       return;
     }
 
@@ -127,7 +128,7 @@ export class ControllerEspetaculos {
     const espetaculo = await Espetaculo.findById(request.params.id).exec();
 
     if (!espetaculo) {
-      response.status(UNPROCESSABLE_ENTITY).send();
+      response.status(UNPROCESSABLE_ENTITY).send(new ErrorMessage("Espetáculo não existente"));
       return;
     }
 
@@ -136,7 +137,7 @@ export class ControllerEspetaculos {
     const numeroCadeira = request.body.numeroCadeira;
 
     if (numeroCadeira <= 0 || numeroCadeira > espetaculo.numeroAssentos) {
-      response.status(UNPROCESSABLE_ENTITY).send();
+      response.status(UNPROCESSABLE_ENTITY).send(new ErrorMessage("Número de cadeira inválido"));
       return;
     }
 
@@ -144,7 +145,7 @@ export class ControllerEspetaculos {
       reserva => reserva.numeroCadeira === numeroCadeira
     );
     if (reservaComMesmaCadeira) {
-      response.status(UNPROCESSABLE_ENTITY).send();
+      response.status(UNPROCESSABLE_ENTITY).send(new ErrorMessage("Já existe uma reserva com esse número de cadeira"));
       return;
     }
 
@@ -165,13 +166,13 @@ export class ControllerEspetaculos {
     ).exec();
 
     if (!espetaculo) {
-      response.status(UNPROCESSABLE_ENTITY).send();
+      response.status(UNPROCESSABLE_ENTITY).send(new ErrorMessage("Espetáculo não existente"));
       return;
     }
 
     const reserva = espetaculo.reservas.id(request.params.idReserva);
     if (!reserva) {
-      response.status(UNPROCESSABLE_ENTITY).send();
+      response.status(UNPROCESSABLE_ENTITY).send(new ErrorMessage("Reserva não existente"));
       return;
     }
 

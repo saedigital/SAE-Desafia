@@ -53,7 +53,7 @@ function atualizarEventos() {
     const emptyElement = document.createElement("option");
     selectEspetaculos.appendChild(emptyElement);
 
-    for(const espetaculo of data){
+    for (const espetaculo of data) {
       const element = document.createElement("option");
 
       element.setAttribute("value", espetaculo._id);
@@ -64,30 +64,35 @@ function atualizarEventos() {
   });
 }
 
-function clearElementChilds(element){
-  while(element.firstChild){
+function clearElementChilds(element) {
+  while (element.firstChild) {
     element.removeChild(element.firstChild);
   }
 }
 
-function onEspetaculoChanged(event){
+function onEspetaculoChanged(event) {
   const id = event.target.value;
 
-  if (id){
-    atualizarAssentos(id);
+  if (id) {
+    atualizarPagina(id);
   }
 }
 
-function atualizarAssentos(idEspetaculo){
+function atualizarPagina(idEspetaculo) {
   const elementoAssentos = document.getElementById("container-assentos");
 
   clearElementChilds(elementoAssentos);
 
-  get("api/espetaculo/" + idEspetaculo).then((espetaculo) => {    
-    for(let i = 0; i < espetaculo.numeroAssentos; i++){
-      const templateCopy = document.importNode(document.getElementById("template-assento").content, true);
+  get("api/espetaculo/" + idEspetaculo).then(espetaculo => {
+    for (let i = 0; i < espetaculo.numeroAssentos; i++) {
+      const templateCopy = document.importNode(
+        document.getElementById("template-assento").content,
+        true
+      );
 
-      const reserva = espetaculo.reservas.find(reserva => reserva.numeroCadeira == i);
+      const reserva = espetaculo.reservas.find(
+        reserva => reserva.numeroCadeira == i
+      );
 
       const divCirculo = templateCopy.querySelector(".circle");
       const divNumero = templateCopy.querySelector(".center-content");
@@ -98,24 +103,28 @@ function atualizarAssentos(idEspetaculo){
       root.setAttribute("data-assento", i);
       root.setAttribute("data-espetaculo", idEspetaculo);
 
-      if (reserva){
+      if (reserva) {
         root.setAttribute("data-reserva", reserva._id);
 
         divCirculo.classList.add("red");
         divTexto.textContent = "Reservado";
-      }else{
+      } else {
         divCirculo.classList.add("gray");
         divTexto.textContent = "Livre";
       }
 
       root.addEventListener("click", onAssentoClicked);
 
-      elementoAssentos.appendChild(templateCopy);        
-    }
+      elementoAssentos.appendChild(templateCopy);
+    } // Assentos
+
+    document.getElementById("assentos-disponiveis").textContent = espetaculo.numeroAssentos - espetaculo.reservas.length;
+    document.getElementById("assentos-ocupados").textContent = espetaculo.reservas.length;
+    document.getElementById("arrecadacao-espetaculo").textContent = espetaculo.preco * espetaculo.reservas.length;
   });
 }
 
-function getReservaFromModal(){
+function getReservaFromModal() {
   const idEspetaculoElement = document.getElementById("reserva-espetaculo-id");
   const nomeElement = document.getElementById("reserva-nome");
   const emailElement = document.getElementById("reserva-email");
@@ -129,16 +138,16 @@ function getReservaFromModal(){
   };
 }
 
-function onSalvarReservaClicked(){
+function onSalvarReservaClicked() {
   const reserva = getReservaFromModal();
-  
-  if (!reserva.nomePessoa){
+
+  if (!reserva.nomePessoa) {
     setReservaErrorMessage("O nome não pode ser vazio");
     showReservaErrorMessage();
     return;
   }
 
-  if (!reserva.email){
+  if (!reserva.email) {
     setReservaErrorMessage("O email não pode ser vazio");
     showReservaErrorMessage();
     return;
@@ -146,36 +155,36 @@ function onSalvarReservaClicked(){
 
   post(`api/espetaculo/${reserva.idEspetaculo}/reservar`, reserva).then(() => {
     hideReservaModal();
-    
+
     atualizarEventos();
-    atualizarAssentos(reserva.idEspetaculo);
+    atualizarPagina(reserva.idEspetaculo);
   });
 }
 
-function showReservaErrorMessage(){
+function showReservaErrorMessage() {
   document.getElementById("reserva-error").style.display = "block";
 }
 
-function hideReservaErrorMessage(){
+function hideReservaErrorMessage() {
   document.getElementById("reserva-error").style.display = "none";
 }
 
-function setReservaErrorMessage(message){
+function setReservaErrorMessage(message) {
   document.getElementById("reserva-error").innerText = message;
 }
 
-function onCancelarReservaClicked(){
+function onCancelarReservaClicked() {
   hideReservaModal();
 }
 
-function getEspetaculoFromModal(){
+function getEspetaculoFromModal() {
   const idElement = document.getElementById("espetaculo-id");
   const nomeElement = document.getElementById("espetaculo-nome");
   const assentosElement = document.getElementById("espetaculo-assentos");
 
   const espetaculo = {};
 
-  if (idElement.value){
+  if (idElement.value) {
     espetaculo._id = idElement.value;
   }
 
@@ -185,34 +194,34 @@ function getEspetaculoFromModal(){
   return espetaculo;
 }
 
-function setEspetaculoErrorMessage(message){
+function setEspetaculoErrorMessage(message) {
   document.getElementById("espetaculo-error").innerText = message;
 }
 
-function showEspetaculoError(){
+function showEspetaculoError() {
   document.getElementById("espetaculo-error").style.display = "block";
 }
 
-function hideEspetaculoError(){
+function hideEspetaculoError() {
   document.getElementById("espetaculo-error").style.display = "hidden";
 }
 
-function onSalvarEspetaculoClicked(){
+function onSalvarEspetaculoClicked() {
   const espetaculo = getEspetaculoFromModal();
 
-  if (!espetaculo.nome){
+  if (!espetaculo.nome) {
     setEspetaculoErrorMessage("O nome não pode ser vazio");
     showEspetaculoError();
     return;
   }
 
-  if (!espetaculo.numeroAssentos){
+  if (!espetaculo.numeroAssentos) {
     setEspetaculoErrorMessage("A quantidade de assentos não pode ser vazia");
     showEspetaculoError();
     return;
   }
 
-  if (espetaculo.numeroAssentos < 0){
+  if (espetaculo.numeroAssentos < 0) {
     setEspetaculoErrorMessage("A quantidade de assentos não pode ser negativa");
     showEspetaculoError();
     return;
@@ -224,49 +233,49 @@ function onSalvarEspetaculoClicked(){
     hideEspetaculoModal();
     atualizarEventos();
 
-    if (espetaculo._id){
-      atualizarAssentos(espetaculo._id);
+    if (espetaculo._id) {
+      atualizarPagina(espetaculo._id);
     }
   });
 }
 
-function onCancelarEspetaculoClicked(){
+function onCancelarEspetaculoClicked() {
   hideEspetaculoModal();
 }
 
-function hideEspetaculoModal(){
+function hideEspetaculoModal() {
   document.getElementById("modal-espetaculo").style.display = "none";
 }
 
-function showEspetaculoModal(){
+function showEspetaculoModal() {
   document.getElementById("modal-espetaculo").style.display = "flex";
 }
 
-function onAssentoClicked(event){
+function onAssentoClicked(event) {
   const element = event.target;
   const idReserva = element.getAttribute("data-reserva");
   const idEspetaculo = element.getAttribute("data-espetaculo");
   const numeroCadeira = element.getAttribute("data-assento");
 
-  if (idReserva){
+  if (idReserva) {
     del(`api/espetaculo/${idEspetaculo}/reserva/${idReserva}`).then(() => {
-      atualizarAssentos(idEspetaculo);
+      atualizarPagina(idEspetaculo);
     });
-  }else{
+  } else {
     document.getElementById("reserva-espetaculo-id").value = idEspetaculo;
     document.getElementById("reserva-cadeira").value = numeroCadeira;
     document.getElementById("reserva-nome").value = "";
     document.getElementById("reserva-email").value = "";
-    
+
     showReservaModal();
   }
 }
 
-function showReservaModal(){
+function showReservaModal() {
   document.getElementById("modal-reserva").style.display = "flex";
 }
 
-function hideReservaModal(){
+function hideReservaModal() {
   document.getElementById("modal-reserva").style.display = "none";
 }
 
@@ -276,22 +285,22 @@ function onNovoEventoClicked() {
 
 function onEditarEventoClicked() {
   const idSelecionado = document.getElementById("espetaculos").value;
-  if (idSelecionado){
+  if (idSelecionado) {
     get("api/espetaculo/" + idSelecionado).then(espetaculo => {
       document.getElementById("espetaculo-id").value = espetaculo._id;
       document.getElementById("espetaculo-nome").value = espetaculo.nome;
-      document.getElementById("espetaculo-assentos").value = espetaculo.numeroAssentos;
+      document.getElementById("espetaculo-assentos").value =
+        espetaculo.numeroAssentos;
 
       showEspetaculoModal();
     });
   }
-  
 }
 
 function onDeletarEventoClicked() {
   const idEspetaculo = document.getElementById("espetaculos").value;
 
-  if (idEspetaculo){
+  if (idEspetaculo) {
     del(`api/espetaculo/${idEspetaculo}`).then(() => {
       atualizarEventos();
       clearElementChilds(document.getElementById("container-assentos"));
@@ -299,7 +308,7 @@ function onDeletarEventoClicked() {
   }
 }
 
-function attachEventHandlers(){
+function attachEventHandlers() {
   const selectEspetaculos = document.getElementById("espetaculos");
   selectEspetaculos.addEventListener("change", onEspetaculoChanged);
 }
