@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./src",
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "strict": true,
+    "target": "es6",
+    "lib": [
+      "es2017"
+    ],
+    "paths": {
+      "@/*": [
+          "src/*"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "vendor",
+    "**/*.spec.ts"
+  ]
+}
