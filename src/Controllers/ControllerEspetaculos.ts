@@ -4,7 +4,7 @@ import { check } from "express-validator/check";
 import { Validate } from "../Validate";
 import { UNPROCESSABLE_ENTITY, OK } from "http-status-codes";
 import { Reserva } from "Entities/Reserva";
-import { ErrorMessage } from "CustomErrorMessage";
+import { ErrorMessage } from "ErrorMessage";
 
 export class ControllerEspetaculos {
   public registrarEndpoints(router: Router) {
