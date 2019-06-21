@@ -40,8 +40,18 @@ function del(url = "", data = {}) {
   });
 }
 
-function get(url = "") {
-  return fetch(BASE_URL + url).then(response => response.json());
+function get(url = "", params = {}) {
+  let encodedParameters = [];
+
+  for(const key of Object.keys(params)){
+    encodedParameters.push(`${key}=${encodeURIComponent(params[key])}`);
+  }
+
+  if (encodedParameters.length > 0){
+    return fetch(BASE_URL + url + "?" + encodedParameters.join(";")).then(response => response.json());
+  }else{
+    return fetch(BASE_URL + url).then(response => response.json());
+  }
 }
 
 function atualizarEventos() {
@@ -56,7 +66,7 @@ function atualizarEventos() {
     for (const espetaculo of data) {
       const element = document.createElement("option");
 
-      element.setAttribute("value", espetaculo._id);
+      element.setAttribute("value", espetaculo.id);
       element.text = espetaculo.nome;
 
       selectEspetaculos.appendChild(element);
@@ -83,7 +93,7 @@ function atualizarPagina(idEspetaculo) {
 
   clearElementChilds(elementoAssentos);
 
-  get("api/espetaculo/" + idEspetaculo).then(espetaculo => {
+  get("api/espetaculo", {id: idEspetaculo}).then(espetaculo => {
     for (let i = 0; i < espetaculo.numeroAssentos; i++) {
       const templateCopy = document.importNode(
         document.getElementById("template-assento").content,
@@ -91,7 +101,7 @@ function atualizarPagina(idEspetaculo) {
       );
 
       const reserva = espetaculo.reservas.find(
-        reserva => reserva.numeroCadeira == i
+        reserva => reserva.numeroAssento == i
       );
 
       const divCirculo = templateCopy.querySelector(".circle");
@@ -104,7 +114,7 @@ function atualizarPagina(idEspetaculo) {
       root.setAttribute("data-espetaculo", idEspetaculo);
 
       if (reserva) {
-        root.setAttribute("data-reserva", reserva._id);
+        root.setAttribute("data-reserva", reserva.id);
 
         divCirculo.classList.add("red");
         divTexto.textContent = "Reservado";
@@ -134,7 +144,7 @@ function getReservaFromModal() {
     idEspetaculo: idEspetaculoElement.value,
     nomePessoa: nomeElement.value,
     email: emailElement.value,
-    numeroCadeira: numeroCadeiraElement.value
+    numeroAssento: numeroCadeiraElement.value
   };
 }
 
@@ -153,7 +163,7 @@ function onSalvarReservaClicked() {
     return;
   }
 
-  post(`api/espetaculo/${reserva.idEspetaculo}/reservar`, reserva).then(() => {
+  post(`api/espetaculo/reservar`, reserva).then(() => {
     hideReservaModal();
 
     atualizarEventos();
@@ -185,7 +195,7 @@ function getEspetaculoFromModal() {
   const espetaculo = {};
 
   if (idElement.value) {
-    espetaculo._id = idElement.value;
+    espetaculo.id = idElement.value;
   }
 
   espetaculo.nome = nomeElement.value;
@@ -233,8 +243,8 @@ function onSalvarEspetaculoClicked() {
     hideEspetaculoModal();
     atualizarEventos();
 
-    if (espetaculo._id) {
-      atualizarPagina(espetaculo._id);
+    if (espetaculo.id) {
+      atualizarPagina(espetaculo.id);
     }
   });
 }
@@ -255,15 +265,18 @@ function onAssentoClicked(event) {
   const element = event.target;
   const idReserva = element.getAttribute("data-reserva");
   const idEspetaculo = element.getAttribute("data-espetaculo");
-  const numeroCadeira = element.getAttribute("data-assento");
+  const numeroAssento = element.getAttribute("data-assento");
 
   if (idReserva) {
-    del(`api/espetaculo/${idEspetaculo}/reserva/${idReserva}`).then(() => {
+    del(`api/espetaculo/reserva`, {
+      idEspetaculo,
+      idReserva
+    }).then(() => {
       atualizarPagina(idEspetaculo);
     });
   } else {
     document.getElementById("reserva-espetaculo-id").value = idEspetaculo;
-    document.getElementById("reserva-cadeira").value = numeroCadeira;
+    document.getElementById("reserva-cadeira").value = numeroAssento;
     document.getElementById("reserva-nome").value = "";
     document.getElementById("reserva-email").value = "";
 
@@ -286,8 +299,8 @@ function onNovoEventoClicked() {
 function onEditarEventoClicked() {
   const idSelecionado = document.getElementById("espetaculos").value;
   if (idSelecionado) {
-    get("api/espetaculo/" + idSelecionado).then(espetaculo => {
-      document.getElementById("espetaculo-id").value = espetaculo._id;
+    get("api/espetaculo", {id: idSelecionado}).then(espetaculo => {
+      document.getElementById("espetaculo-id").value = espetaculo.id;
       document.getElementById("espetaculo-nome").value = espetaculo.nome;
       document.getElementById("espetaculo-assentos").value =
         espetaculo.numeroAssentos;
@@ -301,7 +314,9 @@ function onDeletarEventoClicked() {
   const idEspetaculo = document.getElementById("espetaculos").value;
 
   if (idEspetaculo) {
-    del(`api/espetaculo/${idEspetaculo}`).then(() => {
+    del(`api/espetaculo`, {
+      idEspetaculo
+    }).then(() => {
       atualizarEventos();
       clearElementChilds(document.getElementById("container-assentos"));
     });

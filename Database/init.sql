@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS Espetaculos (
+  id SERIAL PRIMARY KEY,
+  nome VARCHAR(255) NOT NULL,
+  preco NUMERIC NOT NULL,
+  numeroAssentos INTEGER NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Reservas(
+  id SERIAL PRIMARY KEY,
+  nomePessoa VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  numeroAssento INTEGER NOT NULL,
+
+  idEspetaculo INTEGER REFERENCES Espetaculos(id)
+);
