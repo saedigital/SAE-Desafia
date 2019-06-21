@@ -7,7 +7,7 @@
 # Instalação
 ## Requerimentos
 * PHP 7.0+
-* PostgreSQL.
+* PostgreSQL 11+.
 
 # Observações
 [...]
