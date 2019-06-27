@@ -6,5 +6,5 @@ return [
     'port'=>3306,
     'user'=>'root',
     'pass'=>'admin',
-    'database'=>'sae'
+    'database'=>'sae2'
 ];
