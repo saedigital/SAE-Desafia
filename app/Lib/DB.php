@@ -40,31 +40,46 @@ class DB
         return static::$pdo;
     }
 
-    public static function fetch(string $query) {
-        return static::executeFetch($query,PDO::FETCH_ASSOC);
+    public static function fetchKeyPair(string $query, array $params=[]) {
+        return static::executeFetchAll($query,PDO::FETCH_KEY_PAIR, $params);
     }
 
-    public static function fetchValue(string $query) {
-        return static::executeFetch($query,PDO::FETCH_COLUMN);
+    public static function fetch(string $query, array $params=[]) {
+        return static::executeFetch($query,PDO::FETCH_ASSOC, $params);
+    }
+
+    public static function fetchValue(string $query, array $params=[]) {
+        return static::executeFetch($query,PDO::FETCH_COLUMN, $params);
     }
 
     public static function getLastInsertID(){
         return static::fetchValue("SELECT LAST_INSERT_ID() as PK;");
     }
 
-    public static function record(string $query, array $params) {
-        $statement = static::getPDO()->prepare($query);
-        $statement->execute($params);
+    public static function fetchColumn(string $query, array $params=[]) {
+        return static::executeFetchAll($query,PDO::FETCH_COLUMN, $params);
+    }
+
+    public static function results(string $query, array $params=[]) {
+        return static::executeFetchAll($query,PDO::FETCH_ASSOC, $params);
     }
 
     public static function exec(string $query) {
         static::getPDO()->exec($query);
     }
 
-    private static function executeFetch(string $query, int $fetchStyle) {
+    public static function executeFetchAll(string $query, int $fetchStyle, array $params=[]) {
+        return static::execute($query, $params)->fetchAll($fetchStyle);
+    }
+
+    public static function executeFetch(string $query, int $fetchStyle, array $params=[]) {
+        return static::execute($query, $params)->fetch($fetchStyle);
+    }
+
+    public static function execute(string $query, array $params=[]): PDOStatement {
         $statement = static::getPDO()->prepare($query);
-        $statement->execute();
-        return $statement->fetch($fetchStyle);
+        $statement->execute($params);
+        return $statement;
     }
 
 }

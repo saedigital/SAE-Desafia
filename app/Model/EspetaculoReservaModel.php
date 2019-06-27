@@ -9,6 +9,8 @@
 namespace App\Model;
 
 
+use App\Lib\DB;
+
 class EspetaculoReservaModel extends AbstractModel
 {
 
@@ -33,6 +35,12 @@ class EspetaculoReservaModel extends AbstractModel
      * @var mixed
      */
     public $dttReserva;
+
+    public function findByPoltrona(int $fkEspetaculo, int $fkPoltrona) {
+        $data = DB::fetch("SELECT * FROM {$this->_table} WHERE `fkEspetaculo`=$fkEspetaculo AND `fkPoltrona`=$fkPoltrona;");
+        $this->fill($data);
+        return $this;
+    }
 
     /**
      * @return int|null

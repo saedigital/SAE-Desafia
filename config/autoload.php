@@ -12,8 +12,10 @@ spl_autoload_register(function($class) {
         throw new \Exception("Class $class can't be found.");
 
     require $path;
-    if(!class_exists($class))
-        throw new \Exception("Class $class can't be found.");
+    if(interface_exists($class) || class_exists($class) || trait_exists($class))
+        return;
+
+    throw new \Exception("$class can't be found.");
 
 
 });

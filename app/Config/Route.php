@@ -9,6 +9,9 @@
 namespace App\Config;
 
 
+use App\Lib\HttpException;
+use App\Lib\View;
+
 class Route
 {
 
@@ -36,7 +39,7 @@ class Route
     public function checkAndRun() {
         $exp = $this->getExpression();
         if(strlen($exp) < 2)
-            return strlen($_SERVER['REQUEST_URI']) < 3 ? $this->run([]) : $this->httpException(404, 'Página não encontrada.');
+            return strlen($_SERVER['REQUEST_URI']) < 3 ? $this->run([]) : $this->e404();
 
         preg_match("/^$exp/", trim($_SERVER['REQUEST_URI'], '/'), $result);
 
@@ -46,32 +49,51 @@ class Route
         return false;
     }
 
-    public function run(array $params) {
-        array_shift($params);
+    private function sanitize($param) {
+        if(!$param)
+            return null;
+
+        $output = trim($param, '/');
+        return is_string($output) && !empty($output) ? $output : null;
+    }
+
+    public function run(array $_params) {
+        array_shift($_params);
+
+        $params = array_map([$this, 'sanitize'], $_params);
         $controller = $this->getController();
         $controllerClass = "App\\Controller\\$controller";
         $instace = new $controllerClass();
         $action = $this->getMethod();
         if (!method_exists($instace, $action))
-            return $this->httpException(404, 'Página não encontrada.');
+            return $this->e404();
 
         $method = new \ReflectionMethod($instace, $action);
 
         if (!$method->isPublic())
-            return $this->httpException(404, 'Página não encontrada.');
+            return $this->e404();
 
         if(count($params) < $method->getNumberOfRequiredParameters())
-            return $this->httpException(404, 'Página não encontrada.');
+            return $this->e404();
 
-        call_user_func_array([$instace, $action], $params);
+        $output = call_user_func_array([$instace, $action], $params);
+
+        if($output instanceof HttpException):
+            echo $output->render();
+            return false;
+        elseif(is_string($output)):
+            echo $output;
+        elseif(is_array($output)):
+            header('Content-Type: application/json');
+            echo json_encode($output);
+        endif;
         return true;
     }
 
-    public function httpException($code, $message) {
-        echo $code . '<br/>' . $message;
-        return true;
+    public function e404() {
+        echo (new HttpException())->render();
+        return false;
     }
-
     /**
      * @return string
      */

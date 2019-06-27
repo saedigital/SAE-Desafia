@@ -18,9 +18,13 @@ class View
     private $template, $view;
 
     public function render(array $vars = []) {
-
+        header('Content-Type: text/html; charset=utf-8');
         $vars['__content'] = $this->getFileContent($this->getView(), $vars);
         return $this->getFileContent($this->getTemplate(), $vars);
+    }
+
+    public function renderView(array $vars = []) {
+        return $this->getFileContent($this->getView(), $vars);
     }
 
     public function getFileContent($file, array $vars = []) {

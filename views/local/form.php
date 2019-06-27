@@ -1,12 +1,14 @@
 <?php
 /**
- * @var $model \App\Model\EspetaculoModel
+ * @var $model \App\Model\LocalModel
  */
 ?>
 <div>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/"><i class="fa fa-home"></i> Home</a></li>
+            <li class="breadcrumb-item"><a href="/configurar"><i class="fa fa-cog"></i> Configurar</a></li>
+            <li class="breadcrumb-item"><a href="/local"><i class="fa fa-map-marker"></i> Locais</a></li>
             <li class="breadcrumb-item active"><?php echo $title;?></li>
         </ol>
     </nav>
@@ -19,23 +21,10 @@
         <form class="ajax-form" method="post" action="<?php echo $action;?>" novalidate="novalidate">
             <div class="card-body">
                 <div class="form-group row">
-                    <label class="col-4 control-label col-form-label text-right" for="field-fkLocal">Local</label>
+                    <label class="col-4 control-label col-form-label text-right" for="field-chrLocal">Local</label>
                     <div class="col-5">
-                        <select  class="form-control" id="field-fkLocal" name="fkLocal" value="<?php echo $model->getFkLocal();?>">
-                            <option value="">Selecione uma opção.</option>
-                            <?php
-                                foreach($localCollection as $id=>$label)
-                                    echo    "<option value=\"$id\">$label</option>";
-                            ?>
-                        </select>
-                        <div class="invalid-feedback"></div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-4 control-label col-form-label text-right" for="field-chrEspetaculo">Nome do Evento</label>
-                    <div class="col-5">
-                        <input type="text" class="form-control" id="field-chrEspetaculo" name="chrEspetaculo"
-                               placeholder="Ipsum Loren Party" value="<?php echo $model->getChrEspetaculo();?>">
+                        <input type="text" class="form-control" id="field-chrLocal" name="chrLocal"
+                               placeholder="Ipsum Loren Party" value="<?php echo $model->getChrLocal();?>">
                         <div class="invalid-feedback"></div>
                     </div>
                 </div>
@@ -67,7 +56,7 @@
                 params[row.name] = row.value;
             });
             var success = function() {
-                window.location.href = '/';
+                window.location.href = '/local';
             };
 
             var setFieldError = function (k, message) {

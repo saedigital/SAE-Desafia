@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 
+use App\Lib\HttpException;
 use App\Lib\View;
 
 abstract class AbstractController
@@ -35,6 +36,18 @@ abstract class AbstractController
 
     public function render(string $file, array $vars = []) {
         return $this->view()->setView($file)->render($vars);
+    }
+
+    public function e404($message = 'Página não encontrada.') {
+        return new HttpException($message, 404);
+    }
+
+    public function e405($message = 'Method Not Allowed.') {
+        return new HttpException($message, 500);
+    }
+
+    public function e500($message = 'Server error.') {
+        return new HttpException($message, 500);
     }
 
 
