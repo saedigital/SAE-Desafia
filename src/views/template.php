@@ -29,7 +29,7 @@
                 </div>
                 <div class="col l4 offset-l2 s12">
                     <ul>
-                        <li><a target="_blank" class="grey-text text-lighten-3" href="https://github.com/Arbigaus">Gerson Arbigaus</a></li>
+                        <li><a target="_blank" class="grey-text text-lighten-3" href="https://github.com/Arbigaus/SAE-Desafia/tree/gerson-arbigaus">Github do Projeto</a></li>
                     </ul>
             </div>
         </div>
