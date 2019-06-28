@@ -1,0 +1,35 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+header h1 {
+	margin: 0px;
+	padding-left: 10px;
+}
+
+header h1 span.logo-text {
+    display: none;
+}
+
+.parallax-container {
+	height: 400px;
+}
+
+.parallax-container img {
+	width: 1024px;
+}
+
+.logo_principal {
+	width: 700px;
+}
+
+.text {
+	padding-top: 0;
+	text-align: justify;
+}

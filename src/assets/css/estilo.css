@@ -1,0 +1,65 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+#sidenav-overlay{
+	background-color:transparent;
+}
+
+#left-sidebar-nav {
+	position: fixed;
+	top: 50px;
+	width: 100px;
+	left: 180px;
+	z-index:999;
+	height:auto;
+}
+
+ul.side-nav.leftside-navigation {
+    top: 64px;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+ul.side-nav.leftside-navigation li.user-details {
+    background: url("../images/user-bg.jpg") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin-bottom: 15px;
+    padding: 10px 0 0 10px;
+}
+
+ul.side-nav.leftside-navigation li.profile-dropdown {
+	padding: 8px 15px;
+	line-height: 30px;
+}
+
+ul.side-nav.leftside-navigation li {
+    line-height: 40px;
+}
+
+ul.side-nav.leftside-navigation img {
+    top: 5px;
+}
+
+ul.side-nav.leftside-navigation .profile-btn {
+    margin: 0;
+    text-transform: capitalize;
+    padding: 0;
+    text-shadow: 1px 1px 1px #444;
+    font-size: 15px;
+}
+
+ul.side-nav.leftside-navigation li a {
+    font-size: 14px;
+    font-weight: 400;
+}
