@@ -11,29 +11,12 @@ class Reservation{
     $reservations = $reservationModel->getReservations();
 
     $informacoes = array(
-      'pagina' => 'main',
+      'pagina' => 'reservation',
       'css' => array(
-        'main.css'
+        'reservation.css'
       )
     );
-    require_once('public/views/main.php');
-  }
-
-  public function register() {
-    $informacoes = array(
-      'pagina' => 'register',
-      'css' => array(
-        'register.css'
-      )
-    );
-
-    $id = (isset($_GET['id'])) ? $_GET['id'] : NULL;
-    if($id){//Edição
-      require_once('models/ReservationModel.php');
-      $reservationModel = new ReservationModel();
-      $reservation = $reservationModel->getReservations($id);
-    }
-    require_once('public/views/reservationForm.php');
+    require_once('public/views/reservation.php');
   }
 
   public function save() {
@@ -46,10 +29,22 @@ class Reservation{
 
     require_once('models/ReservationModel.php');
     $reservationModel = new ReservationModel();
-    if($_POST['id']){//atualizar
-      $resultado = $reservationModel->updateData($_POST['id'], $_POST['name'], $_POST['description']);
-    }else{
-      $resultado = $reservationModel->insertData($_POST['name'], $_POST['description']);
+    if($_GET['position']){
+      //Procurar pela reserva. Se existir, exclui, se não, a cria.
+      require_once('models/ReservationModel.php');
+      $reservationModel = new ReservationModel();
+      $reservation = $reservationModel->getReservations($_GET['position'], $_GET['spectacle']);
+      if(isset($reservation->num_rows) && $reservation->num_rows){
+        //Excluir
+        $resultado = $reservationModel->delete($_GET['id']);
+        $message = "Reserva excluída. Voce será redirecionado";
+      }else{
+        //Criar
+        $resultado = $reservationModel->insertData($_POST['name'], $_POST['description']);
+        $message = "Reserva feita. Voce será redirecionado";
+      }
+
+      
     }
     
     if($resultado){

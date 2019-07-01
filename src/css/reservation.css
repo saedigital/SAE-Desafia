@@ -1,0 +1,25 @@
+.clear{
+    clear: both;
+}
+.palco{
+    width: 100%;
+    line-height: 100px;
+    background: #4b3062;
+    color: #FFF;
+    text-align: center;
+}
+.seats{
+    width: 552px;
+}
+    .seats .seat{
+        margin: 5px;
+        display: inline-block;
+        width: 45px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 12px;
+        background: #00af6c;
+        color: #FFF;
+        text-align: center;
+        cursor: pointer;
+    }

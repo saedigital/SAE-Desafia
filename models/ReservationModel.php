@@ -1,13 +1,13 @@
 <?php
-class SpectacleModel{
+class ReservationModel{
   private $db;
   public function __construct(){
     require_once('helpers/DatabaseHelper.php');
     $this->db = new DatabaseHelper();
   }
 
-  public function getSpectacles($id = NULL){
-    $sql = "SELECT * FROM spectacle";
+  public function getReservations($id = NULL){
+    $sql = "SELECT * FROM reservation";
     if($id){
       $sql .= " WHERE id = ". $id;
     }
@@ -24,8 +24,8 @@ class SpectacleModel{
 
   }
   
-  public function updateData($id = NULL, $name = NULL, $description = NULL){
-    $sql = "UPDATE spectacle SET name = '".$name."', description = '".$description."'";
+  public function updateData($id = NULL, $position = NULL, $spectacle = NULL){
+    $sql = "UPDATE reservation SET position = '".$position."', spectacle = '".$spectacle."'";
     if($id){
       $sql .= " WHERE id = ". $id;
     }
@@ -40,8 +40,8 @@ class SpectacleModel{
 
   }
 
-  public function insertData($name = NULL, $description = NULL){
-    $sql = "INSERT INTO spectacle (name, description) VALUES('".$name."', '".$description."')";
+  public function insertData($position = NULL, $spectacle = NULL){
+    $sql = "INSERT INTO reservation (position, spectacle) VALUES('".$position."', '".$spectacle."')";
 
     $this->db->setSql($sql);
 
@@ -54,7 +54,7 @@ class SpectacleModel{
   }
 
   public function delete($id){
-    $sql = "DELETE FROM spectacle WHERE id = ".$id;
+    $sql = "DELETE FROM reservation WHERE id = ".$id;
 
     $this->db->setSql($sql);
 

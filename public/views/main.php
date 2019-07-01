@@ -21,7 +21,7 @@ require_once('template/topo.php');
             <div class="opcoes">
               <a href="<?=base_url()?>spectacle/delete?id=<?=$spectacle['id']?>" class="btn">Excluir</a>
               <a href="<?=base_url()?>spectacle/register?id=<?=$spectacle['id']?>" class="btn">Editar</a>
-              <a href="<?=base_url()?>reservation/?spectacle=<?=$spectacle['id']?>" class="btn color">Reservas</a>
+              <a href="<?=base_url()?>reservation/index/?spectacle=<?=$spectacle['id']?>" class="btn color">Reservas</a>
             </div>
           </div>
     <?php
