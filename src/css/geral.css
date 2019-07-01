@@ -1,0 +1,319 @@
+* {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  ::-webkit-input-placeholder {
+    font-family: 'Quicksand', sans-serif;
+    color: #333;
+    opacity: 1;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  ::-moz-placeholder {
+    font-family: 'Quicksand', sans-serif;
+    color: #333;
+    opacity: 1;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  :-ms-input-placeholder {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px;
+    color: #333;
+    opacity: 1;
+    font-weight: 400;
+  }
+  html, body{
+      height: 100%;
+  }
+  object{
+    display: none;
+  }
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+  a img {
+    border: 0;
+  }
+  b {
+    font-weight: 700;
+  }
+  body {
+    font-family: 'Quicksand', sans-serif;
+    overflow-x: hidden;
+    font-size: 15px;
+    font-weight: 400;
+    color: #333;
+    background: #f0f0f0;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  input,
+  textarea, button, .btn {
+    font-family: 'Quicksand', sans-serif;
+    border: none;
+    height: 36px;
+  }
+  input[type="text"], input[type="email"], textarea, .selectric{
+    font-size: 14px;
+  }
+  .selectric .label{
+    margin-left: 0 !important;
+    background: #FFF;
+    color: #333;
+  }
+  .btn{
+    background: none;
+    text-align: center;
+    cursor: pointer;
+    min-height: 30px;
+    line-height: 29px;
+    padding: 3px 10px;
+    font-size: 14px;
+    border-radius: 30px;
+    transition: all .3s;
+    border: none;
+    display: block;
+    width: fit-content;
+  }
+  .btn.color{
+    background-color: #5a1696;
+    color: #fff;
+  }
+  .btn:hover{
+    background: #751bc4;
+    color: #fff;
+  }
+  .btn span{
+    font-weight: bold;
+  }
+  .navigation{
+    height: 100%;
+    width: 300px;
+    padding: 40px 15px;
+    background: linear-gradient(to top, #0e0b16 40%, #4b3062 100%);
+  }
+    .navigation nav{
+      width: 100%;
+      height: 100%;
+    }
+      .navigation nav a:not(.logo){
+        display: block;
+        width: 100%;
+        line-height: 45px;
+        margin-bottom: 10px;
+        font-size: 17px;
+        color: #FFF;
+        text-align: center;
+        border-radius: 50px;
+      }
+      .navigation nav a:not(.logo):hover{
+        background: #7543ff;
+      }
+  .content{
+      width: calc(100% - 300px);
+      height: 100%;
+      padding: 0 40px 40px 40px;
+  }
+
+  .topo{
+    width: 100%;
+    height: 100px;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  h1{
+    font-size: 35px;
+  }
+
+  .opcoes-top{
+    width: 100%;
+    padding: 5px;
+  }
+
+  .card-group{
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+  }
+
+  .card{
+    width: 300px;
+    display: inline-block;
+    border: 1px solid #e0e0e0;
+    background: #FFF;
+    border-radius: 25px;
+    overflow: hidden;
+    margin: 5px;
+  }
+
+  .card .card-image{
+    padding: 15px;
+    width: 100%;
+    height: 150px;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    background: url(../img/espetaculo.jpeg) no-repeat center center;
+    background-size: cover;
+  }
+
+  .card .card-noimage{
+    padding: 15px;
+    width: 100%;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    background-size: cover;
+  }
+
+  .card .card-title, .card .card-description{
+    color: #FFF;
+    text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.6);
+  }
+
+  .card .opcoes{
+    padding: 15px;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+  }
+
+  .card .card-image+.opcoes{
+    border-top: 1px solid #e0e0e0;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+  }
+
+  .card .opcoes .btn:not(last-child){
+    margin-right: 5px;
+  }
+
+  .shadow{
+    -webkit-box-shadow: 0px 5px 20px -9px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 5px 20px -9px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 20px -9px rgba(0, 0, 0, 0.5);
+  }
+
+  .logo{
+    display: inline-block;
+    width: 100%;
+    height: 180px;
+    margin-bottom: 50px;
+    background: url(../img/logo.png) no-repeat center center;
+    background-size: contain;
+  }

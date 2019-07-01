@@ -1,0 +1,51 @@
+.form{
+    width: 100%;
+    max-width: 800px;
+    padding: 30px 20px 0 20px;
+}
+    .form .input-container{
+        width: 100%;
+        position: relative;
+    } 
+        .form .input-container input, .form .input-container textarea{
+            height: 35px;
+            width: 100%;
+            border-radius: 5px;
+            color: #254488;
+            border: 1px solid #254488;
+            background: none;
+            padding: 0 15px;
+            margin-bottom: 25px;
+            outline: none;
+            font-size: 14px;
+            font-weight: 300;
+        }
+        .form .input-container textarea{
+            height: 150px;
+            padding: 10px;
+        }
+        .form .input-container input+label, 
+        .form .input-container textarea+label{
+            font-size: 14px;
+            margin-bottom: 20px;
+            background: #FFF;
+            width: auto;
+            position: absolute;
+            transition: all .2s;
+            color: #254488;
+            left: 10px;
+            padding: 0 7px;
+            line-height: 22px;
+            top: calc(50% - 23px);
+            pointer-events: none;
+        }
+        .form .input-container textarea+label{            
+            top: 10px;
+        }
+        .form .input-container input:focus+label,
+        .form .input-container textarea:focus+label, 
+        .form .input-container input:not(:placeholder-shown)+label, 
+        .form .input-container textarea:not(:placeholder-shown)+label{
+            top: -11px;
+            font-size: 12px;
+        }

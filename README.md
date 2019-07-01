@@ -37,7 +37,7 @@ Confirma abaixo os recursos que devem ser implementados na aplicação:
   * Vamos subir a aplicação e acessar via localhost;
   * Vamos cadastrar/editar/deletar/atualizar os espetáculo;
   * Vamos reservar e cancelar as reservas das poltronas;
-  * Vamos verificar se o valor arrecadado esta preciso e correto.
+  * Vamos verificar se o valor arrecadado está preciso e correto.
   
 # Diferenciais
 - Não utilizar framework

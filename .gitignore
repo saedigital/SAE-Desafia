@@ -1,0 +1,9 @@
+node_modules
+vendor
+public/critical
+public/css
+public/img
+public/js
+build
+.vscode
+.env
