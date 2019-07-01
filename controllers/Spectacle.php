@@ -7,8 +7,12 @@ class Spectacle{
   public function index() {
 
     require_once('models/SpectacleModel.php');
+    require_once('models/ReservationModel.php');
+
     $spectacleModel = new SpectacleModel();
     $spectacles = $spectacleModel->getSpectacles();
+
+    $valorTotalArrecadado = ReservationModel::getArrecadacaoTotal();
 
     $informacoes = array(
       'pagina' => 'main',

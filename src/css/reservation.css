@@ -22,4 +22,38 @@
         color: #FFF;
         text-align: center;
         cursor: pointer;
+        position: relative;
+    }
+
+    .seats .seat.reservado{
+        background: #e9004e;
+    }
+
+    .seats .seat.reservado:hover::before{
+        content: 'X';
+        height: 100%;
+        width: 100%;
+        font-size: 20px;
+        font-weight: bold;
+        position: absolute;
+        background: rgba(233, 0, 78, 0.603);
+        left: 0;
+        top: 0;
+    }
+.legendas{
+    margin-top: 20px;
+}
+    .legendas .legenda p{
+        width: fit-content;
+        display: inline-block;
+        font-size: 15px;
+    }
+    .legendas .legenda .quadrado{
+        width: 16px;
+        height: 16px;
+        background: #00af6c;
+        display: inline-block;
+    }
+    .legendas .legenda .quadrado.reservado{
+        background: #e9004e;
     }

@@ -17,3 +17,5 @@ switch ($host) {
     $_ENV['ENVIRONMENT'] = 'production';
 		break;
 }
+
+$_ENV['SEAT_PRICE'] = 23.76; //Usar o ponto (.) como separador decimal

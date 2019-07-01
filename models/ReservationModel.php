@@ -6,16 +6,35 @@ class ReservationModel{
     $this->db = new DatabaseHelper();
   }
 
-  public function getReservations($id = NULL){
+  public static function getArrecadacaoTotal(){
+    require_once('helpers/DatabaseHelper.php');
+    $db = new DatabaseHelper();
+    $sql = "SELECT count(id) * ".$_ENV['SEAT_PRICE']." as total FROM reservation";
+    $db->setSql($sql);
+    if($db->run()){
+      $retorno = mysqli_fetch_assoc($db->getData());
+      return $retorno['total'];
+    }
+  }
+
+  public function getReservations($position = NULL, $spectacle = NULL){
     $sql = "SELECT * FROM reservation";
-    if($id){
-      $sql .= " WHERE id = ". $id;
+    if($position || $spectacle){
+      $sql .= " WHERE"; 
+      $operador = '';     
+      if($position){
+        $sql .= " position = ". $position;
+        $operador = ' AND';
+      }      
+      if($spectacle){
+        $sql .= $operador ." spectacle = ". $spectacle;
+      } 
     }
 
     $this->db->setSql($sql);
 
     if($this->db->run()){
-      if($id){
+      if($position){
         return mysqli_fetch_assoc($this->db->getData());
       }else{
         return $this->db->getData();
@@ -53,8 +72,8 @@ class ReservationModel{
 
   }
 
-  public function delete($id){
-    $sql = "DELETE FROM reservation WHERE id = ".$id;
+  public function delete($position, $spectacle = NULL){
+    $sql = "DELETE FROM reservation WHERE position = ".$position." AND spectacle = ".$spectacle;
 
     $this->db->setSql($sql);
 

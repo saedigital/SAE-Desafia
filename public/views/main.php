@@ -8,6 +8,9 @@ require_once('template/topo.php');
       <h1>Em Cartaz</h1> <a href="<?=base_url()?>spectacle/register" class="btn color"><span>+</span> Adicionar Espetáculo</a>
     </div>
 
+    <p>Valor Total Arrecadado: R$ <?=number_format($valorTotalArrecadado, 2, ',', '.')?></p>
+    <br>
+
     <div class="spectacles card-group">
     <?php
       if(isset($spectacles->num_rows) && $spectacles->num_rows){
