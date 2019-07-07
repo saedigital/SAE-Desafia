@@ -1,0 +1,16 @@
+{
+  "name": "Desafio SAE",
+  "authors": [
+    {
+      "name": "Paulo Antonio Vital",
+      "email": "paulaovital@gmail.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Vital\\": "app",
+      "Vital\\Configuration\\": "config"
+    }
+  }
+}
