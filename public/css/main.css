@@ -1,0 +1,81 @@
+
+h2 {
+    margin-left: 10px;
+}
+
+#box-table-events {
+    border:1px solid #CCC;
+    padding:10px;
+}
+
+#box-table-events table {
+    margin-top:30px;
+    width: 100%;
+    border:1px solid #CCC;
+    
+}
+
+#box-table-events table tr {
+    padding:10px;
+}
+
+#box-table-events table tr th {
+    padding:10px;
+}
+
+#box-table-events table tr td {
+    padding:10px;
+    border:1px solid #CCC;
+    text-align: center;
+}
+
+#form-event-box {
+    display:none;
+    border:1px solid #CCC;
+} 
+
+#form-event {
+    padding:10px;
+}
+
+#form-event label {
+    display:block;
+}
+
+#form-event .bto-form {
+    margin-top:10px;
+}
+
+#box-reserve {
+    display:none;
+    border:1px solid #CCC;
+    
+    height: 612px;
+    padding: 15px;
+}
+
+#list-book {
+    width: 670px;
+}
+
+#list-book div {
+    border: 1px solid #CCC;
+    width: 110px;
+    height: 30px;
+    padding: 10px;
+    float: left;
+}
+
+#list-book div label {
+    
+}
+
+#list-book div input {
+    float: left;
+    margin-right: 8px;
+}
+
+.bto-book {
+    float: right;
+    margin-top: 155px;
+}

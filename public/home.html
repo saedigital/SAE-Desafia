@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Events Manager</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        
+        <base href="/" />
+        <link rel="stylesheet" href="/css/main.css" />
+        
+    </head>
+    
+	<body>
+
+        <div  id="box-table-events">
+            <h1>Eventos</h1>
+            <a href="/events/add" onclick="return window.start.navApp(this.href);">Adicionar Evento</a>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Valor Poltrona</th>
+                    <th>Valor Vendas</th>
+                    <th>Poltronas</th>
+                    <th>Reservas</th>
+                    <th>&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody id="list-events">
+
+                </tbody>
+
+            </table>
+        </div>
+
+        <div id="form-event-box">
+            <h2>Evento</h2>
+            <form id="form-event">
+                <input type="hidden" name="id" id="id" value="" />
+                <label>Título</label> <input type="text" name="title" id="title" value="" /><br/>
+                <label>Descrição</label> <input type="text" name="description" id="description" value="" /><br/>
+                <label>Valor Poltrona</label> <input type="text" inputmode="numeric" name="ticket_value" id="ticket_value" value="" /><br/>
+                <label>Número de Poltronas</label> <input type="text" name="tickets_limit" id="tickets_limit" 
+                onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="" /><br/>
+
+                <input type="button" class="bto-form" name="send" id="send" onclick="window.start.closeForm()" value="Fechar" />
+                <input type="button" class="bto-form" name="close" id="close" onclick="window.start.saveEvent()" value="Salvar" />
+                
+            </form>
+        </div>
+
+        <div id="box-reserve">
+            <h2><span id="title-event"></span> - Reservas</h2>
+            
+            <form id="form-book">    
+                <input type="hidden" name="event-book" id="event-book" value="" />    
+                <div id="list-book">
+
+                </div>
+
+                <div class="bto-book">
+                    <input type="button" class="bto-form" name="send" id="send" onclick="window.start.closeBook()" value="Fechar" />
+                    <input type="button" class="bto-form" name="close" id="close" onclick="window.start.saveBook()" value="Salvar" />
+                </div>   
+            </form>
+        </div>
+
+        <footer>
+
+        </footer>
+
+        <div style="display:none;">
+            <div id="block-list">
+                <table id="model-list-events">
+                    <tr>
+                        <td>[title]</td>
+                        <td>[value]</td>
+                        <td>[total]</td>
+                        <td>[tickets_limit]</td>
+                        <td>[tickets_sold]</td>
+                        <td>
+                            <a href="/booking/[id]" onclick="return window.start.navApp(this.href);">Reservas</a> - 
+                            <a href="/events/edit/[id]" onclick="return window.start.navApp(this.href);">Editar</a> - 
+                            <a href="/events/delete/[id]" onclick="return window.start.navApp(this.href);">Excluir</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="model-list-book">
+                <div>
+                        <label>Poltrona [number]</label> <input type="checkbox" name="books[]" value="[number]" [block-book] />
+                </div>    
+            </div>
+        </div>
+
+		<!-- Scripts -->
+        <script src="/js/simple-mask-money.js"></script>
+        <script src="/js/app.js"></script>
+	
+	</body>
+</html>
