@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const espetaculoController = require('../controllers').espetaculo
+const espetaculoController = require('../../controllers').espetaculo
 
 router.get('/', espetaculoController.findAll)
 router.post('/cadastro', espetaculoController.add)

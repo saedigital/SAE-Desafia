@@ -4,6 +4,10 @@
   "description": "test sae",
   "main": "index.js",
   "scripts": {
+    "dev": "concurrently --kill-others \"node app.js\" \"npm run serve\"",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,6 +21,10 @@
   },
   "homepage": "https://github.com/pcesarteixeira/SAE-Desafia#readme",
   "dependencies": {
+    "core-js": "^2.6.5",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.3",
+    "vuex": "^3.0.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
@@ -29,6 +37,17 @@
     "sequelize": "^5.10.1"
   },
   "devDependencies": {
-    "sequelize-cli": "^5.5.0"
+    "@vue/cli-plugin-babel": "^3.9.0",
+    "@vue/cli-plugin-eslint": "^3.9.0",
+    "@vue/cli-service": "^3.9.0",
+    "@vue/eslint-config-airbnb": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "concurrently": "^4.1.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.1.0",
+    "sequelize-cli": "^5.5.0",
+    "vue-template-compiler": "^2.6.10"
   }
 }
