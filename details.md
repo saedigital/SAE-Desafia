@@ -1,11 +1,15 @@
 # Candidato
 
-**Nome**: Ronaldo Matos Rodrigues
+**Nome**: Paulo Teixeira
 
-**Email**: ronaldo.rodrigues@saedigital.com.br
+**Email**: dev.pauloteixeira@gmail.com
 
 # Instalação
 [...]
 
 # Observações
 [...]
+
+# Tecnologias utilizadas
+- Express
+- ORM Sequelize
