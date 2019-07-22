@@ -1,12 +1,35 @@
 <template>
   <div id="app">
-    <div>
-      
-    </div>
-    <router-view/>
+    <the-navbar />
+    <router-view class="content-area" />
   </div>
 </template>
 
-<style lang="scss">
+<script>
+import TheNavbar from './components/TheNavbar.vue'
 
+export default {
+  components: {
+    TheNavbar,
+  },
+}
+</script>
+
+
+<style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #f1f1f1;
+  margin-top: 50px;
+}
+
+.content-area {
+  padding: 30px;
+}
 </style>
