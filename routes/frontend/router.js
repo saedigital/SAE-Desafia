@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../../src/views/Home.vue'
-import Espetaculos from '../../src/views/Espetaculos.vue'
+import Espetaculos from '../../src/components/ListEspetaculos.vue'
+import CreateEspetaculo from '../../src/components/CreateEspetaculo.vue'
+import EditEspetaculo from '../../src/components/EditEspetaculo.vue'
 
 Vue.use(Router)
 
@@ -9,13 +10,18 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home,
-    },
-    {
-      path: '/espetaculos',
       name: 'espetaculos',
       component: Espetaculos,
+    },
+    {
+      path: '/novo-espetaculo',
+      name: 'novo-espetaculo',
+      component: CreateEspetaculo,
+    },
+    {
+      path: '/editar-espetaculo/:id',
+      name: 'editar-espetaculo',
+      component: EditEspetaculo,
     },
   ],
 })
