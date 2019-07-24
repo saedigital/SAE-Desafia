@@ -15,6 +15,18 @@
         <div v-show="errors.has('description')" class="form__item-error">{{ errors.first('description') }}</div>
       </div>
 
+      <div class="form__item">
+        <label for="poltronas">Número de poltronas</label>
+        <input v-model="espetaculo.poltronas" type="text" name="poltronas" id="poltronas" v-validate="'required'">
+        <div v-show="errors.has('poltronas')" class="form__item-error">{{ errors.first('poltronas') }}</div>
+      </div>
+
+      <div class="form__item">
+        <label for="data">Data</label>
+        <input v-model="espetaculo.data" type="text" name="data" id="data" v-validate="'required'">
+        <div v-show="errors.has('data')" class="form__item-error">{{ errors.first('data') }}</div>
+      </div>
+
       <button type="submit">Criar espetáculo</button>
       
     </form>
@@ -37,6 +49,8 @@ export default {
       espetaculo: {
         nome: '',
         descricao: '',
+        data: '',
+        poltronas: '',
       }
     }
   },
@@ -44,7 +58,10 @@ export default {
   methods: {
     createEspetaculo() {
       Espetaculo.create({
-        name: this.espetaculo.nome
+        name: this.espetaculo.nome,
+        description: this.espetaculo.descricao,
+        date: this.espetaculo.data,
+        quantity_armchairs: this.espetaculo.poltronas,
       }).then(success => {
         this.$router.push('/')
       }).catch(error => console.error(error))

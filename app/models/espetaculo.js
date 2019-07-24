@@ -8,7 +8,10 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       allowNull: false
     },
-    name: DataTypes.STRING
+    name: DataTypes.STRING,
+    description: DataTypes.STRING,
+    date: DataTypes.DATE,
+    quantity_armchairs: DataTypes.STRING,
   }, {});
 
   return Espetaculo;

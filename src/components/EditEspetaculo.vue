@@ -18,6 +18,18 @@
         <div v-show="errors.has('description')" class="form__item-error">{{ errors.first('description') }}</div>
       </div>
 
+      <div class="form__item">
+        <label for="quantity_armchairs">Número de poltronas</label>
+        <input v-model="espetaculo.quantity_armchairs" type="text" name="quantity_armchairs" id="quantity_armchairs" v-validate="'required'">
+        <div v-show="errors.has('quantity_armchairs')" class="form__item-error">{{ errors.first('quantity_armchairs') }}</div>
+      </div>
+
+      <div class="form__item">
+        <label for="date">Data</label>
+        <input v-model="espetaculo.date" type="text" name="date" id="date" v-validate="'required'">
+        <div v-show="errors.has('date')" class="form__item-error">{{ errors.first('date') }}</div>
+      </div>
+
       <button type="submit">Editar espetáculo</button>
       
     </form>
@@ -70,7 +82,10 @@ export default {
     updateEspetaculo() {
       Espetaculo.update({
         id: this.$route.params.id,
-        name: this.espetaculo.name
+        name: this.espetaculo.name,
+        date: this.espetaculo.date,
+        quantity_armchairs: this.espetaculo.quantity_armchairs,
+        description: this.espetaculo.description,
       }).then(success => {
         this.updated = true
       }).catch(error => console.error(error))

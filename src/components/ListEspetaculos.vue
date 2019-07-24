@@ -4,8 +4,8 @@
       <tr>
         <th width="50" align="left">#</th>
         <th align="left">Nome</th>
-        <th align="left">Criado em</th>
-        <th align="left">Atualizado em</th>
+        <th align="left">Quantidade Poltronas</th>
+        <th align="left">Data</th>
         <th></th>
       </tr>
     </thead>
@@ -13,9 +13,9 @@
       <tr v-for="(item, key) in espetaculos" :key="key">
         <td>{{ item.id }}</td>
         <td>{{ item.name }}</td>
-        <td>{{ item.createdAt }}</td>
-        <td>{{ item.updatedAt }}</td>
-        <td>[<router-link to="/">Ver reservas</router-link>] [<router-link :to="`/editar-espetaculo/${item.id}`">Editar espetaculo</router-link>] [<a href="#" @click="remove(item.id)">Excluir</a>]</td>
+        <td>{{ item.quantity_armchairs }}</td>
+        <td>{{ item.date }}</td>
+        <td>[<router-link to="/">Fazer reserva</router-link>] [<router-link :to="`/editar-espetaculo/${item.id}`">Editar espetaculo</router-link>] [<a href="#" @click="remove(item.id)">Excluir espetáculo</a>]</td>
       </tr>
     </tbody>
   </table>

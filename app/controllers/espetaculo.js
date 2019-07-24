@@ -22,6 +22,9 @@ module.exports = {
     return Espetaculo
       .create({
         name: req.body.name,
+        date: req.body.date,
+        quantity_armchairs: req.body.quantity_armchairs,
+        description: req.body.description,
       })
       .then(espetaculo => res.status(201).send(espetaculo))
       .catch(error => res.status(400).send(error))
@@ -47,7 +50,12 @@ module.exports = {
   update(req, res) {
     return Espetaculo
       .update(
-        { name: req.body.name },
+        { 
+          name: req.body.name,
+          date: req.body.date,
+          quantity_armchairs: req.body.quantity_armchairs,
+          description: req.body.description,
+        },
         { where: { id: req.params.id } }
       )
       .then(espetaculo => res.status(201).send(espetaculo))
