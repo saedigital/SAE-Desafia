@@ -8,7 +8,7 @@ module.exports = {
    */
   findAll(req, res) {
     return Espetaculo
-      .findAll()
+      .findAll({ where: { status: 1 }})
       .then(espetaculo => res.status(200).send(espetaculo))
       .catch(error => res.status(400).send(error))
   },
@@ -37,7 +37,10 @@ module.exports = {
    */
   remove(req, res) {
     return Espetaculo
-      .destroy({ where: { id: req.params.id } })
+      .update(
+        { status: '0' },
+        { where: { id: req.params.id } }
+      )
       .then(espetaculo => res.status(201).send(espetaculo))
       .catch(error => res.status(400).send(error))
   },

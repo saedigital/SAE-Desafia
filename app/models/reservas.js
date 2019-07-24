@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       allowNull: false
     },
+    status: DataTypes.INTEGER,
     name_booking: DataTypes.STRING,
     Espetaculo_id: DataTypes.INTEGER,
     price: DataTypes.DECIMAL(10, 2),

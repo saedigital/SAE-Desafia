@@ -2,7 +2,7 @@
   <nav>
     <ul class="menu">
       <li class="menu__item"><router-link to="/">Espetáculos</router-link></li>
-      <li class="menu__item"><router-link to="/reservas">Reservas</router-link></li>
+      <!-- <li class="menu__item"><router-link to="/reservas">Reservas</router-link></li> -->
     </ul>
     <div class="menu">
       <li class="menu__item menu__item--green"><router-link to="/novo-espetaculo">Novo espetáculo</router-link></li>

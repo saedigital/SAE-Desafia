@@ -48,24 +48,24 @@ h2 {
   margin-bottom: 20px;
 }
 
+button {
+  border: 0;
+  background: #333;
+  color: #fff;
+  border-radius: 5px;
+  height: 50px;
+  padding: 0 15px;
+  cursor: pointer;
+  font-size: 16px;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
 .form {
   width: 100%;
   max-width: 500px;
-
-  button {
-    border: 0;
-    background: #333;
-    color: #fff;
-    border-radius: 5px;
-    height: 50px;
-    padding: 0 15px;
-    cursor: pointer;
-    font-size: 16px;
-
-    &:hover {
-      opacity: 0.7;
-    }
-  }
 
   &__item {
     margin-bottom: 20px;

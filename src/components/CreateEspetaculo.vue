@@ -23,7 +23,7 @@
 
       <div class="form__item">
         <label for="data">Data</label>
-        <input v-model="espetaculo.data" type="text" name="data" id="data" v-validate="'required'">
+        <input placeholder="2019-07-24 03:03:49" v-model="espetaculo.data" type="text" name="data" id="data" v-validate="'required'">
         <div v-show="errors.has('data')" class="form__item-error">{{ errors.first('data') }}</div>
       </div>
 
