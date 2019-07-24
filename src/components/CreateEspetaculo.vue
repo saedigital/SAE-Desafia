@@ -56,6 +56,10 @@ export default {
   },
 
   methods: {
+    /**
+     * create espetaculo
+     * @returns {void}
+     */
     createEspetaculo() {
       Espetaculo.create({
         name: this.espetaculo.nome,

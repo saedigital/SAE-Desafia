@@ -85,12 +85,10 @@ export default {
       this.getData()
     },
 
-    getTotal() {
-      return this.reservas.map(reserva => {
-
-      })
-    },
-
+    /**
+     * Calculate total
+     * @returns {decimal}
+     */
     calculateTotal(productAccumulator, currentValue) {
       return parseFloat(productAccumulator) + parseFloat(currentValue.price)
     },
