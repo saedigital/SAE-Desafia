@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  const Espetaculo = sequelize.define('Espetaculo', {
+  var Espetaculo = sequelize.define('Espetaculo', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -12,7 +12,14 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     date: DataTypes.DATE,
     quantity_armchairs: DataTypes.STRING,
-  }, {});
+  }, {})
+
+  Espetaculo.associate = function(models) {
+    Espetaculo.hasMany(models.Reserva, {
+      foreignKey: 'Espetaculo_id',
+      as: 'Reservas',
+    })
+  }
 
   return Espetaculo;
 };
