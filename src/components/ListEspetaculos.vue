@@ -4,8 +4,8 @@
       <tr>
         <th width="50" align="left">#</th>
         <th align="left">Nome</th>
-        <th>Criado em</th>
-        <th>Atualizado em</th>
+        <th align="left">Criado em</th>
+        <th align="left">Atualizado em</th>
         <th></th>
       </tr>
     </thead>
@@ -15,9 +15,7 @@
         <td>{{ item.name }}</td>
         <td>{{ item.createdAt }}</td>
         <td>{{ item.updatedAt }}</td>
-        <td>[<router-link to="/">Ver reservas</router-link>]</td>
-        <td>[<router-link :to="`/editar-espetaculo/${item.id}`">Editar espetaculo</router-link>]</td>
-        <td>[<a href="#" @click="remove(item.id)">Excluir</a>]</td>
+        <td>[<router-link to="/">Ver reservas</router-link>] [<router-link :to="`/editar-espetaculo/${item.id}`">Editar espetaculo</router-link>] [<a href="#" @click="remove(item.id)">Excluir</a>]</td>
       </tr>
     </tbody>
   </table>

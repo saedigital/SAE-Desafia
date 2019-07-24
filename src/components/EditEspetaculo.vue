@@ -42,6 +42,13 @@ export default {
     }
   },
 
+  watch: {
+    espetaculo: {
+      handler: function () { this.updated = false },
+      deep: true,
+    },
+  },
+
   mounted() {
     this.getDataEspetaculo()
   },
